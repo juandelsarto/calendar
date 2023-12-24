@@ -1,9 +1,17 @@
+import Customizer from "./modules/Customizer";
 import "./styles/main.scss";
-import Calendar from "./components/Calendar";
-import { OWNERS } from "./constants/data";
+import {
+  ChakraProvider,
+} from "@chakra-ui/react";
 
 function App() {
-  return <Calendar owner={OWNERS.FLOR} />;
+
+  return (
+    <ChakraProvider>
+      <Customizer />
+    </ChakraProvider>
+  );
+  // return <Calendar owner={OWNERS.FLOR} />;
 }
 
 export default App;
