@@ -1,0 +1,487 @@
+{
+  "familia": {
+    "daysOfWeek": [
+      "domingo",
+      "lunes",
+      "martes",
+      "miércoles",
+      "jueves",
+      "viernes",
+      "sábado"
+    ],
+    "months": [
+      {
+        "name": "Enero",
+        "first": 7,
+        "days": 31,
+        "feriados": [1],
+        "cumples": [
+          {
+            "number": 11,
+            "name": "Simón"
+          },
+          {
+            "number": 13,
+            "name": "Flor"
+          },
+          {
+            "number": 23,
+            "name": "Nala"
+          }
+        ]
+      },
+      {
+        "name": "Febrero",
+        "first": 3,
+        "days": 28,
+        "feriados": [28],
+        "cumples": [
+          {
+            "number": 7,
+            "name": "Donatella"
+          }
+        ]
+      },
+      {
+        "name": "Marzo",
+        "first": 3,
+        "days": 31,
+        "feriados": [1, 24],
+        "cumples": [
+          {
+            "number": 21,
+            "name": "Fita"
+          }
+        ]
+      },
+      {
+        "name": "Abril",
+        "first": 6,
+        "days": 30,
+        "feriados": [2, 15, 24]
+      },
+      {
+        "name": "Mayo",
+        "first": 1,
+        "days": 31,
+        "feriados": [1, 25]
+      },
+      {
+        "name": "Junio",
+        "first": 4,
+        "days": 30,
+        "feriados": [17, 20],
+        "cumples": [
+          {
+            "number": 8,
+            "name": "Mamá"
+          }
+        ]
+      },
+      {
+        "name": "Julio",
+        "first": 6,
+        "days": 31,
+        "feriados": [9],
+        "cumples": [
+          {
+            "number": 10,
+            "name": "Juan"
+          }
+        ]
+      },
+      {
+        "name": "Agosto",
+        "first": 2,
+        "days": 31,
+        "feriados": [15]
+      },
+      {
+        "name": "Septiembre",
+        "first": 5,
+        "days": 30,
+        "cumples": [
+          {
+            "number": 6,
+            "name": "Noah"
+          }
+        ]
+      },
+      {
+        "name": "Octubre",
+        "first": 7,
+        "days": 31,
+        "feriados": [7, 10]
+      },
+      {
+        "name": "Noviembre",
+        "first": 3,
+        "days": 30,
+        "feriados": [20, 21]
+      },
+      {
+        "name": "Diciembre",
+        "first": 5,
+        "days": 31,
+        "feriados": [8, 9, 25],
+        "cumples": [
+          {
+            "number": 7,
+            "name": "Papá"
+          }
+        ]
+      }
+    ]
+  },
+  "fita": {
+    "daysOfWeek": [
+      "sunday",
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday"
+    ],
+    "months": [
+      {
+        "name": "January",
+        "first": 7,
+        "days": 31,
+        "feriados": [1],
+        "cumples": [
+          {
+            "number": 11,
+            "name": "Simón"
+          },
+          {
+            "number": 13,
+            "name": "Flor"
+          },
+          {
+            "number": 23,
+            "name": "Nala"
+          }
+        ]
+      },
+      {
+        "name": "February",
+        "first": 3,
+        "days": 28,
+        "feriados": [28]
+      },
+      {
+        "name": "March",
+        "first": 3,
+        "days": 31,
+        "feriados": [1, 24],
+        "cumples": [
+          {
+            "number": 21,
+            "name": "My b-day!"
+          }
+        ]
+      },
+      {
+        "name": "April",
+        "first": 6,
+        "days": 30,
+        "feriados": [2, 15, 24],
+        "cumples": [
+          {
+            "number": 29,
+            "name": "Veroh"
+          }
+        ]
+      },
+      {
+        "name": "May",
+        "first": 1,
+        "days": 31,
+        "feriados": [1, 25]
+      },
+      {
+        "name": "June",
+        "first": 4,
+        "days": 30,
+        "feriados": [17, 20],
+        "cumples": [
+          {
+            "number": 8,
+            "name": "Mamá"
+          }
+        ]
+      },
+      {
+        "name": "July",
+        "first": 6,
+        "days": 31,
+        "feriados": [9],
+        "cumples": [
+          {
+            "number": 10,
+            "name": "Juan"
+          }
+        ]
+      },
+      {
+        "name": "August",
+        "first": 2,
+        "days": 31,
+        "feriados": [15]
+      },
+      {
+        "name": "September",
+        "first": 5,
+        "days": 30,
+        "cumples": [
+          {
+            "number": 6,
+            "name": "Noah"
+          }
+        ]
+      },
+      {
+        "name": "October",
+        "first": 7,
+        "days": 31,
+        "feriados": [7, 10]
+      },
+      {
+        "name": "November",
+        "first": 3,
+        "days": 30,
+        "feriados": [20, 21],
+        "cumples": [
+          {
+            "number": 25,
+            "name": "Marta"
+          }
+        ]
+      },
+      {
+        "name": "December",
+        "first": 5,
+        "days": 31,
+        "feriados": [8, 9, 25],
+        "cumples": [
+          {
+            "number": 7,
+            "name": "Papá"
+          }
+        ]
+      }
+    ]
+  },
+  "grisel": {
+    "daysOfWeek": [
+      "domingo",
+      "lunes",
+      "martes",
+      "miércoles",
+      "jueves",
+      "viernes",
+      "sábado"
+    ],
+    "months": [
+      {
+        "name": "Enero",
+        "first": 7,
+        "days": 31,
+        "feriados": [1],
+        "cumples": [
+          {
+            "number": 11,
+            "name": "Simón"
+          },
+          {
+            "number": 13,
+            "name": "Flor"
+          },
+          {
+            "number": 23,
+            "name": "Nala"
+          }
+        ]
+      },
+      {
+        "name": "Febrero",
+        "first": 3,
+        "days": 28,
+        "feriados": [28]
+      },
+      {
+        "name": "Marzo",
+        "first": 3,
+        "days": 31,
+        "feriados": [1, 24],
+        "cumples": [
+          {
+            "number": 21,
+            "name": "Fita"
+          }
+        ],
+        "dates": [
+          {
+            "number": 1,
+            "name": "Comienzo de clases"
+          }
+        ]
+      },
+      {
+        "name": "Abril",
+        "first": 6,
+        "days": 30,
+        "feriados": [2, 15, 24]
+      },
+      {
+        "name": "Mayo",
+        "first": 1,
+        "days": 31,
+        "feriados": [1, 25],
+        "dates": [
+          {
+            "number": 28,
+            "name": "Día de los jardines de infantes y de la maestra jardinera"
+          },
+          {
+            "number": 29,
+            "name": "Fin del primer trimestre"
+          }
+        ]
+      },
+      {
+        "name": "Junio",
+        "first": 4,
+        "days": 30,
+        "feriados": [17, 20],
+        "cumples": [
+          {
+            "number": 8,
+            "name": "Mi cumple!"
+          }
+        ]
+      },
+      {
+        "name": "Julio",
+        "first": 6,
+        "days": 31,
+        "feriados": [9],
+        "cumples": [
+          {
+            "number": 10,
+            "name": "Juan"
+          }
+        ],
+        "dates": [
+          {
+            "number": 2,
+            "name": "Día del asistente social"
+          },
+          {
+            "number": [19, 30],
+            "name": "Vacaciones de invierno"
+          }
+        ]
+      },
+      {
+        "name": "Agosto",
+        "first": 2,
+        "days": 31,
+        "feriados": [15],
+        "dates": [
+          {
+            "number": 31,
+            "name": "Fin del segundo trimestre"
+          }
+        ]
+      },
+      {
+        "name": "Septiembre",
+        "first": 5,
+        "days": 30,
+        "cumples": [
+          {
+            "number": 6,
+            "name": "Noah"
+          }
+        ],
+        "dates": [
+          {
+            "number": 4,
+            "name": "Día del secretario/prosecretario"
+          },
+          {
+            "number": 10,
+            "name": "Día del auxiliar"
+          },
+          {
+            "number": 11,
+            "name": "Día del maestro"
+          },
+          {
+            "number": 17,
+            "name": "Día del profesor y de la psicopedagoga"
+          },
+          {
+            "number": 19,
+            "name": "Día del preceptor"
+          },
+          {
+            "number": 28,
+            "name": "Día del director/vicedirector"
+          }
+        ]
+      },
+      {
+        "name": "Octubre",
+        "first": 7,
+        "days": 31,
+        "dates": [
+          {
+            "number": 1,
+            "name": "Día del inspector"
+          },
+          {
+            "number": 15,
+            "name": "Día de las cooperadoras escolares"
+          },
+          {
+            "number": 28,
+            "name": "Día del bibliotecario"
+          }
+        ]
+      },
+      {
+        "name": "Noviembre",
+        "first": 3,
+        "days": 30,
+        "feriados": [20, 21],
+        "dates": [
+          {
+            "number": 30,
+            "name": "Fin del tercer trimestre"
+          }
+        ]
+      },
+      {
+        "name": "Diciembre",
+        "first": 5,
+        "days": 31,
+        "feriados": [8, 9, 25],
+        "cumples": [
+          {
+            "number": 7,
+            "name": "Gaby"
+          }
+        ],
+        "dates": [
+          {
+            "number": 17,
+            "name": "Finalización de dates"
+          }
+        ]
+      }
+    ]
+  }
+}

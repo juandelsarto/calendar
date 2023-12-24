@@ -1,0 +1,140 @@
+{
+  "daysOfWeek": [
+    "domingo",
+    "lunes",
+    "martes",
+    "miércoles",
+    "jueves",
+    "viernes",
+    "sábado"
+  ],
+  "months": [
+    {
+      "name": "January",
+      "first": 6,
+      "days": 31,
+      "feriados": [1],
+      "cumples": [
+        {
+          "number": 11,
+          "name": "Simón"
+        },
+        {
+          "number": 13,
+          "name": "Flor"
+        },
+        {
+          "number": 23,
+          "name": "Nala"
+        }
+      ]
+    },
+    {
+      "name": "February",
+      "first": 2,
+      "days": 28,
+      "feriados": [15, 16]
+    },
+    {
+      "name": "March",
+      "first": 2,
+      "days": 31,
+      "feriados": [24],
+      "cumples": [
+        {
+          "number": 21,
+          "name": "My b-day!"
+        }
+      ]
+    },
+    {
+      "name": "April",
+      "first": 5,
+      "days": 30,
+      "feriados": [1, 2, 24],
+      "cumples": [
+        {
+          "number": 29,
+          "name": "Veroh"
+        }
+      ]
+    },
+    {
+      "name": "May",
+      "first": 7,
+      "days": 31,
+      "feriados": [1, 24, 25]
+    },
+    {
+      "name": "June",
+      "first": 3,
+      "days": 30,
+      "feriados": [20, 21],
+      "cumples": [
+        {
+          "number": 8,
+          "name": "Mamá"
+        }
+      ]
+    },
+    {
+      "name": "July",
+      "first": 5,
+      "days": 31,
+      "feriados": [9],
+      "cumples": [
+        {
+          "number": 10,
+          "name": "Juan"
+        }
+      ]
+    },
+    {
+      "name": "August",
+      "first": 1,
+      "days": 31,
+      "feriados": [16]
+    },
+    {
+      "name": "September",
+      "first": 4,
+      "days": 30,
+      "cumples": [
+        {
+          "number": 6,
+          "name": "Noah"
+        }
+      ]
+    },
+    {
+      "name": "October",
+      "first": 6,
+      "days": 31,
+      "feriados": [8, 11]
+    },
+    {
+      "name": "November",
+      "first": 2,
+      "days": 30,
+      "feriados": [20, 22],
+      "cumples": [
+        {
+          "number": 25,
+          "name": "Marta"
+        }
+      ]
+    },
+    {
+      "name": "December",
+      "first": 4,
+      "days": 31,
+      "feriados": [8, 25],
+      "cumples": [
+        {
+          "number": 7,
+          "name": "Papá"
+        }
+      ]
+    }
+  ]
+}

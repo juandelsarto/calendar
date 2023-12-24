@@ -1,7 +1,6 @@
-import React from "react";
 import cn from "classnames";
-import { YEAR, DAYS, MONTHS, OPTIONS, OWNERS } from "../data.js";
 import renderDays from "../utilities/useRenderDays";
+import { DAYS, MONTHS, OPTIONS, OWNERS, YEAR } from "../constants/data";
 
 const Calendar = ({ owner = OWNERS.FAMILIA, custom = false }) => {
   const calendarClass = cn("calendar", owner, { custom });
