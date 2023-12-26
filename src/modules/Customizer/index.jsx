@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Accordion,
   AccordionButton,
@@ -13,15 +13,30 @@ import {
 } from "@chakra-ui/react";
 import { HexColorPicker } from "react-colorful";
 import Selector from "../Selector";
+import { OPTIONS } from "../../constants/Enums";
 import {
   BACKGROUND_OPTIONS,
-  DATES_OPTION_LIST,
   LANGUAGE_OPTIONS,
+  OWNER_OPTIONS,
   SIZE_OPTIONS,
   STARTING_DAY_OPTIONS,
 } from "./Options";
+import { CalendarContext } from "../../context/useCalendar";
 
 const Customizer = () => {
+  const {
+    state: {
+      startingDay,
+      language,
+      size,
+      background,
+      enabledEspecialDays,
+      enabledFeriados,
+      enabledBirthdays,
+    },
+    dispatch,
+  } = useContext(CalendarContext);
+
   const [primaryColor, setPrimaryColor] = useState("#000");
   const [secondaryColor, setSecondaryColor] = useState("#000");
   const [thirdColor, setThirdColor] = useState("#000");
@@ -40,13 +55,11 @@ const Customizer = () => {
             <FormControl>
               <FormLabel>Elegí el listado de fechas:</FormLabel>
               <Select placeholder="Seleccioná una opción">
-                {DATES_OPTION_LIST.map((option) => {
-                  return (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  );
-                })}
+                {OWNER_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
               </Select>
             </FormControl>
           </Box>
@@ -54,9 +67,10 @@ const Customizer = () => {
             <FormControl>
               <FormLabel>Elegí el idioma:</FormLabel>
               <Selector
-                name="language"
-                defaultValue={LANGUAGE_OPTIONS[0].value}
+                name={OPTIONS.LANGUAGE}
+                defaultValue={language}
                 options={LANGUAGE_OPTIONS}
+                onChange={(value) => dispatch({ [OPTIONS.LANGUAGE]: value })}
               />
             </FormControl>
           </Box>
@@ -64,9 +78,12 @@ const Customizer = () => {
             <FormControl>
               <FormLabel>Elegí el día de inicio:</FormLabel>
               <Selector
-                name="startingDay"
-                defaultValue={STARTING_DAY_OPTIONS[0].value}
+                name={OPTIONS.STARTING_DAY}
+                defaultValue={startingDay}
                 options={STARTING_DAY_OPTIONS}
+                onChange={(value) =>
+                  dispatch({ [OPTIONS.STARTING_DAY]: value })
+                }
               />
             </FormControl>
           </Box>
@@ -74,9 +91,10 @@ const Customizer = () => {
             <FormControl>
               <FormLabel>Elegir el tamaño de hoja:</FormLabel>
               <Selector
-                name="size"
-                defaultValue={SIZE_OPTIONS[0].value}
+                name={OPTIONS.SIZE}
+                defaultValue={size}
                 options={SIZE_OPTIONS}
+                onChange={(value) => dispatch({ [OPTIONS.SIZE]: value })}
               />
             </FormControl>
           </Box>
@@ -84,9 +102,10 @@ const Customizer = () => {
             <FormControl>
               <FormLabel>Elegir el fondo para los cumpleaños:</FormLabel>
               <Selector
-                name="bg"
-                defaultValue={BACKGROUND_OPTIONS[0].value}
+                name={OPTIONS.BACKGROUND}
+                defaultValue={background}
                 options={BACKGROUND_OPTIONS}
+                onChange={(value) => dispatch({ [OPTIONS.BACKGROUND]: value })}
               />
             </FormControl>
           </Box>
@@ -101,17 +120,35 @@ const Customizer = () => {
         </AccordionButton>
         <AccordionPanel pb={4}>
           <Box my={4}>
-            <Checkbox size="lg" defaultChecked>
+            <Checkbox
+              size="lg"
+              defaultChecked={enabledFeriados}
+              onChange={(event) =>
+                dispatch({ enabledFeriados: event.target.checked })
+              }
+            >
               Feriados
             </Checkbox>
           </Box>
           <Box my={4}>
-            <Checkbox size="lg" defaultChecked>
+            <Checkbox
+              size="lg"
+              defaultChecked={enabledBirthdays}
+              onChange={(event) =>
+                dispatch({ enabledBirthdays: event.target.checked })
+              }
+            >
               Cumpleaños
             </Checkbox>
           </Box>
           <Box my={4}>
-            <Checkbox size="lg" defaultChecked>
+            <Checkbox
+              size="lg"
+              defaultChecked={enabledEspecialDays}
+              onChange={(event) =>
+                dispatch({ enabledEspecialDays: event.target.checked })
+              }
+            >
               Dias especiales
             </Checkbox>
           </Box>
