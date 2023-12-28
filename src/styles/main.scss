@@ -1,39 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
-
-// FAMILIA
-$yellow: #e8b41a;
-$yellow-dark: #b39608;
-$bordo: #851633;
-$bordo-light: #d2b2c3;
-$green: #7bb507;
-$green-light: rgba($green, 50%);
-$grey: #d1d3d4;
-$vintage-green: #6cbb9d;
-$brown: #7b2d08;
-
-// GABY
-$red-gaby: #e13434;
-$dark: #1f1517;
-
-// FITA
-$grey-fita: #808285;
-$pink-fita: #eb6aa8;
-
-// FAMILY
-$color-primary: $vintage-green;
-$color-primary-2: $vintage-green;
-$color-secondary: $brown;
-$color-third: rgba($brown, 0.5);
-$disabled: $grey;
-
-// FLOR
-$purple-flor: #604ce0;
-$pink-flor: #f6abc5;
-
-// CASA
-$red-barcelona: #da0031;
-$blue-barcelona: #004e97;
-$yellow-barcelona: #eebc01;
+@import "./variables";
 
 .calendar {
   background: #fff;
@@ -95,6 +61,8 @@ $yellow-barcelona: #eebc01;
       border-width: 3px 0 0 3px;
       border-style: dashed;
       border-color: $color-primary-2;
+      position: relative;
+
       .day {
         box-sizing: border-box;
         border-width: 0 3px 3px 0;
@@ -104,8 +72,9 @@ $yellow-barcelona: #eebc01;
         background-color: white;
         padding: 5px;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         &.cumple {
+          justify-content: space-between;
           background-image: url("./bgCumple.png");
           background-position: bottom right;
           background-repeat: no-repeat;
@@ -129,13 +98,16 @@ $yellow-barcelona: #eebc01;
         }
         &.disabled {
           background-color: $grey;
+          .day__number {
+            color: rgba(black, 0.3);
+          }
         }
         &.overflow-day {
-          margin-top: -66px;
-          margin-bottom: -20px;
-          padding-bottom: 55px;
-          border-width: 3px 0 0 0;
-          width: calc(100% - 4px);
+          border-top-width: 3px;
+          width: calc(100% / 7);
+          height: 10%;
+          position: absolute;
+          bottom: 0;
         }
         &__number {
           font-size: 16px;
