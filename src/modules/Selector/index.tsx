@@ -1,11 +1,11 @@
 import { HStack, useRadioGroup } from "@chakra-ui/react";
 import RadioCard from "../../components/RadioCard";
 
-export default function Selector({ options }) {
+export default function Selector({ name, defaultValue, onChange, options }) {
   const { getRootProps, getRadioProps } = useRadioGroup({
-    name: "framework",
-    defaultValue: "react",
-    onChange: console.log,
+    name,
+    defaultValue,
+    onChange,
   });
 
   const group = getRootProps();

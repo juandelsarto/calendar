@@ -12,7 +12,6 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { HexColorPicker } from "react-colorful";
-import Selector from "../Selector";
 import { OPTIONS } from "../../constants/Enums";
 import {
   BACKGROUND_OPTIONS,
@@ -22,6 +21,7 @@ import {
   STARTING_DAY_OPTIONS,
 } from "./Options";
 import { CalendarContext } from "../../context/useCalendar";
+import Selector from "../Selector";
 
 const Customizer = () => {
   const {
@@ -33,6 +33,7 @@ const Customizer = () => {
       enabledEspecialDays,
       enabledFeriados,
       enabledBirthdays,
+      owner,
     },
     dispatch,
   } = useContext(CalendarContext);
@@ -54,7 +55,13 @@ const Customizer = () => {
           <Box my={4}>
             <FormControl>
               <FormLabel>Elegí el listado de fechas:</FormLabel>
-              <Select placeholder="Seleccioná una opción">
+              <Select
+                placeholder="Seleccioná una opción"
+                value={owner}
+                onChange={(event) =>
+                  dispatch({ [OPTIONS.OWNER]: event.target.value })
+                }
+              >
                 {OWNER_OPTIONS.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
