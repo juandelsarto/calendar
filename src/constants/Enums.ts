@@ -1,5 +1,3 @@
-export const YEAR = 2024;
-
 export enum OPTIONS {
   OWNER = "owner",
   LANGUAGE = "language",
@@ -62,3 +60,54 @@ export enum BACKGROUND {
   BALLONS = "ballons",
   UNICORN = "unicorn",
 }
+
+export const DAYS_LIST = [
+  {
+    id: DAYS.MONDAY,
+    [LANGUAGES.SPANISH]: "Lunes",
+    [LANGUAGES.ENGLISH]: "Monday",
+  },
+  {
+    id: DAYS.TUESDAY,
+    [LANGUAGES.SPANISH]: "Martes",
+    [LANGUAGES.ENGLISH]: "Tuesday",
+  },
+  {
+    id: DAYS.WEDNESDAY,
+    [LANGUAGES.SPANISH]: "Miércoles",
+    [LANGUAGES.ENGLISH]: "Wednesday",
+  },
+  {
+    id: DAYS.THURSDAY,
+    [LANGUAGES.SPANISH]: "Jueves",
+    [LANGUAGES.ENGLISH]: "Thursday",
+  },
+  {
+    id: DAYS.FRIDAY,
+    [LANGUAGES.SPANISH]: "Viernes",
+    [LANGUAGES.ENGLISH]: "Friday",
+  },
+  {
+    id: DAYS.SATURDAY,
+    [LANGUAGES.SPANISH]: "Sábado",
+    [LANGUAGES.ENGLISH]: "Saturday",
+  },
+];
+
+export const MONDAY_FIRST = [
+  ...DAYS_LIST,
+  {
+    id: DAYS.SUNDAY,
+    [LANGUAGES.SPANISH]: "Domingo",
+    [LANGUAGES.ENGLISH]: "Sunday",
+  },
+];
+
+export const SUNDAY_FIRST = [
+  {
+    id: DAYS.SUNDAY,
+    [LANGUAGES.SPANISH]: "Domingo",
+    [LANGUAGES.ENGLISH]: "Sunday",
+  },
+  ...DAYS_LIST,
+];

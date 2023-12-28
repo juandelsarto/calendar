@@ -1,162 +1,82 @@
-export const OWNERS = {
-  FAMILIA: "familia",
-  FITA: "fita",
-  GRISEL: "grisel",
-  FLOR: "flor",
-  GABY: "gaby",
-  CASA: "casa",
-};
+import { LANGUAGES, MONTHS, OWNERS } from "./Enums";
 
-export const MONTHS_KEYS = {
-  ENERO: "enero",
-  FEBRERO: "febrero",
-  MARZO: "marzo",
-  ABRIL: "abril",
-  MAYO: "mayo",
-  JUNIO: "junio",
-  JULIO: "julio",
-  AGOSTO: "agosto",
-  SEPTIEMBRE: "septiembre",
-  OCTUBRE: "octubre",
-  NOVIEMBRE: "noviembre",
-  DICIEMBRE: "diciembre",
-};
+export const YEAR = 2024;
 
-export const YEAR = '2024'
-
-export const DAYS = [
+export const MONTHS_LIST = [
   {
-    es: "lunes",
-    en: "monday",
-  },
-  {
-    es: "martes",
-    en: "tuesday",
-  },
-  {
-    es: "miércoles",
-    en: "wednesday",
-  },
-  {
-    es: "jueves",
-    en: "thursday",
-  },
-  {
-    es: "viernes",
-    en: "friday",
-  },
-  {
-    es: "sábado",
-    en: "saturday",
-  },
-  {
-    es: "domingo",
-    en: "sunday",
-  },
-];
-
-export const MONTHS = [
-  {
-    key: MONTHS_KEYS.ENERO,
-    es_name: "Enero",
-    en_name: "January",
-    first: 1,
-    days: 31,
+    key: MONTHS.JANUARY,
+    name: {
+      [LANGUAGES.SPANISH]: "Enero",
+      [LANGUAGES.ENGLISH]: "January",
+    },
     feriados: [1],
   },
   {
-    key: MONTHS_KEYS.FEBRERO,
-    es_name: "Febrero",
-    en_name: "February",
-    first: 4,
-    days: 29,
+    key: MONTHS.FEBRUARY,
+    name: { [LANGUAGES.SPANISH]: "Febrero", [LANGUAGES.ENGLISH]: "February" },
     feriados: [12, 13],
   },
   {
-    key: MONTHS_KEYS.MARZO,
-    es_name: "Marzo",
-    en_name: "March",
-    first: 5,
-    days: 31,
+    key: MONTHS.MARCH,
+    name: {
+      [LANGUAGES.SPANISH]: "Marzo",
+      [LANGUAGES.ENGLISH]: "March",
+    },
     feriados: [24, 28, 29],
   },
   {
-    key: MONTHS_KEYS.ABRIL,
-    es_name: "Abril",
-    en_name: "April",
-    first: 1,
-    days: 30,
+    key: MONTHS.APRIL,
+    name: { [LANGUAGES.SPANISH]: "Abril", [LANGUAGES.ENGLISH]: "April" },
     feriados: [2, 7],
   },
   {
-    key: MONTHS_KEYS.MAYO,
-    es_name: "Mayo",
-    en_name: "May",
-    first: 3,
-    days: 31,
+    key: MONTHS.MAY,
+    name: { [LANGUAGES.SPANISH]: "Mayo", [LANGUAGES.ENGLISH]: "May" },
     feriados: [1, 25],
   },
   {
-    key: MONTHS_KEYS.JUNIO,
-    es_name: "Junio",
-    en_name: "June",
-    first: 6,
-    days: 30,
+    key: MONTHS.JUNE,
+    name: { [LANGUAGES.SPANISH]: "Junio", [LANGUAGES.ENGLISH]: "June" },
     feriados: [20],
   },
   {
-    key: MONTHS_KEYS.JULIO,
-    es_name: "Julio",
-    en_name: "July",
-    first: 1,
-    days: 31,
+    key: MONTHS.JULY,
+    name: { [LANGUAGES.SPANISH]: "Julio", [LANGUAGES.ENGLISH]: "July" },
     feriados: [9],
   },
   {
-    key: MONTHS_KEYS.AGOSTO,
-    es_name: "Agosto",
-    en_name: "August",
-    first: 4,
-    days: 31,
+    key: MONTHS.AUGUST,
+    name: { [LANGUAGES.SPANISH]: "Agosto", [LANGUAGES.ENGLISH]: "August" },
     feriados: [17],
   },
   {
-    key: MONTHS_KEYS.SEPTIEMBRE,
-    es_name: "Septiembre",
-    en_name: "September",
-    first: 7,
-    days: 30,
+    key: MONTHS.SEPTEMBER,
+    name: {
+      [LANGUAGES.SPANISH]: "Septiembre",
+      [LANGUAGES.ENGLISH]: "September",
+    },
     feriados: [],
   },
   {
-    key: MONTHS_KEYS.OCTUBRE,
-    es_name: "Octubre",
-    en_name: "October",
-    first: 2,
-    days: 31,
+    key: MONTHS.OCTOBER,
+    name: { [LANGUAGES.SPANISH]: "Octubre", [LANGUAGES.ENGLISH]: "October" },
     feriados: [12],
   },
   {
-    key: MONTHS_KEYS.NOVIEMBRE,
-    es_name: "Noviembre",
-    en_name: "November",
-    first: 5,
-    days: 30,
+    key: MONTHS.NOVEMBER,
+    name: { [LANGUAGES.SPANISH]: "Noviembre", [LANGUAGES.ENGLISH]: "November" },
     feriados: [20],
   },
   {
-    key: MONTHS_KEYS.DICIEMBRE,
-    es_name: "Diciembre",
-    en_name: "December",
-    first: 7,
-    days: 31,
+    key: MONTHS.DECEMBER,
+    name: { [LANGUAGES.SPANISH]: "Diciembre", [LANGUAGES.ENGLISH]: "December" },
     feriados: [8, 25],
   },
 ];
 
 export const OPTIONS = {
   [OWNERS.FAMILIA]: {
-    [MONTHS_KEYS.ENERO]: {
+    [MONTHS.JANUARY]: {
       cumples: [
         {
           number: 11,
@@ -172,7 +92,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.FEBRERO]: {
+    [MONTHS.FEBRUARY]: {
       cumples: [
         {
           number: 7,
@@ -180,7 +100,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.MARZO]: {
+    [MONTHS.MARCH]: {
       cumples: [
         {
           number: 21,
@@ -188,7 +108,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.JUNIO]: {
+    [MONTHS.JUNE]: {
       cumples: [
         {
           number: 8,
@@ -196,7 +116,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.JULIO]: {
+    [MONTHS.JULY]: {
       cumples: [
         {
           number: 10,
@@ -204,7 +124,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.SEPTIEMBRE]: {
+    [MONTHS.SEPTEMBER]: {
       cumples: [
         {
           number: 6,
@@ -212,7 +132,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.DICIEMBRE]: {
+    [MONTHS.DECEMBER]: {
       cumples: [
         {
           number: 7,
@@ -222,7 +142,7 @@ export const OPTIONS = {
     },
   },
   [OWNERS.GRISEL]: {
-    [MONTHS_KEYS.ENERO]: {
+    [MONTHS.JANUARY]: {
       cumples: [
         {
           number: 11,
@@ -238,7 +158,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.FEBRERO]: {
+    [MONTHS.FEBRUARY]: {
       cumples: [
         {
           number: 7,
@@ -246,7 +166,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.MARZO]: {
+    [MONTHS.MARCH]: {
       cumples: [
         {
           number: 21,
@@ -260,7 +180,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.MAYO]: {
+    [MONTHS.MAY]: {
       dates: [
         {
           number: 27,
@@ -280,7 +200,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.JUNIO]: {
+    [MONTHS.JUNE]: {
       cumples: [
         {
           number: 8,
@@ -288,7 +208,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.JULIO]: {
+    [MONTHS.JULY]: {
       cumples: [
         {
           number: 10,
@@ -306,7 +226,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.AGOSTO]: {
+    [MONTHS.AUGUST]: {
       dates: [
         {
           number: 2,
@@ -326,7 +246,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.SEPTIEMBRE]: {
+    [MONTHS.SEPTEMBER]: {
       cumples: [
         {
           number: 6,
@@ -368,7 +288,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.OCTUBRE]: {
+    [MONTHS.OCTOBER]: {
       dates: [
         {
           number: 8,
@@ -380,7 +300,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.NOVIEMBRE]: {
+    [MONTHS.NOVEMBER]: {
       dates: [
         {
           number: 11,
@@ -396,7 +316,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.DICIEMBRE]: {
+    [MONTHS.DECEMBER]: {
       cumples: [
         {
           number: 7,
@@ -412,7 +332,7 @@ export const OPTIONS = {
     },
   },
   [OWNERS.FITA]: {
-    [MONTHS_KEYS.ENERO]: {
+    [MONTHS.JANUARY]: {
       cumples: [
         {
           number: 11,
@@ -428,7 +348,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.FEBRERO]: {
+    [MONTHS.FEBRUARY]: {
       cumples: [
         {
           number: 7,
@@ -436,7 +356,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.MARZO]: {
+    [MONTHS.MARCH]: {
       cumples: [
         {
           number: 21,
@@ -444,7 +364,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.ABRIL]: {
+    [MONTHS.APRIL]: {
       cumples: [
         {
           number: 29,
@@ -452,7 +372,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.JUNIO]: {
+    [MONTHS.JUNE]: {
       cumples: [
         {
           number: 8,
@@ -460,7 +380,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.JULIO]: {
+    [MONTHS.JULY]: {
       cumples: [
         {
           number: 10,
@@ -468,7 +388,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.SEPTIEMBRE]: {
+    [MONTHS.SEPTEMBER]: {
       cumples: [
         {
           number: 6,
@@ -476,7 +396,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.NOVIEMBRE]: {
+    [MONTHS.NOVEMBER]: {
       cumples: [
         {
           number: 25,
@@ -484,7 +404,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.DICIEMBRE]: {
+    [MONTHS.DECEMBER]: {
       cumples: [
         {
           number: 7,
@@ -493,10 +413,9 @@ export const OPTIONS = {
       ],
     },
   },
-  [OWNERS.FLOR]: {
-  },
+  [OWNERS.FLOR]: {},
   [OWNERS.CASA]: {
-    [MONTHS_KEYS.ENERO]: {
+    [MONTHS.JANUARY]: {
       cumples: [
         {
           number: 3,
@@ -516,7 +435,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.FEBRERO]: {
+    [MONTHS.FEBRUARY]: {
       cumples: [
         {
           number: 6,
@@ -533,7 +452,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.MARZO]: {
+    [MONTHS.MARCH]: {
       cumples: [
         {
           number: 7,
@@ -565,7 +484,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.ABRIL]: {
+    [MONTHS.APRIL]: {
       cumples: [
         {
           number: 12,
@@ -573,7 +492,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.MAYO]: {
+    [MONTHS.MAY]: {
       cumples: [
         {
           number: 2,
@@ -593,7 +512,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.JUNIO]: {
+    [MONTHS.JUNE]: {
       cumples: [
         {
           number: 8,
@@ -613,7 +532,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.JULIO]: {
+    [MONTHS.JULY]: {
       cumples: [
         {
           number: 3,
@@ -637,7 +556,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.SEPTIEMBRE]: {
+    [MONTHS.SEPTEMBER]: {
       cumples: [
         {
           number: 1,
@@ -669,7 +588,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.NOVIEMBRE]: {
+    [MONTHS.NOVEMBER]: {
       cumples: [
         {
           number: 3,
@@ -689,7 +608,7 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS_KEYS.DICIEMBRE]: {
+    [MONTHS.DECEMBER]: {
       cumples: [
         {
           number: 7,
