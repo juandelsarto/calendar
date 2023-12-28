@@ -32,7 +32,6 @@ function App() {
       </CalendarProvider>
     </ChakraProvider>
   );
-  // return <Calendar owner={OWNERS.FLOR} />;
 }
 
 export default App;
