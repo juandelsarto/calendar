@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { BACKGROUND, DAYS, LANGUAGES, SIZES } from "../constants/Enums";
+import { BACKGROUND, DAYS, LANGUAGES, OWNERS, SIZES } from "../constants/Enums";
 
 export const CalendarContext = createContext(null);
 
@@ -11,6 +11,7 @@ const initialState = {
   enabledEspecialDays: false,
   enabledFeriados: false,
   enabledBirthdays: false,
+  owner: OWNERS.FAMILIA,
 };
 
 function reducer(state: any, action: () => void) {
