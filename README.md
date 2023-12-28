@@ -1,19 +1,7 @@
 # Calendar
 
-Colores:
-- primary
-  - fonts
-  - bg feriado
+## Features:
 
-- secondary
-  - border
-  - font birthday
-
-- third
-  - bg cumple
-
-
-Funcionalidades:
 - Habilitar: feriados, cumples, dias especiales
 - Elegir dia de inicio: lunes / domingo
 - Elegir idioma: inglés / español
@@ -24,9 +12,26 @@ Funcionalidades:
 - Vista previa
 - Guardar PDF
 
+### Color mapping:
 
-Task List:
+| Color     | used in                   |
+| --------- | ------------------------- |
+| Primary   | fontColor, bgFeriado      |
+| Secondary | border, fontBirthdayColor |
+| Third     | bgCumple                  |
 
-- Renderear drawer con las customizaciones
-- Funcionalidad para renderear vista previa de impresion
-- Tomar las customizaciones para renderear la vista previa via useContext
+### Pending tasks:
+
+- [x] Renderear drawer con las customizaciones
+- [x] Funcionalidad para renderear vista previa de impresion
+- [x] Tomar las customizaciones para renderear la vista previa via useContext
+- [ ] Aplicación de configs restantes del customizer
+  - [ ] Agregar el background en los cumples (setear un default)
+  - [ ] Editar tamaño de la hoja de impresión
+  - [ ] Agregar los colores elegidos
+- [ ] Editar cumpleaños y fechas especiales
+- [ ] Guardar la config en el localStorage o Cookies
+- [ ] Ajustar UI
+  - [ ] revisar Customizer
+  - [ ] agregar Drawer para edición de fechas
+  - [ ] backgrounds y spacing del CalendarPreview
