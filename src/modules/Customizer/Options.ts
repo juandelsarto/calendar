@@ -1,4 +1,4 @@
-import Ballons from "../../assets/bgCumple.png";
+import Ballons from "../../assets/bgBallons.png";
 import Unicorn from "../../assets/bgUnicorn.png";
 import {
   BACKGROUND,

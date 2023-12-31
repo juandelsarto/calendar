@@ -7,6 +7,9 @@ export enum OPTIONS {
   PRIMARY_COLOR = "primaryColor",
   SECONDARY_COLOR = "secondaryColor",
   THIRD_COLOR = "thirdColor",
+  ENABLED_FERIADOS = "enabledFeriados",
+  ENABLED_BIRTHDAYS = "enabledBirthdays",
+  ENABLED_ESPECIAL_DAYS = "enabledEspecialDays",
 }
 
 export enum OWNERS {
@@ -57,8 +60,8 @@ export enum SIZES {
 }
 
 export enum BACKGROUND {
-  BALLONS = "ballons",
-  UNICORN = "unicorn",
+  BALLONS = "bgBallons.png",
+  UNICORN = "bgUnicorn.png",
 }
 
 export const DAYS_LIST = [

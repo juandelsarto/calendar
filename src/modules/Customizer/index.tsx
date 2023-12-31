@@ -33,14 +33,13 @@ const Customizer = () => {
       enabledEspecialDays,
       enabledFeriados,
       enabledBirthdays,
+      primaryColor,
+      secondaryColor,
+      thirdColor,
       owner,
     },
     dispatch,
   } = useContext(CalendarContext);
-
-  const [primaryColor, setPrimaryColor] = useState("#000");
-  const [secondaryColor, setSecondaryColor] = useState("#000");
-  const [thirdColor, setThirdColor] = useState("#000");
 
   return (
     <Accordion allowToggle>
@@ -131,8 +130,9 @@ const Customizer = () => {
               size="lg"
               defaultChecked={enabledFeriados}
               onChange={(event) =>
-                dispatch({ enabledFeriados: event.target.checked })
+                dispatch({ [OPTIONS.ENABLED_FERIADOS]: event.target.checked })
               }
+              colorScheme="orange"
             >
               Feriados
             </Checkbox>
@@ -142,8 +142,9 @@ const Customizer = () => {
               size="lg"
               defaultChecked={enabledBirthdays}
               onChange={(event) =>
-                dispatch({ enabledBirthdays: event.target.checked })
+                dispatch({ [OPTIONS.ENABLED_BIRTHDAYS]: event.target.checked })
               }
+              colorScheme="orange"
             >
               Cumpleaños
             </Checkbox>
@@ -153,8 +154,11 @@ const Customizer = () => {
               size="lg"
               defaultChecked={enabledEspecialDays}
               onChange={(event) =>
-                dispatch({ enabledEspecialDays: event.target.checked })
+                dispatch({
+                  [OPTIONS.ENABLED_ESPECIAL_DAYS]: event.target.checked,
+                })
               }
+              colorScheme="orange"
             >
               Dias especiales
             </Checkbox>
@@ -171,18 +175,26 @@ const Customizer = () => {
         <AccordionPanel>
           <Box my={4}>
             <FormLabel>Color primario:</FormLabel>
-            <HexColorPicker color={primaryColor} onChange={setPrimaryColor} />
+            <HexColorPicker
+              color={primaryColor}
+              onChange={(color) => dispatch({ [OPTIONS.PRIMARY_COLOR]: color })}
+            />
           </Box>
           <Box my={4}>
             <FormLabel>Color secundario:</FormLabel>
             <HexColorPicker
               color={secondaryColor}
-              onChange={setSecondaryColor}
+              onChange={(color) =>
+                dispatch({ [OPTIONS.SECONDARY_COLOR]: color })
+              }
             />
           </Box>
           <Box my={4}>
             <FormLabel>Color terciario:</FormLabel>
-            <HexColorPicker color={thirdColor} onChange={setThirdColor} />
+            <HexColorPicker
+              color={thirdColor}
+              onChange={(color) => dispatch({ [OPTIONS.THIRD_COLOR]: color })}
+            />
           </Box>
         </AccordionPanel>
       </AccordionItem>

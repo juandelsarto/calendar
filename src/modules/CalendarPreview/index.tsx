@@ -6,6 +6,7 @@ import { TRANSLATIONS } from "../../constants/Translations";
 import { MONTHS_LIST, OPTIONS, YEAR } from "../../constants/Data";
 import { CalendarContext } from "../../context/useCalendar";
 import Month from "./components/Month";
+import { getStyles } from "./CalendarPreview.styles";
 
 const CalendarPreview = () => {
   const componentRef = useRef();
@@ -14,7 +15,15 @@ const CalendarPreview = () => {
   });
 
   const {
-    state: { owner, language, startingDay, enabledEspecialDays },
+    state: {
+      owner,
+      language,
+      startingDay,
+      enabledEspecialDays,
+      primaryColor,
+      secondaryColor,
+      thirdColor,
+    },
   } = useContext(CalendarContext);
 
   const parsedDays = startingDay === DAYS.MONDAY ? MONDAY_FIRST : SUNDAY_FIRST;
@@ -30,7 +39,7 @@ const CalendarPreview = () => {
     [MONTHS_LIST]
   );
 
-  console.log(parsedMonths);
+  const styles = getStyles({ primaryColor, secondaryColor, thirdColor });
 
   return (
     <>
@@ -39,7 +48,7 @@ const CalendarPreview = () => {
           return (
             <div className="month" key={month.key}>
               <div className="month__top">
-                <div className="month__name">
+                <div className="month__name" style={styles.monthName}>
                   {month.name[language]} {YEAR}
                 </div>
                 {enabledEspecialDays ? (
@@ -58,26 +67,38 @@ const CalendarPreview = () => {
                   </div>
                 ) : (
                   <div className="month__notes">
-                    <span className="label">
+                    <span className="label" style={styles.monthNotes.label}>
                       {TRANSLATIONS[language].notes}
                     </span>
-                    <span className="line line-1"></span>
-                    <span className="line"></span>
+                    <span
+                      className="line line-1"
+                      style={styles.monthNotes.line}
+                    ></span>
+                    <span
+                      className="line"
+                      style={styles.monthNotes.line}
+                    ></span>
                   </div>
                 )}
               </div>
               <div className="month__week">
                 {parsedDays.map((day, index) => (
-                  <div className="month__week__day" key={index}>
+                  <div
+                    className="month__week__day"
+                    key={index}
+                    style={styles.monthWeek.day}
+                  >
                     {day[language]}
                   </div>
                 ))}
               </div>
-              <Month
-                month={month}
-                optionsFromMonth={OPTIONS[owner]?.[month.key]}
-                startingDay={startingDay}
-              />
+              <div className="month__grid" style={styles.monthGrid}>
+                <Month
+                  month={month}
+                  optionsFromMonth={OPTIONS[owner]?.[month.key]}
+                  startingDay={startingDay}
+                />
+              </div>
             </div>
           );
         })}
