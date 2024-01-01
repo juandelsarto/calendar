@@ -1,0 +1,27 @@
+import { useContext } from "react";
+import { Center, Flex, Heading } from "@chakra-ui/react";
+import { CalendarContext } from "../context/useCalendar";
+import Header from "../modules/Header";
+
+const Layout = ({ children }) => {
+  const {
+    state: { primaryColor, secondaryColor },
+  } = useContext(CalendarContext);
+
+  return (
+    <Flex
+      flexDir="column"
+      alignContent="center"
+      w="100%"
+      h="100vh"
+      p={4}
+      overflow="hidden"
+      backgroundColor={primaryColor}
+    >
+      <Header />
+      {children}
+    </Flex>
+  );
+};
+
+export default Layout;

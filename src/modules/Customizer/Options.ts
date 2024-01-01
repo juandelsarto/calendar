@@ -1,5 +1,7 @@
+import Cumple from "../../assets/bgCumple.png";
 import Ballons from "../../assets/bgBallons.png";
 import Unicorn from "../../assets/bgUnicorn.png";
+import Cats from "../../assets/bgCats.png";
 import {
   BACKGROUND,
   DAYS,
@@ -54,6 +56,8 @@ export const SIZE_OPTIONS = [
 ];
 
 export const BACKGROUND_OPTIONS = [
+  { value: BACKGROUND.CUMPLE, label: "Cumple", img: Cumple },
   { value: BACKGROUND.BALLONS, label: "Globos", img: Ballons },
   { value: BACKGROUND.UNICORN, label: "Unicornio", img: Unicorn },
+  { value: BACKGROUND.CATS, label: "Cats", img: Cats },
 ];

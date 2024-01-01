@@ -3,6 +3,7 @@
 
 .calendar {
   background: #fff;
+  overflow: 'scroll';
   font-family: "Open Sans", sans-serif;
 
   .month {
@@ -38,6 +39,7 @@
           font-size: 20px;
           font-weight: 600;
           display: inline-block;
+          line-height: 18px;
         }
         &.line {
           border-bottom-width: 2px;
@@ -47,7 +49,7 @@
           margin-top: 20px;
           &.line-1 {
             margin-top: 22px;
-            width: calc(100% - 70px);
+            width: calc(100% - 64px);
             float: right;
           }
         }

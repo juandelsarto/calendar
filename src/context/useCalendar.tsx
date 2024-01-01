@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useMemo, useReducer, useRef } from "react";
 import {
   BACKGROUND,
   DAYS,
@@ -7,6 +7,8 @@ import {
   OWNERS,
   SIZES,
 } from "../constants/Enums";
+import { useDisclosure } from "@chakra-ui/react";
+import { useReactToPrint } from "react-to-print";
 
 export const CalendarContext = createContext(null);
 
@@ -17,11 +19,11 @@ const initialState = {
   [OPTIONS.BACKGROUND]: BACKGROUND.BALLONS,
   [OPTIONS.ENABLED_FERIADOS]: true,
   [OPTIONS.ENABLED_BIRTHDAYS]: true,
-  [OPTIONS.ENABLED_ESPECIAL_DAYS]: true,
-  [OPTIONS.PRIMARY_COLOR]: "#3177e2",
-  [OPTIONS.SECONDARY_COLOR]: "#31bfe2",
-  [OPTIONS.THIRD_COLOR]: "#e2a131",
-  [OPTIONS.OWNER]: OWNERS.GRISEL,
+  [OPTIONS.ENABLED_ESPECIAL_DAYS]: false,
+  [OPTIONS.PRIMARY_COLOR]: "#6dd2b0",
+  [OPTIONS.SECONDARY_COLOR]: "#e15f82",
+  [OPTIONS.THIRD_COLOR]: "#88d7cd",
+  [OPTIONS.OWNER]: OWNERS.FAMILIA,
 };
 
 function reducer(state: any, action: () => void) {
@@ -35,8 +37,43 @@ export const CalendarProvider = ({
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const drawerBtnRef = useRef();
+
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
+  const memoizedValue = useMemo(
+    () => ({
+      state,
+      dispatch,
+      drawer: {
+        isOpen,
+        onOpen,
+        onClose,
+        drawerBtnRef,
+      },
+      printer: {
+        componentRef,
+        handlePrint,
+      },
+    }),
+    [
+      state,
+      dispatch,
+      isOpen,
+      onOpen,
+      onClose,
+      drawerBtnRef,
+      componentRef,
+      handlePrint,
+    ]
+  );
+
   return (
-    <CalendarContext.Provider value={{ state, dispatch }}>
+    <CalendarContext.Provider value={memoizedValue}>
       {children}
     </CalendarContext.Provider>
   );
