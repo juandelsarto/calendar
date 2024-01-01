@@ -56,8 +56,8 @@ export const getDayList = ({
         : {
             disabled: true,
             number:
-              index < firstDay
-                ? prevMonth - firstDay + index + 1
+              index < fixedFirstDay
+                ? prevMonth - fixedFirstDay + index + 1
                 : index - days - firstDay + 1,
           }),
     };
@@ -68,4 +68,18 @@ export const getDayList = ({
   }
 
   return dayList;
+};
+
+export const getContrastedFontColor = (color) => {
+  const arrColor = color.replace("#", "").match(/.{1,2}/g);
+
+  const redCode = parseInt(arrColor[0], 16) * 0.299;
+  const greenCode = parseInt(arrColor[1], 16) * 0.587;
+  const blueCode = parseInt(arrColor[2], 16) * 0.114;
+
+  if (redCode + greenCode + blueCode > 186) {
+    return "#1b1b1b";
+  } else {
+    return "#ffffff";
+  }
 };

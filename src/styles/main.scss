@@ -16,21 +16,32 @@
       font-size: 38px;
       line-height: 40px;
       font-weight: 600;
-      // color: $color-secondary;
     }
     &__notes {
-      flex-basis: 50%;
+      align-items: flex-end;
+      justify-content: flex-end;
+      text-align: end;
+      display: flex;
+      flex-wrap: wrap;
+      flex-basis: 60%;
+      height: 40px;
+      &__day {
+        margin-left: 10px;
+        flex: 0 0 auto;
+        font-size: 8.5pt;
+        span {
+          font-weight: 600;
+        }
+      }
       span {
         &.label {
           font-size: 20px;
           font-weight: 600;
-          // color: $color-secondary;
           display: inline-block;
         }
         &.line {
           border-bottom-width: 2px;
           border-bottom-style: solid;
-          // border-bottom-color: 2px solid $color-primary;
           width: 100%;
           display: block;
           margin-top: 20px;
@@ -51,7 +62,6 @@
         text-align: center;
         text-transform: capitalize;
         font-weight: 600;
-        // color: $color-secondary;
         font-size: 16px;
       }
     }
@@ -62,42 +72,39 @@
       height: 80vh;
       border-width: 3px 0 0 3px;
       border-style: dashed;
-      // border-color: $color-primary-2;
       position: relative;
 
       .day {
         box-sizing: border-box;
         border-width: 0 3px 3px 0;
         border-style: dashed;
-        // border-color: $color-primary-2;
         height: 100%;
         background-color: white;
         padding: 5px;
         display: flex;
         justify-content: flex-end;
         position: relative;
+        z-index: 1;
+        &__bg {
+          opacity: 0.6;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          z-index: -1;
+        }
         &.cumple {
           justify-content: space-between;
           background-position: bottom right;
           background-repeat: no-repeat;
-          z-index: 1;
           .day {
             &__number,
             &__cumple {
               font-weight: 700;
-              // color: $color-secondary;
             }
             &__cumple {
               font-size: 16px;
-              &-bg {
-                opacity: 0.4;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                z-index: -1;
-              }
             }
           }
         }
@@ -111,16 +118,10 @@
             }
           }
         }
-        &.feriado {
-          // background-color: $color-third;
-          .day__number {
-            color: white;
-          }
-        }
         &.disabled {
           background-color: $grey;
           .day__number {
-            color: rgba(black, 0.3);
+            color: rgba(black, 0.3) !important;
           }
         }
         &.overflow-day {
@@ -133,7 +134,6 @@
         &__number {
           font-size: 16px;
           font-weight: 600;
-          // color: $color-secondary;
         }
       }
     }
@@ -279,125 +279,106 @@
   //     }
   //   }
   // }
-  // &.grisel {
-  //   .month {
-  //     &__name {
-  //       color: $bordo;
-  //       flex-basis: auto;
-  //       flex-grow: 0;
-  //       flex-shrink: 0;
-  //       width: auto;
-  //       max-width: none;
-  //     }
-  //     &__notes {
-  //       align-items: flex-end;
-  //       justify-content: flex-end;
-  //       text-align: end;
-  //       display: flex;
-  //       flex-wrap: wrap;
-  //       flex-basis: 60%;
-  //       height: 40px;
-  //       &__day {
-  //         margin-left: 10px;
-  //         color: rgba($dark, 0.8);
-  //         flex: 0 0 auto;
-  //         font-size: 8.5pt;
-  //         span {
-  //           font-weight: 600;
-  //           color: darken($red-gaby, 20%);
-  //         }
-  //       }
-  //     }
-  //     &__week {
-  //       &__day {
-  //         color: $dark;
-  //       }
-  //     }
-  //     &__grid {
-  //       border-color: $dark;
-  //       .day {
-  //         border-color: $dark;
-  //         position: relative;
-  //         &.cumple {
-  //           background-color: rgba($pink-fita, 0.3);
-  //           .day {
-  //             &__number,
-  //             &__cumple {
-  //               color: $pink-fita;
-  //               font-size: 10pt;
-  //             }
-  //           }
-  //         }
-  //         &.clase {
-  //           background-color: rgba($red-gaby, 0.7);
-  //         }
-  //         &.feriado {
-  //           background-color: rgba($bordo, 0.3);
-  //           .day__number {
-  //             color: $dark;
-  //           }
-  //         }
-  //         &.disabled {
-  //           background-color: $grey;
-  //         }
-  //         &__number {
-  //           color: $dark;
-  //           font-weight: 700;
-  //           margin-left: auto;
-  //           font-size: 10pt;
-  //         }
-  //         &.overflow-day {
-  //           margin-top: -46px;
-  //           padding-bottom: 35px;
-  //         }
-  //       }
-  //     }
-  //   }
-  //   .notes {
-  //     font-size: 18pt;
-  //     font-weight: 700;
-  //     &__line {
-  //       span {
-  //         border-bottom: 1px solid white;
-  //         padding-right: 5px;
-  //         color: $bordo;
-  //       }
-  //       border-bottom: 1px solid rgba($dark, 0.3);
-  //       width: 100%;
-  //       display: block;
-  //       margin-bottom: 5.5mm;
-  //     }
-  //   }
-  //   &:not(.custom) {
-  //     .month {
-  //       &__notes {
-  //         &__day {
-  //           font-size: 16px;
-  //         }
-  //       }
-  //       &__week {
-  //         &__day {
-  //           font-size: 22px;
-  //         }
-  //       }
-  //       &__grid {
-  //         .day {
-  //           &__number,
-  //           &__cumple {
-  //             font-size: 20px;
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  //   &.custom {
-  //     .month {
-  //       &__grid {
-  //         height: calc(100% - 86px);
-  //       }
-  //     }
-  //   }
-  // }
+  &.grisel {
+    .month {
+      &__name {
+        color: $bordo;
+        flex-basis: auto;
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: auto;
+        max-width: none;
+      }
+      &__week {
+        &__day {
+          color: $dark;
+        }
+      }
+      &__grid {
+        border-color: $dark;
+        .day {
+          border-color: $dark;
+          position: relative;
+          &.cumple {
+            background-color: rgba($pink-fita, 0.3);
+            .day {
+              &__number,
+              &__cumple {
+                color: $pink-fita;
+                font-size: 10pt;
+              }
+            }
+          }
+          &.clase {
+            background-color: rgba($red-gaby, 0.7);
+          }
+          &.feriado {
+            background-color: rgba($bordo, 0.3);
+            .day__number {
+              color: $dark;
+            }
+          }
+          &.disabled {
+            background-color: $grey;
+          }
+          &__number {
+            color: $dark;
+            font-weight: 700;
+            margin-left: auto;
+            font-size: 10pt;
+          }
+          &.overflow-day {
+            margin-top: -46px;
+            padding-bottom: 35px;
+          }
+        }
+      }
+    }
+    .notes {
+      font-size: 18pt;
+      font-weight: 700;
+      &__line {
+        span {
+          border-bottom: 1px solid white;
+          padding-right: 5px;
+          color: $bordo;
+        }
+        border-bottom: 1px solid rgba($dark, 0.3);
+        width: 100%;
+        display: block;
+        margin-bottom: 5.5mm;
+      }
+    }
+    &:not(.custom) {
+      .month {
+        &__notes {
+          &__day {
+            font-size: 16px;
+          }
+        }
+        &__week {
+          &__day {
+            font-size: 22px;
+          }
+        }
+        &__grid {
+          .day {
+            &__number,
+            &__cumple {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+    &.custom {
+      .month {
+        &__grid {
+          height: calc(100% - 86px);
+        }
+      }
+    }
+  }
   // &.flor {
   //   .month {
   //     &__name {

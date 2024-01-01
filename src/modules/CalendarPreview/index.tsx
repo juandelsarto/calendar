@@ -30,12 +30,17 @@ const CalendarPreview = () => {
 
   const parsedMonths = useMemo(
     () =>
-      MONTHS_LIST.map((month, index) => ({
-        ...month,
-        firstDay: new Date(YEAR, index, 1).getDay(),
-        days: new Date(YEAR, index + 1, 0).getDate(),
-        prevMonth: new Date(YEAR, index, 0).getDate(),
-      })),
+      MONTHS_LIST.map((month, index) => {
+        const especialDates = OPTIONS[owner]?.[month.key]?.dates || null;
+
+        return {
+          ...month,
+          firstDay: new Date(YEAR, index, 1).getDay(),
+          days: new Date(YEAR, index + 1, 0).getDate(),
+          prevMonth: new Date(YEAR, index, 0).getDate(),
+          ...(especialDates ? { dates: especialDates } : {}),
+        };
+      }),
     [MONTHS_LIST]
   );
 
@@ -55,7 +60,7 @@ const CalendarPreview = () => {
                   <div className="month__notes">
                     {month.dates?.map((date, index) => (
                       <div className="month__notes__day" key={`date_${index}`}>
-                        <span>
+                        <span style={{ color: primaryColor }}>
                           {typeof date.number === "number"
                             ? date.number
                             : `${date.number[0]} al ${date.number[1]}`}

@@ -2,6 +2,7 @@ import cn from "classnames";
 import { useContext } from "react";
 import { CalendarContext } from "../../../context/useCalendar";
 import { getStyles } from "../CalendarPreview.styles";
+import { getContrastedFontColor } from "../CalendarPreview.hooks";
 
 const Day = ({
   feriado,
@@ -32,9 +33,6 @@ const Day = ({
   const overflowLimit = defaultInit ? 34 : 35;
   const positionInGrid = index - fixPosition;
 
-  const calc = `calc(100% / 7 * ${positionInGrid - overflowLimit})`;
-  const inlineStyle = overflow ? { left: calc } : {};
-
   const classNames = cn("day", {
     feriado: enabledFeriados && feriado,
     cumple: enabledBirthdays && cumple,
@@ -46,29 +44,43 @@ const Day = ({
 
   const dayStyles = {
     ...styles.day,
+    ...(overflow
+      ? { left: `calc(100% / 7 * ${positionInGrid - overflowLimit})` }
+      : {}),
+    ...(enabledFeriados && feriado
+      ? { color: getContrastedFontColor(secondaryColor) }
+      : {}),
+    ...(enabledEspecialDays && clase
+      ? { color: getContrastedFontColor(primaryColor) }
+      : {}),
     ...(enabledBirthdays && cumple
       ? {
+          color: primaryColor,
           backgroundImage: `url(./src/assets/${background})`,
         }
       : {}),
-    ...(enabledFeriados && feriado ? styles.feriado : {}),
-    ...(enabledEspecialDays && clase ? styles.clase : {}),
+  };
+
+  const bgDayStyles = {
+    backgroundColor: clase
+      ? primaryColor
+      : feriado
+      ? secondaryColor
+      : thirdColor,
   };
 
   return (
-    <div className={classNames} style={{ ...inlineStyle, ...dayStyles }}>
+    <div className={classNames} style={dayStyles}>
       {enabledBirthdays && cumple && (
-        <>
-          <span className="day__cumple">{cumple}</span>
-          {!love && !feriado && (
-            <div className="day__cumple-bg" style={styles.cumple}></div>
-          )}
-        </>
+        <span className="day__cumple">{cumple}</span>
       )}
-      <span className="day__number" style={styles.day}>
+      <span className="day__number" style={dayStyles}>
         {enabledEspecialDays && clase && "* "}
         {number}
       </span>
+      {!love && (feriado || cumple || clase) && (
+        <div className="day__bg" style={bgDayStyles}></div>
+      )}
     </div>
   );
 };

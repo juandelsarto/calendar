@@ -590,6 +590,7 @@ export const OPTIONS = {
     },
     [MONTHS.NOVEMBER]: {
       cumples: [
+        { number: 2, name: "Nos casamos!!!", love: true },
         {
           number: 3,
           name: "Armando",
