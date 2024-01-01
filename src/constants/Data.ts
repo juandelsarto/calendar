@@ -27,7 +27,7 @@ export const MONTHS_LIST = [
   {
     key: MONTHS.APRIL,
     name: { [LANGUAGES.SPANISH]: "Abril", [LANGUAGES.ENGLISH]: "April" },
-    feriados: [2, 7],
+    feriados: [1, 2],
   },
   {
     key: MONTHS.MAY,
@@ -37,7 +37,7 @@ export const MONTHS_LIST = [
   {
     key: MONTHS.JUNE,
     name: { [LANGUAGES.SPANISH]: "Junio", [LANGUAGES.ENGLISH]: "June" },
-    feriados: [20],
+    feriados: [17, 20, 21],
   },
   {
     key: MONTHS.JULY,
@@ -60,12 +60,12 @@ export const MONTHS_LIST = [
   {
     key: MONTHS.OCTOBER,
     name: { [LANGUAGES.SPANISH]: "Octubre", [LANGUAGES.ENGLISH]: "October" },
-    feriados: [12],
+    feriados: [11, 12],
   },
   {
     key: MONTHS.NOVEMBER,
     name: { [LANGUAGES.SPANISH]: "Noviembre", [LANGUAGES.ENGLISH]: "November" },
-    feriados: [20],
+    feriados: [18],
   },
   {
     key: MONTHS.DECEMBER,
@@ -131,6 +131,9 @@ export const OPTIONS = {
           name: "Noah",
         },
       ],
+    },
+    [MONTHS.NOVEMBER]: {
+      cumples: [{ number: 2, name: "Se casan Flor y Juan!!", love: true }],
     },
     [MONTHS.DECEMBER]: {
       cumples: [

@@ -61,7 +61,9 @@ export enum SIZES {
 
 export enum BACKGROUND {
   BALLONS = "bgBallons.png",
+  CUMPLE = "bgCumple.png",
   UNICORN = "bgUnicorn.png",
+  CATS = "bgCats.png",
 }
 
 export const DAYS_LIST = [
