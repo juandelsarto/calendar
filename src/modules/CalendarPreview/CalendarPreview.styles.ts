@@ -19,16 +19,7 @@ export const getStyles = ({ primaryColor, secondaryColor, thirdColor }) => ({
     borderColor: primaryColor,
   },
   day: {
-    color: primaryColor,
+    color: secondaryColor,
     borderColor: primaryColor,
-  },
-  cumple: {
-    backgroundColor: thirdColor,
-  },
-  feriado: {
-    backgroundColor: secondaryColor,
-  },
-  clase: {
-    backgroundColor: primaryColor,
   },
 });

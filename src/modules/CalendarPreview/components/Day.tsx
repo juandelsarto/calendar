@@ -54,10 +54,12 @@ const Day = ({
       ? { color: getContrastedFontColor(primaryColor) }
       : {}),
     ...(enabledBirthdays && cumple
-      ? {
-          color: primaryColor,
-          backgroundImage: `url(./src/assets/${background})`,
-        }
+      ? !love
+        ? {
+            color: secondaryColor,
+            backgroundImage: `url(./src/assets/${background})`,
+          }
+        : { color: getContrastedFontColor(secondaryColor) }
       : {}),
   };
 
