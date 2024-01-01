@@ -41,7 +41,7 @@ const Content = () => {
   } = useContext(CalendarContext);
 
   return (
-    <Accordion allowToggle allowMultiple>
+    <Accordion allowMultiple>
       <AccordionItem>
         <AccordionButton>
           <Box as="span" flex="1" textAlign="left">

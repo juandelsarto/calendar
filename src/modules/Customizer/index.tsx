@@ -8,7 +8,6 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  Heading,
 } from "@chakra-ui/react";
 import { CalendarContext } from "../../context/useCalendar";
 import Content from "./Customizer.content";

@@ -1,11 +1,11 @@
 import { useContext, useMemo } from "react";
+import { Box } from "@chakra-ui/react";
 import { DAYS, MONDAY_FIRST, SUNDAY_FIRST } from "../../constants/Enums";
 import { TRANSLATIONS } from "../../constants/Translations";
 import { MONTHS_LIST, OPTIONS, YEAR } from "../../constants/Data";
 import { CalendarContext } from "../../context/useCalendar";
 import Month from "./components/Month";
 import { getStyles } from "./CalendarPreview.styles";
-import { Box, Container } from "@chakra-ui/react";
 
 const CalendarPreview = () => {
   const {
@@ -22,8 +22,6 @@ const CalendarPreview = () => {
   } = useContext(CalendarContext);
 
   const parsedDays = startingDay === DAYS.MONDAY ? MONDAY_FIRST : SUNDAY_FIRST;
-
-  console.log({ primaryColor, secondaryColor, thirdColor });
 
   const parsedMonths = useMemo(
     () =>
@@ -53,7 +51,7 @@ const CalendarPreview = () => {
                 <div className="month__name" style={styles.monthName}>
                   {month.name[language]} {YEAR}
                 </div>
-                <divß className="month__notes">
+                <div className="month__notes">
                   {enabledEspecialDays ? (
                     <>
                       {month.dates?.map((date, index) => (
@@ -86,7 +84,7 @@ const CalendarPreview = () => {
                       ></span>
                     </>
                   )}
-                </divß>
+                </div>
               </div>
               <div className="month__week">
                 {parsedDays.map((day, index) => (

@@ -1,4 +1,4 @@
-import { createContext, useMemo, useReducer, useRef } from "react";
+import { createContext, useEffect, useMemo, useReducer, useRef } from "react";
 import {
   BACKGROUND,
   DAYS,
@@ -11,6 +11,9 @@ import { useDisclosure } from "@chakra-ui/react";
 import { useReactToPrint } from "react-to-print";
 
 export const CalendarContext = createContext(null);
+
+export const initializer = (initialValue = initialState) =>
+  JSON.parse(localStorage.getItem("calendarSettings")) || initialValue;
 
 const initialState = {
   [OPTIONS.LANGUAGE]: LANGUAGES.SPANISH,
@@ -35,7 +38,12 @@ export const CalendarProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState, initializer);
+
+  useEffect(() => {
+    console.log(state);
+    localStorage.setItem("calendarSettings", JSON.stringify(state));
+  }, [state]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const drawerBtnRef = useRef();

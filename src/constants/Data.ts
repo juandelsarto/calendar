@@ -224,7 +224,7 @@ export const OPTIONS = {
           name: "Día del asistente social",
         },
         {
-          number: [17, 28],
+          number: [15, 26],
           name: "Receso escolar de invierno",
         },
       ],

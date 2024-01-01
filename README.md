@@ -30,8 +30,8 @@
   - [x] Agregar los colores elegidos
   - [ ] Editar tamaño de la hoja de impresión
 - [ ] Editar cumpleaños y fechas especiales
-- [ ] Guardar la config en el localStorage o Cookies
-- [ ] Ajustar UI
-  - [ ] revisar Customizer
+- [x] Guardar la config en el localStorage o Cookies
+- [x] Ajustar UI
+  - [x] revisar Customizer
   - [ ] agregar Drawer para edición de fechas
   - [ ] backgrounds y spacing del CalendarPreview
