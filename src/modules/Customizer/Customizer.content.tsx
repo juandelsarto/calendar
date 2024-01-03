@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 import {
   Accordion,
   AccordionButton,
@@ -10,18 +10,18 @@ import {
   FormControl,
   FormLabel,
   Select,
-} from "@chakra-ui/react";
-import { HexColorPicker } from "react-colorful";
-import { OPTIONS } from "../../constants/Enums";
+} from '@chakra-ui/react';
+import { HexColorPicker } from 'react-colorful';
+import { OPTIONS } from '../../constants/Enums';
 import {
   BACKGROUND_OPTIONS,
   LANGUAGE_OPTIONS,
   OWNER_OPTIONS,
   SIZE_OPTIONS,
   STARTING_DAY_OPTIONS,
-} from "./Options";
-import { CalendarContext } from "../../context/useCalendar";
-import Selector from "../Selector";
+} from './Options';
+import { CalendarContext } from '../../context/useCalendar';
+import Selector from '../Selector';
 
 const Content = () => {
   const {

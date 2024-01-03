@@ -1,8 +1,8 @@
-import cn from "classnames";
-import { useContext } from "react";
-import { CalendarContext } from "../../../context/useCalendar";
-import { getStyles } from "../CalendarPreview.styles";
-import { getContrastedFontColor } from "../CalendarPreview.hooks";
+import cn from 'classnames';
+import { useContext } from 'react';
+import { CalendarContext } from '../../../context/useCalendar';
+import { getStyles } from '../CalendarPreview.styles';
+import { getContrastedFontColor } from '../CalendarPreview.hooks';
 
 const Day = ({
   feriado,
@@ -33,13 +33,13 @@ const Day = ({
   const overflowLimit = defaultInit ? 34 : 35;
   const positionInGrid = index - fixPosition;
 
-  const classNames = cn("day", {
+  const classNames = cn('day', {
     feriado: enabledFeriados && feriado,
     cumple: enabledBirthdays && cumple,
     clase: enabledEspecialDays && clase,
     love: love,
     disabled: disabled,
-    "overflow-day": overflow,
+    'overflow-day': overflow,
   });
 
   const dayStyles = {
@@ -77,7 +77,7 @@ const Day = ({
         <span className="day__cumple">{cumple}</span>
       )}
       <span className="day__number" style={dayStyles}>
-        {enabledEspecialDays && clase && "* "}
+        {enabledEspecialDays && clase && '* '}
         {number}
       </span>
       {!love && (feriado || cumple || clase) && (

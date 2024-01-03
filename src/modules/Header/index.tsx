@@ -1,7 +1,7 @@
-import { Button, Center, Flex, Heading } from "@chakra-ui/react";
-import { CalendarContext } from "../../context/useCalendar";
-import React from "react";
-import { getContrastedFontColor } from "../CalendarPreview/CalendarPreview.hooks";
+import { Button, Center, Flex, Heading } from '@chakra-ui/react';
+import { CalendarContext } from '../../context/useCalendar';
+import React from 'react';
+import { getContrastedFontColor } from '../CalendarPreview/CalendarPreview.hooks';
 
 const Header = () => {
   const {
@@ -13,7 +13,12 @@ const Header = () => {
   return (
     <>
       <Center>
-        <Heading as="h3" size="lg" mb={4} color={getContrastedFontColor(primaryColor)}>
+        <Heading
+          as="h3"
+          size="lg"
+          mb={4}
+          color={getContrastedFontColor(primaryColor)}
+        >
           Calendario
         </Heading>
       </Center>

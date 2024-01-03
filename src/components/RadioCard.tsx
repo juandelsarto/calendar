@@ -1,4 +1,4 @@
-import { Box, Image, useRadio } from "@chakra-ui/react";
+import { Box, Image, useRadio } from '@chakra-ui/react';
 
 function RadioCard(props) {
   const { getInputProps, getRadioProps } = useRadio(props);
@@ -16,9 +16,9 @@ function RadioCard(props) {
         borderRadius="md"
         boxShadow="md"
         _checked={{
-          bg: "orange.300",
-          color: "white",
-          borderColor: "orange.300",
+          bg: 'orange.300',
+          color: 'white',
+          borderColor: 'orange.300',
         }}
         px={4}
         py={2}

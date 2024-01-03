@@ -1,6 +1,6 @@
-import { getDayList } from "../CalendarPreview.hooks";
-import Day from "./Day";
-import { DAYS } from "../../../constants/Enums";
+import { getDayList } from '../CalendarPreview.hooks';
+import Day from './Day';
+import { DAYS } from '../../../constants/Enums';
 
 const Month = ({
   month = {},

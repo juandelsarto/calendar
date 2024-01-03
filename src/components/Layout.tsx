@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import { Center, Flex, Heading } from "@chakra-ui/react";
-import { CalendarContext } from "../context/useCalendar";
-import Header from "../modules/Header";
+import { useContext } from 'react';
+import { Flex } from '@chakra-ui/react';
+import { CalendarContext } from '../context/useCalendar';
+import Header from '../modules/Header';
 
 const Layout = ({ children }) => {
   const {
-    state: { primaryColor, secondaryColor },
+    state: { primaryColor },
   } = useContext(CalendarContext);
 
   return (

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useReducer, useRef } from "react";
+import { createContext, useEffect, useMemo, useReducer, useRef } from 'react';
 import {
   BACKGROUND,
   DAYS,
@@ -6,14 +6,14 @@ import {
   OPTIONS,
   OWNERS,
   SIZES,
-} from "../constants/Enums";
-import { useDisclosure } from "@chakra-ui/react";
-import { useReactToPrint } from "react-to-print";
+} from '../constants/Enums';
+import { useDisclosure } from '@chakra-ui/react';
+import { useReactToPrint } from 'react-to-print';
 
 export const CalendarContext = createContext(null);
 
 export const initializer = (initialValue = initialState) =>
-  JSON.parse(localStorage.getItem("calendarSettings")) || initialValue;
+  JSON.parse(localStorage.getItem('calendarSettings')) || initialValue;
 
 const initialState = {
   [OPTIONS.LANGUAGE]: LANGUAGES.SPANISH,
@@ -23,9 +23,9 @@ const initialState = {
   [OPTIONS.ENABLED_FERIADOS]: true,
   [OPTIONS.ENABLED_BIRTHDAYS]: true,
   [OPTIONS.ENABLED_ESPECIAL_DAYS]: false,
-  [OPTIONS.PRIMARY_COLOR]: "#6dd2b0",
-  [OPTIONS.SECONDARY_COLOR]: "#e15f82",
-  [OPTIONS.THIRD_COLOR]: "#88d7cd",
+  [OPTIONS.PRIMARY_COLOR]: '#6dd2b0',
+  [OPTIONS.SECONDARY_COLOR]: '#e15f82',
+  [OPTIONS.THIRD_COLOR]: '#88d7cd',
   [OPTIONS.OWNER]: OWNERS.FAMILIA,
 };
 
@@ -41,7 +41,7 @@ export const CalendarProvider = ({
   const [state, dispatch] = useReducer(reducer, initialState, initializer);
 
   useEffect(() => {
-    localStorage.setItem("calendarSettings", JSON.stringify(state));
+    localStorage.setItem('calendarSettings', JSON.stringify(state));
   }, [state]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -76,7 +76,7 @@ export const CalendarProvider = ({
       drawerBtnRef,
       componentRef,
       handlePrint,
-    ]
+    ],
   );
 
   return (

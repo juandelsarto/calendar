@@ -1,12 +1,12 @@
-import { useContext, useMemo } from "react";
-import { Box } from "@chakra-ui/react";
-import { DAYS, MONDAY_FIRST, SUNDAY_FIRST } from "../../constants/Enums";
-import { TRANSLATIONS } from "../../constants/Translations";
-import { MONTHS_LIST, OPTIONS, YEAR } from "../../constants/Data";
-import { CalendarContext } from "../../context/useCalendar";
-import Month from "./components/Month";
-import { getStyles } from "./CalendarPreview.styles";
-import classNames from "classnames";
+import { useContext, useMemo } from 'react';
+import { Box } from '@chakra-ui/react';
+import { DAYS, MONDAY_FIRST, SUNDAY_FIRST } from '../../constants/Enums';
+import { TRANSLATIONS } from '../../constants/Translations';
+import { MONTHS_LIST, OPTIONS, YEAR } from '../../constants/Data';
+import { CalendarContext } from '../../context/useCalendar';
+import Month from './components/Month';
+import { getStyles } from './CalendarPreview.styles';
+import classNames from 'classnames';
 
 const renderLines = () => {
   const lines = [];
@@ -46,7 +46,7 @@ const CalendarPreview = () => {
           ...(especialDates ? { dates: especialDates } : {}),
         };
       }),
-    [MONTHS_LIST]
+    [MONTHS_LIST],
   );
 
   const styles = getStyles({ primaryColor, secondaryColor, thirdColor });
@@ -61,7 +61,7 @@ const CalendarPreview = () => {
     >
       <div
         ref={printer.componentRef}
-        className={classNames("calendar", { [size]: size })}
+        className={classNames('calendar', { [size]: size })}
       >
         {parsedMonths.map((month) => {
           return (
@@ -75,10 +75,10 @@ const CalendarPreview = () => {
                     {month.dates?.map((date, index) => (
                       <div className="month__notes__day" key={`date_${index}`}>
                         <span style={{ color: primaryColor }}>
-                          {typeof date.number === "number"
+                          {typeof date.number === 'number'
                             ? date.number
                             : `${date.number[0]} al ${date.number[1]}`}
-                          :{" "}
+                          :{' '}
                         </span>
                         {date.name}
                       </div>

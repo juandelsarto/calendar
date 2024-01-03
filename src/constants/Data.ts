@@ -1,4 +1,4 @@
-import { LANGUAGES, MONTHS, OWNERS } from "./Enums";
+import { LANGUAGES, MONTHS, OWNERS } from './Enums';
 
 export const YEAR = 2024;
 
@@ -6,70 +6,70 @@ export const MONTHS_LIST = [
   {
     key: MONTHS.JANUARY,
     name: {
-      [LANGUAGES.SPANISH]: "Enero",
-      [LANGUAGES.ENGLISH]: "January",
+      [LANGUAGES.SPANISH]: 'Enero',
+      [LANGUAGES.ENGLISH]: 'January',
     },
     feriados: [1],
   },
   {
     key: MONTHS.FEBRUARY,
-    name: { [LANGUAGES.SPANISH]: "Febrero", [LANGUAGES.ENGLISH]: "February" },
+    name: { [LANGUAGES.SPANISH]: 'Febrero', [LANGUAGES.ENGLISH]: 'February' },
     feriados: [12, 13],
   },
   {
     key: MONTHS.MARCH,
     name: {
-      [LANGUAGES.SPANISH]: "Marzo",
-      [LANGUAGES.ENGLISH]: "March",
+      [LANGUAGES.SPANISH]: 'Marzo',
+      [LANGUAGES.ENGLISH]: 'March',
     },
     feriados: [24, 28, 29],
   },
   {
     key: MONTHS.APRIL,
-    name: { [LANGUAGES.SPANISH]: "Abril", [LANGUAGES.ENGLISH]: "April" },
+    name: { [LANGUAGES.SPANISH]: 'Abril', [LANGUAGES.ENGLISH]: 'April' },
     feriados: [1, 2],
   },
   {
     key: MONTHS.MAY,
-    name: { [LANGUAGES.SPANISH]: "Mayo", [LANGUAGES.ENGLISH]: "May" },
+    name: { [LANGUAGES.SPANISH]: 'Mayo', [LANGUAGES.ENGLISH]: 'May' },
     feriados: [1, 25],
   },
   {
     key: MONTHS.JUNE,
-    name: { [LANGUAGES.SPANISH]: "Junio", [LANGUAGES.ENGLISH]: "June" },
+    name: { [LANGUAGES.SPANISH]: 'Junio', [LANGUAGES.ENGLISH]: 'June' },
     feriados: [17, 20, 21],
   },
   {
     key: MONTHS.JULY,
-    name: { [LANGUAGES.SPANISH]: "Julio", [LANGUAGES.ENGLISH]: "July" },
+    name: { [LANGUAGES.SPANISH]: 'Julio', [LANGUAGES.ENGLISH]: 'July' },
     feriados: [9],
   },
   {
     key: MONTHS.AUGUST,
-    name: { [LANGUAGES.SPANISH]: "Agosto", [LANGUAGES.ENGLISH]: "August" },
+    name: { [LANGUAGES.SPANISH]: 'Agosto', [LANGUAGES.ENGLISH]: 'August' },
     feriados: [17],
   },
   {
     key: MONTHS.SEPTEMBER,
     name: {
-      [LANGUAGES.SPANISH]: "Septiembre",
-      [LANGUAGES.ENGLISH]: "September",
+      [LANGUAGES.SPANISH]: 'Septiembre',
+      [LANGUAGES.ENGLISH]: 'September',
     },
     feriados: [],
   },
   {
     key: MONTHS.OCTOBER,
-    name: { [LANGUAGES.SPANISH]: "Octubre", [LANGUAGES.ENGLISH]: "October" },
+    name: { [LANGUAGES.SPANISH]: 'Octubre', [LANGUAGES.ENGLISH]: 'October' },
     feriados: [11, 12],
   },
   {
     key: MONTHS.NOVEMBER,
-    name: { [LANGUAGES.SPANISH]: "Noviembre", [LANGUAGES.ENGLISH]: "November" },
+    name: { [LANGUAGES.SPANISH]: 'Noviembre', [LANGUAGES.ENGLISH]: 'November' },
     feriados: [18],
   },
   {
     key: MONTHS.DECEMBER,
-    name: { [LANGUAGES.SPANISH]: "Diciembre", [LANGUAGES.ENGLISH]: "December" },
+    name: { [LANGUAGES.SPANISH]: 'Diciembre', [LANGUAGES.ENGLISH]: 'December' },
     feriados: [8, 25],
   },
 ];
@@ -80,15 +80,15 @@ export const OPTIONS = {
       cumples: [
         {
           number: 11,
-          name: "Simón",
+          name: 'Simón',
         },
         {
           number: 13,
-          name: "Flor",
+          name: 'Flor',
         },
         {
           number: 23,
-          name: "Nala",
+          name: 'Nala',
         },
       ],
     },
@@ -96,7 +96,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 7,
-          name: "Donatella",
+          name: 'Donatella',
         },
       ],
     },
@@ -104,7 +104,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 21,
-          name: "Fita",
+          name: 'Fita',
         },
       ],
     },
@@ -112,7 +112,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 8,
-          name: "Mamá",
+          name: 'Mamá',
         },
       ],
     },
@@ -120,7 +120,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 10,
-          name: "Juan",
+          name: 'Juan',
         },
       ],
     },
@@ -128,18 +128,18 @@ export const OPTIONS = {
       cumples: [
         {
           number: 6,
-          name: "Noah",
+          name: 'Noah',
         },
       ],
     },
     [MONTHS.NOVEMBER]: {
-      cumples: [{ number: 2, name: "Se casan Flor y Juan!!", love: true }],
+      cumples: [{ number: 2, name: 'Se casan Flor y Juan!!', love: true }],
     },
     [MONTHS.DECEMBER]: {
       cumples: [
         {
           number: 7,
-          name: "Papá",
+          name: 'Papá',
         },
       ],
     },
@@ -149,15 +149,15 @@ export const OPTIONS = {
       cumples: [
         {
           number: 11,
-          name: "Simón",
+          name: 'Simón',
         },
         {
           number: 13,
-          name: "Flor",
+          name: 'Flor',
         },
         {
           number: 23,
-          name: "Nala",
+          name: 'Nala',
         },
       ],
     },
@@ -165,7 +165,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 7,
-          name: "Donatella",
+          name: 'Donatella',
         },
       ],
     },
@@ -173,13 +173,13 @@ export const OPTIONS = {
       cumples: [
         {
           number: 21,
-          name: "Fita",
+          name: 'Fita',
         },
       ],
       dates: [
         {
           number: 1,
-          name: "Comienzo del Ciclo Lectivo",
+          name: 'Comienzo del Ciclo Lectivo',
         },
       ],
     },
@@ -187,19 +187,19 @@ export const OPTIONS = {
       dates: [
         {
           number: 27,
-          name: "Día de la Prevención de la Violencia en el Noviazgo",
+          name: 'Día de la Prevención de la Violencia en el Noviazgo',
         },
         {
           number: 28,
-          name: "Día de los jardines de infantes y de la maestra jardinera",
+          name: 'Día de los jardines de infantes y de la maestra jardinera',
         },
         {
           number: 30,
-          name: "Día Internacional del desaparecido",
+          name: 'Día Internacional del desaparecido',
         },
         {
           number: 31,
-          name: "Fin del primer trimestre",
+          name: 'Fin del primer trimestre',
         },
       ],
     },
@@ -207,7 +207,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 8,
-          name: "Mi cumple!",
+          name: 'Mi cumple!',
         },
       ],
     },
@@ -215,17 +215,17 @@ export const OPTIONS = {
       cumples: [
         {
           number: 10,
-          name: "Juan",
+          name: 'Juan',
         },
       ],
       dates: [
         {
           number: 2,
-          name: "Día del asistente social",
+          name: 'Día del asistente social',
         },
         {
           number: [15, 26],
-          name: "Receso escolar de invierno",
+          name: 'Receso escolar de invierno',
         },
       ],
     },
@@ -233,19 +233,19 @@ export const OPTIONS = {
       dates: [
         {
           number: 2,
-          name: "Día la escuela pública digna",
+          name: 'Día la escuela pública digna',
         },
         {
           number: 20,
-          name: "Día del niño",
+          name: 'Día del niño',
         },
         {
           number: 23,
-          name: "Día del auxiliar",
+          name: 'Día del auxiliar',
         },
         {
           number: 31,
-          name: "Fin del segundo trimestre",
+          name: 'Fin del segundo trimestre',
         },
       ],
     },
@@ -253,41 +253,41 @@ export const OPTIONS = {
       cumples: [
         {
           number: 6,
-          name: "Noah",
+          name: 'Noah',
         },
       ],
       dates: [
         {
           number: 2,
-          name: "Día del profe de inglés",
+          name: 'Día del profe de inglés',
         },
         {
           number: 4,
-          name: "Día del secretario/prosecretario",
+          name: 'Día del secretario/prosecretario',
         },
         {
           number: 11,
-          name: "Día del maestro",
+          name: 'Día del maestro',
         },
         {
           number: 13,
-          name: "Día del bibliotecario/a",
+          name: 'Día del bibliotecario/a',
         },
         {
           number: 17,
-          name: "Día del profesor y de la psicopedagoga",
+          name: 'Día del profesor y de la psicopedagoga',
         },
         {
           number: 19,
-          name: "Día del preceptor",
+          name: 'Día del preceptor',
         },
         {
           number: 20,
-          name: "Día del EOE",
+          name: 'Día del EOE',
         },
         {
           number: 28,
-          name: "Día del director/vicedirector",
+          name: 'Día del director/vicedirector',
         },
       ],
     },
@@ -295,11 +295,11 @@ export const OPTIONS = {
       dates: [
         {
           number: 8,
-          name: "Día del Profesor de Educación Física",
+          name: 'Día del Profesor de Educación Física',
         },
         {
           number: 20,
-          name: "Día de la familia y de las cooperadoras escolares",
+          name: 'Día de la familia y de las cooperadoras escolares',
         },
       ],
     },
@@ -307,15 +307,15 @@ export const OPTIONS = {
       dates: [
         {
           number: 11,
-          name: "Día del Escultor y las Artes Plásticas",
+          name: 'Día del Escultor y las Artes Plásticas',
         },
         {
           number: 22,
-          name: "Día de la música",
+          name: 'Día de la música',
         },
         {
           number: 30,
-          name: "Fin del tercer trimestre",
+          name: 'Fin del tercer trimestre',
         },
       ],
     },
@@ -323,13 +323,13 @@ export const OPTIONS = {
       cumples: [
         {
           number: 7,
-          name: "Gaby",
+          name: 'Gaby',
         },
       ],
       dates: [
         {
           number: 26,
-          name: "Fin del Ciclo Lectivo",
+          name: 'Fin del Ciclo Lectivo',
         },
       ],
     },
@@ -339,15 +339,15 @@ export const OPTIONS = {
       cumples: [
         {
           number: 11,
-          name: "Simón",
+          name: 'Simón',
         },
         {
           number: 13,
-          name: "Flor",
+          name: 'Flor',
         },
         {
           number: 23,
-          name: "Nala",
+          name: 'Nala',
         },
       ],
     },
@@ -355,7 +355,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 7,
-          name: "Donatella",
+          name: 'Donatella',
         },
       ],
     },
@@ -363,7 +363,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 21,
-          name: "My b-day!",
+          name: 'My b-day!',
         },
       ],
     },
@@ -379,7 +379,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 8,
-          name: "Mamá",
+          name: 'Mamá',
         },
       ],
     },
@@ -387,7 +387,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 10,
-          name: "Juan",
+          name: 'Juan',
         },
       ],
     },
@@ -395,13 +395,13 @@ export const OPTIONS = {
       cumples: [
         {
           number: 6,
-          name: "Noah",
+          name: 'Noah',
         },
       ],
     },
     [MONTHS.NOVEMBER]: {
       cumples: [
-        { number: 2, name: "Se casan Flor y Juan!!", love: true },
+        { number: 2, name: 'Se casan Flor y Juan!!', love: true },
         // {
         //   number: 25,
         //   name: "Marta",
@@ -412,7 +412,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 7,
-          name: "Papá",
+          name: 'Papá',
         },
       ],
     },
@@ -423,19 +423,19 @@ export const OPTIONS = {
       cumples: [
         {
           number: 3,
-          name: "Milo",
+          name: 'Milo',
         },
         {
           number: 11,
-          name: "Simón",
+          name: 'Simón',
         },
         {
           number: 13,
-          name: "Flor",
+          name: 'Flor',
         },
         {
           number: 23,
-          name: "Nala",
+          name: 'Nala',
         },
       ],
     },
@@ -443,16 +443,16 @@ export const OPTIONS = {
       cumples: [
         {
           number: 6,
-          name: "Abu Vivi",
+          name: 'Abu Vivi',
         },
         {
           number: 7,
-          name: "Aniversario - Donatella",
+          name: 'Aniversario - Donatella',
           love: true,
         },
         {
           number: 14,
-          name: "Pamela",
+          name: 'Pamela',
         },
       ],
     },
@@ -460,31 +460,31 @@ export const OPTIONS = {
       cumples: [
         {
           number: 7,
-          name: "Mauro",
+          name: 'Mauro',
         },
         {
           number: 13,
-          name: "Mica",
+          name: 'Mica',
         },
         {
           number: 15,
-          name: "Fabi",
+          name: 'Fabi',
         },
         {
           number: 20,
-          name: "Lucía",
+          name: 'Lucía',
         },
         {
           number: 21,
-          name: "Fita",
+          name: 'Fita',
         },
         {
           number: 23,
-          name: "Agustín",
+          name: 'Agustín',
         },
         {
           number: 28,
-          name: "Facu",
+          name: 'Facu',
         },
       ],
     },
@@ -492,7 +492,7 @@ export const OPTIONS = {
       cumples: [
         {
           number: 12,
-          name: "Romi",
+          name: 'Romi',
         },
       ],
     },
@@ -500,19 +500,19 @@ export const OPTIONS = {
       cumples: [
         {
           number: 2,
-          name: "Cuba",
+          name: 'Cuba',
         },
         {
           number: 12,
-          name: "Daiana",
+          name: 'Daiana',
         },
         {
           number: 13,
-          name: "Karina",
+          name: 'Karina',
         },
         {
           number: 23,
-          name: "Silvia de Hugo - Rochi",
+          name: 'Silvia de Hugo - Rochi',
         },
       ],
     },
@@ -520,19 +520,19 @@ export const OPTIONS = {
       cumples: [
         {
           number: 8,
-          name: "Mamá Gri",
+          name: 'Mamá Gri',
         },
         {
           number: 14,
-          name: "Rocco",
+          name: 'Rocco',
         },
         {
           number: 17,
-          name: "Sofi F.",
+          name: 'Sofi F.',
         },
         {
           number: 28,
-          name: "Natu",
+          name: 'Natu',
         },
       ],
     },
@@ -540,23 +540,23 @@ export const OPTIONS = {
       cumples: [
         {
           number: 3,
-          name: "Silvia M.",
+          name: 'Silvia M.',
         },
         {
           number: 10,
-          name: "Juan",
+          name: 'Juan',
         },
         {
           number: 16,
-          name: "Papá Leo",
+          name: 'Papá Leo',
         },
         {
           number: 18,
-          name: "Pipe",
+          name: 'Pipe',
         },
         {
           number: 26,
-          name: "Cami (Natu)",
+          name: 'Cami (Natu)',
         },
       ],
     },
@@ -564,52 +564,52 @@ export const OPTIONS = {
       cumples: [
         {
           number: 1,
-          name: "Dante",
+          name: 'Dante',
         },
         {
           number: 3,
-          name: "Mamá Luci",
+          name: 'Mamá Luci',
         },
         {
           number: 6,
-          name: "Noah",
+          name: 'Noah',
         },
         {
           number: 13,
-          name: "Nahuel",
+          name: 'Nahuel',
         },
         {
           number: 14,
-          name: "Lautaro - Patri",
+          name: 'Lautaro - Patri',
         },
         {
           number: 20,
-          name: "Juli",
+          name: 'Juli',
         },
         {
           number: 26,
-          name: "Carla",
+          name: 'Carla',
         },
       ],
     },
     [MONTHS.NOVEMBER]: {
       cumples: [
-        { number: 2, name: "Nos casamos!!!", love: true },
+        { number: 2, name: 'Nos casamos!!!', love: true },
         {
           number: 3,
-          name: "Armando",
+          name: 'Armando',
         },
         {
           number: 19,
-          name: "Tina",
+          name: 'Tina',
         },
         {
           number: 26,
-          name: "Mel",
+          name: 'Mel',
         },
         {
           number: 29,
-          name: "Mariana",
+          name: 'Mariana',
         },
       ],
     },
@@ -617,15 +617,15 @@ export const OPTIONS = {
       cumples: [
         {
           number: 7,
-          name: "Papá Gabi",
+          name: 'Papá Gabi',
         },
         {
           number: 23,
-          name: "Tío",
+          name: 'Tío',
         },
         {
           number: 26,
-          name: "Eli",
+          name: 'Eli',
         },
       ],
     },

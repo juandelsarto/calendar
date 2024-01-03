@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   Drawer,
@@ -8,9 +8,9 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-} from "@chakra-ui/react";
-import { CalendarContext } from "../../context/useCalendar";
-import Content from "./Customizer.content";
+} from '@chakra-ui/react';
+import { CalendarContext } from '../../context/useCalendar';
+import Content from './Customizer.content';
 
 const Customizer = () => {
   const { drawer } = React.useContext(CalendarContext);
