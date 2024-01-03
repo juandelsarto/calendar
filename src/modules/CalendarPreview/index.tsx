@@ -6,10 +6,20 @@ import { MONTHS_LIST, OPTIONS, YEAR } from "../../constants/Data";
 import { CalendarContext } from "../../context/useCalendar";
 import Month from "./components/Month";
 import { getStyles } from "./CalendarPreview.styles";
+import classNames from "classnames";
+
+const renderLines = () => {
+  const lines = [];
+  for (let i = 0; i <= 19; i++) {
+    lines.push(<span className="notes__line"></span>);
+  }
+  return lines;
+};
 
 const CalendarPreview = () => {
   const {
     state: {
+      size,
       owner,
       language,
       startingDay,
@@ -42,8 +52,17 @@ const CalendarPreview = () => {
   const styles = getStyles({ primaryColor, secondaryColor, thirdColor });
 
   return (
-    <Box overflow='scroll' mt={4} p={4} backgroundColor="white" borderRadius={6}>
-      <div ref={printer.componentRef} className="calendar">
+    <Box
+      overflow="scroll"
+      mt={4}
+      p={4}
+      backgroundColor="white"
+      borderRadius={6}
+    >
+      <div
+        ref={printer.componentRef}
+        className={classNames("calendar", { [size]: size })}
+      >
         {parsedMonths.map((month) => {
           return (
             <div className="month" key={month.key}>
@@ -51,40 +70,35 @@ const CalendarPreview = () => {
                 <div className="month__name" style={styles.monthName}>
                   {month.name[language]} {YEAR}
                 </div>
-                <div className="month__notes">
-                  {enabledEspecialDays ? (
-                    <>
-                      {month.dates?.map((date, index) => (
-                        <div
-                          className="month__notes__day"
-                          key={`date_${index}`}
-                        >
-                          <span style={{ color: primaryColor }}>
-                            {typeof date.number === "number"
-                              ? date.number
-                              : `${date.number[0]} al ${date.number[1]}`}
-                            :{" "}
-                          </span>
-                          {date.name}
-                        </div>
-                      ))}
-                    </>
-                  ) : (
-                    <>
-                      <span className="label" style={styles.monthNotes.label}>
-                        {TRANSLATIONS[language].notes}:
-                      </span>
-                      <span
-                        className="line line-1"
-                        style={styles.monthNotes.line}
-                      ></span>
-                      <span
-                        className="line"
-                        style={styles.monthNotes.line}
-                      ></span>
-                    </>
-                  )}
-                </div>
+                {enabledEspecialDays ? (
+                  <div className="month__notes">
+                    {month.dates?.map((date, index) => (
+                      <div className="month__notes__day" key={`date_${index}`}>
+                        <span style={{ color: primaryColor }}>
+                          {typeof date.number === "number"
+                            ? date.number
+                            : `${date.number[0]} al ${date.number[1]}`}
+                          :{" "}
+                        </span>
+                        {date.name}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="month__notes">
+                    <span className="label" style={styles.monthNotes.label}>
+                      {TRANSLATIONS[language].notes}:
+                    </span>
+                    <span
+                      className="line line-1"
+                      style={styles.monthNotes.line}
+                    ></span>
+                    <span
+                      className="line"
+                      style={styles.monthNotes.line}
+                    ></span>
+                  </div>
+                )}
               </div>
               <div className="month__week">
                 {parsedDays.map((day, index) => (
@@ -107,6 +121,14 @@ const CalendarPreview = () => {
             </div>
           );
         })}
+        {enabledEspecialDays && (
+          <div className="notes">
+            <span className="notes__line">
+              <span style={{ color: secondaryColor }}>Notas:</span>
+            </span>
+            {renderLines()}
+          </div>
+        )}
       </div>
     </Box>
   );

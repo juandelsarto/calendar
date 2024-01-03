@@ -57,6 +57,8 @@ export enum SIZES {
   A5 = "a5",
   OFICIO = "oficio",
   CARTA = "carta",
+  AGENDA = "agenda",
+  MEDIUM = "medium",
 }
 
 export enum BACKGROUND {

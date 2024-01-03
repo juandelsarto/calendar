@@ -48,11 +48,13 @@ export const STARTING_DAY_OPTIONS = [
 ];
 
 export const SIZE_OPTIONS = [
-  { value: SIZES.A3, label: "A3" },
+  // { value: SIZES.A3, label: "A3" },
   { value: SIZES.A4, label: "A4" },
-  { value: SIZES.A5, label: "A5" },
-  { value: SIZES.OFICIO, label: "Oficio" },
-  { value: SIZES.CARTA, label: "Carta" },
+  // { value: SIZES.A5, label: "A5" },
+  // { value: SIZES.OFICIO, label: "Oficio" },
+  // { value: SIZES.CARTA, label: "Carta" },
+  { value: SIZES.MEDIUM, label: "Medium" },
+  { value: SIZES.AGENDA, label: "Agenda" },
 ];
 
 export const BACKGROUND_OPTIONS = [

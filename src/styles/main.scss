@@ -3,7 +3,7 @@
 
 .calendar {
   background: #fff;
-  overflow: 'scroll';
+  overflow: "scroll";
   font-family: "Open Sans", sans-serif;
 
   .month {
@@ -100,6 +100,7 @@
           justify-content: space-between;
           background-position: bottom right;
           background-repeat: no-repeat;
+          background-size: contain;
           .day {
             &__number,
             &__cumple {
@@ -140,198 +141,89 @@
       }
     }
   }
-  // &.gaby {
-  //   .month {
-  //     &__name {
-  //       color: $red-gaby;
-  //     }
-  //     &__notes {
-  //       span {
-  //         &.label {
-  //           color: $red-gaby;
-  //         }
-  //         &.line {
-  //           border-color: $blue-barcelona;
-  //         }
-  //       }
-  //     }
-  //     &__week {
-  //       &__day {
-  //         color: $red-gaby;
-  //       }
-  //     }
-  //     &__grid {
-  //       border-color: $blue-barcelona;
-  //       .day {
-  //         border-color: $blue-barcelona;
-  //         position: relative;
-  //         &:not(.disabled) {
-  //           &:before {
-  //             content: "$";
-  //             font-size: 16px;
-  //             width: 100%;
-  //             color: rgba($blue-barcelona, 0.7);
-  //             border-style: dashed;
-  //             border-width: 0 0 3px 0;
-  //             border-color: rgba($blue-barcelona, 0.7);
-  //             display: block;
-  //             position: absolute;
-  //             height: 30px;
-  //             margin: 0 -8px;
-  //             text-align: right;
-  //           }
-  //         }
-  //         &.feriado {
-  //           background-color: rgba($red-gaby, 0.5);
-  //           .day__number {
-  //             color: $blue-barcelona;
-  //           }
-  //         }
-  //         &.disabled {
-  //           background-color: $grey;
-  //         }
-  //         &__number {
-  //           color: darken($red-gaby, 10%);
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-  // &.fita {
-  //   .month {
-  //     &__name {
-  //       color: $grey-fita;
-  //     }
-  //     &__notes {
-  //       span {
-  //         &.label {
-  //           color: $grey-fita;
-  //         }
-  //         &.line {
-  //           border-color: $pink-fita;
-  //         }
-  //       }
-  //     }
-  //     &__week {
-  //       &__day {
-  //         color: $grey-fita;
-  //       }
-  //     }
-  //     &__grid {
-  //       border-color: $pink-fita;
-  //       .day {
-  //         border-color: $pink-fita;
-  //         position: relative;
-  //         &.cumple {
-  //           background-color: rgba($pink-fita, 0.3);
-  //           .day {
-  //             &__number,
-  //             &__cumple {
-  //               color: $pink-fita;
-  //             }
-  //           }
-  //         }
-  //         &.feriado {
-  //           background-color: $pink-fita;
-  //           .day__number {
-  //             color: white;
-  //           }
-  //         }
-  //         &.disabled {
-  //           background-color: $grey;
-  //         }
-  //         &__number {
-  //           color: $grey-fita;
-  //         }
-  //       }
-  //     }
-  //   }
-  //   &.custom {
-  //     .month {
-  //       &__grid {
-  //         height: calc(100% - 95px);
-  //         .day {
-  //           &__cumple,
-  //           &__number {
-  //             font-size: 9px;
-  //           }
-  //         }
-  //       }
-  //       &__week {
-  //         &__day {
-  //           font-size: 11px;
-  //         }
-  //       }
-  //       &__name {
-  //         font-size: 24px;
-  //       }
-  //       &__notes {
-  //         span {
-  //           &.label {
-  //             font-size: 16px;
-  //           }
-  //           &.line {
-  //             &.line-1 {
-  //               width: calc(100% - 55px);
-  //               margin-top: 18px;
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-  &.grisel {
+  &.medium {
+    .month {
+      &__grid {
+        height: calc(100% - 95px);
+        .day {
+          padding: 3pt;
+          &.cumple {
+            background-size: 70%;
+            .day {
+              &__number,
+              &__cumple {
+                font-size: 9pt;
+              }
+            }
+          }
+          &__number {
+            font-weight: 700;
+            margin-left: auto;
+            font-size: 9pt;
+          }
+          &.overflow-day {
+            margin-top: -32px;
+            padding-bottom: 16px;
+          }
+        }
+      }
+      &__week {
+        &__day {
+          font-size: 11px;
+        }
+      }
+      &__name {
+        font-size: 24px;
+      }
+      &__notes {
+        span {
+          &.label {
+            font-size: 16px;
+          }
+          &.line {
+            &.line-1 {
+              width: calc(100% - 55px);
+              margin-top: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.agenda {
     .month {
       &__name {
-        color: $bordo;
         flex-basis: auto;
         flex-grow: 0;
         flex-shrink: 0;
         width: auto;
         max-width: none;
       }
-      &__week {
+      &__notes {
         &__day {
-          color: $dark;
+          font-size: 8pt;
         }
       }
       &__grid {
-        border-color: $dark;
+        height: calc(100% - 86px);
         .day {
-          border-color: $dark;
-          position: relative;
           &.cumple {
-            background-color: rgba($pink-fita, 0.3);
+            background-size: 70%;
             .day {
               &__number,
               &__cumple {
-                color: $pink-fita;
-                font-size: 10pt;
+                font-size: 9pt;
               }
             }
           }
-          &.clase {
-            background-color: rgba($red-gaby, 0.7);
-          }
-          &.feriado {
-            background-color: rgba($bordo, 0.3);
-            .day__number {
-              color: $dark;
-            }
-          }
-          &.disabled {
-            background-color: $grey;
-          }
           &__number {
-            color: $dark;
             font-weight: 700;
             margin-left: auto;
-            font-size: 10pt;
+            font-size: 9pt;
           }
           &.overflow-day {
-            margin-top: -46px;
-            padding-bottom: 35px;
+            margin-top: -32px;
+            padding-bottom: 21px;
           }
         }
       }
@@ -343,7 +235,6 @@
         span {
           border-bottom: 1px solid white;
           padding-right: 5px;
-          color: $bordo;
         }
         border-bottom: 1px solid rgba($dark, 0.3);
         width: 100%;
@@ -351,150 +242,7 @@
         margin-bottom: 5.5mm;
       }
     }
-    &:not(.custom) {
-      .month {
-        &__notes {
-          &__day {
-            font-size: 16px;
-          }
-        }
-        &__week {
-          &__day {
-            font-size: 22px;
-          }
-        }
-        &__grid {
-          .day {
-            &__number,
-            &__cumple {
-              font-size: 20px;
-            }
-          }
-        }
-      }
-    }
-    &.custom {
-      .month {
-        &__grid {
-          height: calc(100% - 86px);
-        }
-      }
-    }
   }
-  // &.flor {
-  //   .month {
-  //     &__name {
-  //       color: $pink-flor;
-  //     }
-  //     &__notes {
-  //       span {
-  //         &.label {
-  //           color: $pink-flor;
-  //         }
-  //         &.line {
-  //           border-color: $purple-flor;
-  //         }
-  //       }
-  //     }
-  //     &__week {
-  //       &__day {
-  //         color: $pink-flor;
-  //       }
-  //     }
-  //     &__grid {
-  //       border-color: $purple-flor;
-  //       .day {
-  //         border-color: $purple-flor;
-  //         position: relative;
-  //         &.cumple {
-  //           background-image: url("./bgUnicorn.png");
-  //           background-color: rgba($pink-flor, 0.3);
-  //           .day {
-  //             &__number,
-  //             &__cumple {
-  //               color: $purple-flor;
-  //             }
-  //           }
-  //         }
-  //         &.love {
-  //           background-image: url("./bgHearts.png");
-  //           background-color: rgba($red, 0.4);
-  //           .day {
-  //             &__number,
-  //             &__cumple {
-  //               color: white;
-  //             }
-  //           }
-  //         }
-  //         &.feriado {
-  //           background-color: rgba($purple-flor, 0.5);
-  //           .day__number {
-  //             color: white;
-  //           }
-  //         }
-  //         &.disabled {
-  //           background-color: $grey;
-  //         }
-  //         &__number {
-  //           color: $pink-flor;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-  // &.casa {
-  //   .month {
-  //     &__name {
-  //       color: $red-barcelona;
-  //     }
-  //     &__notes {
-  //       span {
-  //         &.label {
-  //           color: $red-barcelona;
-  //         }
-  //         &.line {
-  //           border-color: $blue-barcelona;
-  //         }
-  //       }
-  //     }
-  //     &__week {
-  //       &__day {
-  //         color: $red-barcelona;
-  //       }
-  //     }
-  //     &__grid {
-  //       border-color: $blue-barcelona;
-  //       .day {
-  //         border-color: $blue-barcelona;
-  //         position: relative;
-  //         &.cumple {
-  //           background-color: rgba($yellow-barcelona, 0.3);
-  //           .day {
-  //             &__number,
-  //             &__cumple {
-  //               color: $blue-barcelona;
-  //             }
-  //           }
-  //         }
-  //         &.feriado {
-  //           background-color: rgba($red-barcelona, 0.5);
-  //           .day {
-  //             &__number,
-  //             &__cumple {
-  //               color: white;
-  //             }
-  //           }
-  //         }
-  //         &.disabled {
-  //           background-color: $grey;
-  //         }
-  //         &__number {
-  //           color: $red-barcelona;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 @page {
@@ -506,7 +254,7 @@
     margin: 12mm 5mm 10mm 5mm;
     page-break-after: always;
   }
-  .grisel.custom {
+  .agenda {
     .month,
     .notes {
       margin: 28.5mm 41mm;
@@ -521,7 +269,7 @@
       padding: 3mm 5mm 17mm 3mm;
     }
   }
-  .fita.custom {
+  .medium {
     .month {
       width: 134mm;
       height: 105mm;

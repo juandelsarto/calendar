@@ -17,6 +17,7 @@ import {
   BACKGROUND_OPTIONS,
   LANGUAGE_OPTIONS,
   OWNER_OPTIONS,
+  SIZE_OPTIONS,
   STARTING_DAY_OPTIONS,
 } from "./Options";
 import { CalendarContext } from "../../context/useCalendar";
@@ -93,7 +94,7 @@ const Content = () => {
             </FormControl>
           </Box>
           {/* TODO */}
-          {/* <Box my={4}>
+          <Box my={4}>
             <FormControl>
               <FormLabel>Elegir el tamaño de hoja:</FormLabel>
               <Selector
@@ -103,7 +104,7 @@ const Content = () => {
                 onChange={(value) => dispatch({ [OPTIONS.SIZE]: value })}
               />
             </FormControl>
-          </Box> */}
+          </Box>
           <Box my={4}>
             <FormControl>
               <FormLabel>Elegir el fondo para los cumpleaños:</FormLabel>

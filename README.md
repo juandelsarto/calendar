@@ -34,4 +34,4 @@
 - [x] Ajustar UI
   - [x] revisar Customizer
   - [ ] agregar Drawer para edición de fechas
-  - [ ] backgrounds y spacing del CalendarPreview
+  - [x] backgrounds y spacing del CalendarPreview

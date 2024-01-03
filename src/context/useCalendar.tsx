@@ -41,7 +41,6 @@ export const CalendarProvider = ({
   const [state, dispatch] = useReducer(reducer, initialState, initializer);
 
   useEffect(() => {
-    console.log(state);
     localStorage.setItem("calendarSettings", JSON.stringify(state));
   }, [state]);
 

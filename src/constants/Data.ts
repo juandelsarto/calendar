@@ -240,7 +240,7 @@ export const OPTIONS = {
           name: "Día del niño",
         },
         {
-          number: 25,
+          number: 23,
           name: "Día del auxiliar",
         },
         {
@@ -298,7 +298,7 @@ export const OPTIONS = {
           name: "Día del Profesor de Educación Física",
         },
         {
-          number: 15,
+          number: 20,
           name: "Día de la familia y de las cooperadoras escolares",
         },
       ],
@@ -367,14 +367,14 @@ export const OPTIONS = {
         },
       ],
     },
-    [MONTHS.APRIL]: {
-      cumples: [
-        {
-          number: 29,
-          name: "Veroh",
-        },
-      ],
-    },
+    // [MONTHS.APRIL]: {
+    //   cumples: [
+    //     {
+    //       number: 29,
+    //       name: "Veroh",
+    //     },
+    //   ],
+    // },
     [MONTHS.JUNE]: {
       cumples: [
         {
@@ -401,10 +401,11 @@ export const OPTIONS = {
     },
     [MONTHS.NOVEMBER]: {
       cumples: [
-        {
-          number: 25,
-          name: "Marta",
-        },
+        { number: 2, name: "Se casan Flor y Juan!!", love: true },
+        // {
+        //   number: 25,
+        //   name: "Marta",
+        // },
       ],
     },
     [MONTHS.DECEMBER]: {
