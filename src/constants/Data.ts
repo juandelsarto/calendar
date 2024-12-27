@@ -110,7 +110,7 @@ export const MONTHS_LIST:IMonth[] = [
 ];
 
 
-export const OPTIONS:ICalendar = {
+export const CALENDAR:ICalendar = {
   [OWNERS.FAMILIA]: {
     [MONTHS.JANUARY]: {
       cumples: [

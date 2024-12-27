@@ -6,7 +6,7 @@ import {
   OPTIONS,
   OWNERS,
   SIZES,
-} from '../constants/Enums';
+} from '../constants';
 import {  useDisclosure } from '@chakra-ui/react';
 import { useReactToPrint } from 'react-to-print';
 

@@ -2,7 +2,7 @@ import { useContext, useMemo } from 'react';
 import { Box } from '@chakra-ui/react';
 import { DAYS, MONDAY_FIRST, SUNDAY_FIRST } from '../../constants/Enums';
 import { TRANSLATIONS } from '../../constants/Translations';
-import { MONTHS_LIST, OPTIONS, YEAR } from '../../constants/Data';
+import { MONTHS_LIST, CALENDAR, YEAR } from '../../constants';
 import { CalendarContext } from '../../context/useCalendar';
 import Month from './components/Month';
 import { getStyles } from './CalendarPreview.styles';
@@ -35,7 +35,7 @@ const CalendarPreview = () => {
   const parsedMonths = useMemo(
     () =>
       MONTHS_LIST.map((month, index) => {
-        const especialDates = OPTIONS[owner]?.[month.key]?.dates || null;
+        const especialDates = CALENDAR[owner]?.[month.key]?.dates || null;
 
         return {
           ...month,
@@ -113,7 +113,7 @@ const CalendarPreview = () => {
               <div className="month__grid" style={styles.monthGrid}>
                 <Month
                   month={month}
-                  optionsFromMonth={OPTIONS[owner]?.[month.key]}
+                  optionsFromMonth={CALENDAR[owner]?.[month.key]}
                   startingDay={startingDay}
                 />
               </div>

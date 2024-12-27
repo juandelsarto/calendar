@@ -28,6 +28,6 @@
       "@constants": ["./src/constants"],
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

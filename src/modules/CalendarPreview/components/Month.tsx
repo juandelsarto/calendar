@@ -1,7 +1,6 @@
 import { getDayList } from '../CalendarPreview.hooks';
 import Day from './Day';
-import { DAYS } from '../../../constants/Enums';
-import { IMonthData, IParsedMonth } from '@/constants/Data';
+import { DAYS, IMonthData, IParsedMonth } from '../../../constants';
 
 const Month:React.FC<{month: IParsedMonth, optionsFromMonth?:IMonthData, startingDay: DAYS}> = ({
   month,
