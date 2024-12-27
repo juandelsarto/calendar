@@ -1,8 +1,8 @@
 {
   "name": "vite-calendar",
-  "private": true,
   "version": "1.0.0",
-  "pricate": true,
+  "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -28,10 +28,8 @@
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.55.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
+    "eslint": "^8",
+    "eslint-config-universe": "^12.0.0",
     "sass": "^1.69.5",
     "husky": "8.0.3",
     "lint-staged": "14.0.1",
