@@ -31,7 +31,7 @@ const Header = () => {
         >
           Vista previa:
         </Heading>
-        <Button onClick={printer.handlePrint} content={printer.componentRef}>
+        <Button onClick={printer.handlePrint}>
           Imprimir
         </Button>
         <Button

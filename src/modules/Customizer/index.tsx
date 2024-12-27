@@ -21,7 +21,6 @@ const Customizer = () => {
       placement="right"
       isOpen={drawer.isOpen}
       onClose={drawer.onClose}
-      finalFocusRef={drawer.btnRef}
     >
       <DrawerOverlay />
       <DrawerContent>

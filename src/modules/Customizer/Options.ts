@@ -1,4 +1,4 @@
-import Cumple from '../../assets/bgCumple.png';
+import Cumple from '../../assets/bgCumple.jpg';
 import Ballons from '../../assets/bgBallons.png';
 import Unicorn from '../../assets/bgUnicorn.png';
 import Cats from '../../assets/bgCats.png';
@@ -35,6 +35,10 @@ export const OWNER_OPTIONS = [
     value: OWNERS.FLOR,
     label: 'Flor',
   },
+  {
+    value: OWNERS.VIVI,
+    label: 'Abu Vivi',
+  }
 ];
 
 export const LANGUAGE_OPTIONS = [

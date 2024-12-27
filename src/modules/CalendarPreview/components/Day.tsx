@@ -5,16 +5,16 @@ import { getStyles } from '../CalendarPreview.styles';
 import { getContrastedFontColor } from '../CalendarPreview.hooks';
 
 const Day = ({
-  feriado,
-  cumple,
-  love,
-  clase,
+  feriado = false,
+  cumple = null,
+  love = null,
+  clase = false,
   number,
   index,
   defaultInit,
-  overflow,
-  disabled,
-}) => {
+  overflow = false,
+  disabled = false,
+}:{feriado?: boolean, cumple?: string | null, love?: string | null, clase?: boolean, number: number,  index: number, defaultInit: boolean, overflow?: boolean, disabled?: boolean; firstDay?: number, positionInGrid: number}) => {
   const {
     state: {
       enabledEspecialDays,
@@ -27,16 +27,20 @@ const Day = ({
     },
   } = useContext(CalendarContext);
 
-  const styles = getStyles({ primaryColor, secondaryColor, thirdColor });
+  const styles = getStyles({ primaryColor, secondaryColor });
 
   const fixPosition = defaultInit ? 1 : 0;
   const overflowLimit = defaultInit ? 34 : 35;
   const positionInGrid = index - fixPosition;
 
+  const showFeriado = enabledFeriados && feriado;
+  const showBirthdays = enabledBirthdays && cumple;
+  const showEspecialDays = enabledEspecialDays && clase;
+
   const classNames = cn('day', {
-    feriado: enabledFeriados && feriado,
-    cumple: enabledBirthdays && cumple,
-    clase: enabledEspecialDays && clase,
+    feriado: showFeriado,
+    cumple: showBirthdays,
+    clase: showEspecialDays,
     love: love,
     disabled: disabled,
     'overflow-day': overflow,
@@ -47,13 +51,13 @@ const Day = ({
     ...(overflow
       ? { left: `calc(100% / 7 * ${positionInGrid - overflowLimit})` }
       : {}),
-    ...(enabledFeriados && feriado
+    ...(showFeriado
       ? { color: getContrastedFontColor(secondaryColor) }
       : {}),
-    ...(enabledEspecialDays && clase
+    ...(showEspecialDays
       ? { color: getContrastedFontColor(primaryColor) }
       : {}),
-    ...(enabledBirthdays && cumple
+    ...(showBirthdays
       ? !love
         ? {
             color: secondaryColor,
@@ -64,23 +68,23 @@ const Day = ({
   };
 
   const bgDayStyles = {
-    backgroundColor: clase
+    backgroundColor: showEspecialDays
       ? primaryColor
-      : feriado
+      : showFeriado
       ? secondaryColor
       : thirdColor,
   };
 
   return (
     <div className={classNames} style={dayStyles}>
-      {enabledBirthdays && cumple && (
+      {showBirthdays && (
         <span className="day__cumple">{cumple}</span>
       )}
       <span className="day__number" style={dayStyles}>
-        {enabledEspecialDays && clase && '* '}
+        {showEspecialDays && '* '}
         {number}
       </span>
-      {!love && (feriado || cumple || clase) && (
+      {!love && (showFeriado || showBirthdays || showEspecialDays) && (
         <div className="day__bg" style={bgDayStyles}></div>
       )}
     </div>

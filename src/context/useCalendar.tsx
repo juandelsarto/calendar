@@ -7,15 +7,37 @@ import {
   OWNERS,
   SIZES,
 } from '../constants/Enums';
-import { useDisclosure } from '@chakra-ui/react';
+import {  useDisclosure } from '@chakra-ui/react';
 import { useReactToPrint } from 'react-to-print';
 
-export const CalendarContext = createContext(null);
+interface IState {
+  [OPTIONS.LANGUAGE]: LANGUAGES,
+  [OPTIONS.STARTING_DAY]: DAYS,
+  [OPTIONS.SIZE]: SIZES,
+  [OPTIONS.BACKGROUND]: BACKGROUND,
+  [OPTIONS.ENABLED_FERIADOS]: boolean,
+  [OPTIONS.ENABLED_BIRTHDAYS]: boolean,
+  [OPTIONS.ENABLED_ESPECIAL_DAYS]: boolean,
+  [OPTIONS.PRIMARY_COLOR]: string,
+  [OPTIONS.SECONDARY_COLOR]: string,
+  [OPTIONS.THIRD_COLOR]: string,
+  [OPTIONS.OWNER]: OWNERS,
+}
 
-export const initializer = (initialValue = initialState) =>
-  JSON.parse(localStorage.getItem('calendarSettings')) || initialValue;
-
-const initialState = {
+interface ICalendarContext {
+  state: IState,
+  dispatch: React.Dispatch<any>,
+  drawer: {
+    isOpen: boolean,
+    onOpen: () => void,
+    onClose: () => void,
+    drawerBtnRef: React.MutableRefObject<HTMLButtonElement | null> | null,
+  }, printer:{
+    componentRef: React.MutableRefObject<HTMLDivElement | null> | null,
+    handlePrint: () => void,
+  }
+}
+const initialState:IState = {
   [OPTIONS.LANGUAGE]: LANGUAGES.SPANISH,
   [OPTIONS.STARTING_DAY]: DAYS.MONDAY,
   [OPTIONS.SIZE]: SIZES.A4,
@@ -28,6 +50,26 @@ const initialState = {
   [OPTIONS.THIRD_COLOR]: '#88d7cd',
   [OPTIONS.OWNER]: OWNERS.FAMILIA,
 };
+
+const initialCalendarContext:ICalendarContext = {
+  state: initialState,
+  dispatch: () => {},
+  drawer: {
+    isOpen: false,
+    onOpen: () => null,
+    onClose: () => null,
+    drawerBtnRef: null,
+  },
+  printer: {
+    componentRef: null,
+    handlePrint: () => null,
+  }}
+
+export const CalendarContext = createContext(initialCalendarContext);
+
+export const initializer = (initialValue = initialState) =>
+  JSON.parse(localStorage.getItem('calendarSettings') ?? '') || initialValue;
+
 
 function reducer(state: any, action: () => void) {
   return { ...state, ...action };
@@ -45,11 +87,11 @@ export const CalendarProvider = ({
   }, [state]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const drawerBtnRef = useRef();
+  const drawerBtnRef = useRef<HTMLButtonElement | null>(null);
 
-  const componentRef = useRef();
+  const componentRef = useRef<HTMLDivElement | null>(null);
   const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
+    content: () => componentRef.current ?? null,
   });
 
   const memoizedValue = useMemo(

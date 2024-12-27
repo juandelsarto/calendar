@@ -1,8 +1,43 @@
 import { LANGUAGES, MONTHS, OWNERS } from './Enums';
 
-export const YEAR = 2024;
+export const YEAR:number = 2025;
 
-export const MONTHS_LIST = [
+
+export interface IEvent {
+  number: number | number[];
+  name: string;
+  love?: boolean;
+}
+
+export interface IMonthData {
+  cumples?: IEvent[];
+  dates?: IEvent[];
+}
+
+export interface ICalendar {
+  [owner:string]: {
+    [key in MONTHS]?: IMonthData;
+  };
+}
+
+interface MonthName {
+  [name: string]: string
+}
+
+export interface IMonth {
+  key: MONTHS;
+  name: MonthName;
+  feriados: number[];
+};
+
+export interface IParsedMonth extends IMonth {
+  firstDay: number;
+  days: number;
+  prevMonth: number;
+  dates?: IEvent[];
+}
+
+export const MONTHS_LIST:IMonth[] = [
   {
     key: MONTHS.JANUARY,
     name: {
@@ -14,7 +49,7 @@ export const MONTHS_LIST = [
   {
     key: MONTHS.FEBRUARY,
     name: { [LANGUAGES.SPANISH]: 'Febrero', [LANGUAGES.ENGLISH]: 'February' },
-    feriados: [12, 13],
+    feriados: []
   },
   {
     key: MONTHS.MARCH,
@@ -22,22 +57,22 @@ export const MONTHS_LIST = [
       [LANGUAGES.SPANISH]: 'Marzo',
       [LANGUAGES.ENGLISH]: 'March',
     },
-    feriados: [24, 28, 29],
+    feriados: [3, 4, 24],
   },
   {
     key: MONTHS.APRIL,
     name: { [LANGUAGES.SPANISH]: 'Abril', [LANGUAGES.ENGLISH]: 'April' },
-    feriados: [1, 2],
+    feriados: [2, 18],
   },
   {
     key: MONTHS.MAY,
     name: { [LANGUAGES.SPANISH]: 'Mayo', [LANGUAGES.ENGLISH]: 'May' },
-    feriados: [1, 25],
+    feriados: [1, 2, 25],
   },
   {
     key: MONTHS.JUNE,
     name: { [LANGUAGES.SPANISH]: 'Junio', [LANGUAGES.ENGLISH]: 'June' },
-    feriados: [17, 20, 21],
+    feriados: [16, 20],
   },
   {
     key: MONTHS.JULY,
@@ -47,7 +82,7 @@ export const MONTHS_LIST = [
   {
     key: MONTHS.AUGUST,
     name: { [LANGUAGES.SPANISH]: 'Agosto', [LANGUAGES.ENGLISH]: 'August' },
-    feriados: [17],
+    feriados: [15,17],
   },
   {
     key: MONTHS.SEPTEMBER,
@@ -60,12 +95,12 @@ export const MONTHS_LIST = [
   {
     key: MONTHS.OCTOBER,
     name: { [LANGUAGES.SPANISH]: 'Octubre', [LANGUAGES.ENGLISH]: 'October' },
-    feriados: [11, 12],
+    feriados: [12],
   },
   {
     key: MONTHS.NOVEMBER,
     name: { [LANGUAGES.SPANISH]: 'Noviembre', [LANGUAGES.ENGLISH]: 'November' },
-    feriados: [18],
+    feriados: [21, 24],
   },
   {
     key: MONTHS.DECEMBER,
@@ -74,7 +109,8 @@ export const MONTHS_LIST = [
   },
 ];
 
-export const OPTIONS = {
+
+export const OPTIONS:ICalendar = {
   [OWNERS.FAMILIA]: {
     [MONTHS.JANUARY]: {
       cumples: [
@@ -236,7 +272,7 @@ export const OPTIONS = {
           name: 'Día la escuela pública digna',
         },
         {
-          number: 20,
+          number: 18,
           name: 'Día del niño',
         },
         {
@@ -627,6 +663,61 @@ export const OPTIONS = {
           number: 26,
           name: 'Eli',
         },
+      ],
+    },
+  },
+  [OWNERS.VIVI]: {
+    [MONTHS.JANUARY]: {
+      cumples: [
+        {
+          number: 13,
+          name: 'Flor',
+        },
+      ],
+    },
+    [MONTHS.FEBRUARY]: {
+      cumples: [
+        {
+          number: 6,
+          name: 'Mi cumple!',
+        },
+      ],
+    },
+    [MONTHS.MARCH]: {
+      cumples: [
+        {
+          number: 21,
+          name: 'Fabio',
+        },
+      ],
+    },
+    [MONTHS.JULY]: {
+      cumples: [
+        {
+          number: 10,
+          name: 'Juan',
+        },
+        {
+          number: 16,
+          name: 'Leo',
+        },
+      ],
+    },
+    [MONTHS.SEPTEMBER]: {
+      cumples: [
+        {
+          number: 3,
+          name: 'Lucia',
+        },
+        {
+          number: 20,
+          name: 'Juli',
+        },
+      ],
+    },
+    [MONTHS.NOVEMBER]: {
+      cumples: [
+        { number: 2, name: 'Se casan Flor y Juan!!!', love: true },
       ],
     },
   },

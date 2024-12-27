@@ -1,4 +1,6 @@
-export const getParsedSpecialDates = (dates = []) => {
+import { IEvent } from "@/constants/Data";
+
+export const getParsedSpecialDates = (dates:{number: number[] | number}[] = []) => {
   const parsedDates = [];
   for (const date of dates) {
     if (typeof date.number === 'number') {
@@ -14,12 +16,20 @@ export const getParsedSpecialDates = (dates = []) => {
 
 export const getDayList = ({
   dates,
-  days,
-  firstDay,
-  feriados,
-  cumples,
+  days = 30,
+  firstDay = 0,
+  feriados = [],
+  cumples = [],
   defaultInit,
-  prevMonth,
+  prevMonth = 1,
+}: {
+  dates?: IEvent[] | undefined,
+  days?: number,
+  firstDay?: number,
+  feriados?: number[],
+  cumples?: IEvent[],
+  defaultInit?:boolean,
+  prevMonth?: number,
 }) => {
   const defaultStart = defaultInit ? 0 : 1;
   const overflowLimit = defaultInit ? 34 : 35;
@@ -28,7 +38,7 @@ export const getDayList = ({
   const positionsLength = minPositions < 35 ? 35 : minPositions;
 
   const dayList = [];
-  const parsedDates = dates?.length > 0 ? getParsedSpecialDates(dates) : [];
+  const parsedDates = dates && dates.length > 0 ? getParsedSpecialDates(dates) : [];
 
   let day = 1;
   for (
@@ -70,8 +80,10 @@ export const getDayList = ({
   return dayList;
 };
 
-export const getContrastedFontColor = (color) => {
+export const getContrastedFontColor = (color:string) => {
   const arrColor = color.replace('#', '').match(/.{1,2}/g);
+
+  if (!arrColor) return '#ffffff';
 
   const redCode = parseInt(arrColor[0], 16) * 0.299;
   const greenCode = parseInt(arrColor[1], 16) * 0.587;

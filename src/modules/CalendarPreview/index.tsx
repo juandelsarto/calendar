@@ -26,7 +26,6 @@ const CalendarPreview = () => {
       enabledEspecialDays,
       primaryColor,
       secondaryColor,
-      thirdColor,
     },
     printer,
   } = useContext(CalendarContext);
@@ -49,7 +48,7 @@ const CalendarPreview = () => {
     [MONTHS_LIST],
   );
 
-  const styles = getStyles({ primaryColor, secondaryColor, thirdColor });
+  const styles = getStyles({ primaryColor, secondaryColor });
 
   return (
     <Box

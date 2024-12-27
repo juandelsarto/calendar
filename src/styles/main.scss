@@ -100,7 +100,7 @@
           justify-content: space-between;
           background-position: bottom right;
           background-repeat: no-repeat;
-          background-size: contain;
+          background-size: cover;
           .day {
             &__number,
             &__cumple {
@@ -258,8 +258,8 @@
     .month,
     .notes {
       margin: 28.5mm 41mm;
-      width: 205mm;
-      height: 133mm;
+      width: 210mm;
+      height: 150mm;
     }
     .month {
       border: 1px solid rgba($dark, 0.7);
