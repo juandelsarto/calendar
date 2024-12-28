@@ -9,6 +9,7 @@ import {
 } from '../constants';
 import { useDisclosure } from '@chakra-ui/react';
 import { useReactToPrint } from 'react-to-print';
+import Cumple from '../assets/bgCumple.jpg';
 
 interface IState {
   [OPTIONS.LANGUAGE]: LANGUAGES;
@@ -42,7 +43,7 @@ const initialState: IState = {
   [OPTIONS.LANGUAGE]: LANGUAGES.SPANISH,
   [OPTIONS.STARTING_DAY]: DAYS.MONDAY,
   [OPTIONS.SIZE]: SIZES.A4,
-  [OPTIONS.BACKGROUND]: BACKGROUND.BALLONS,
+  [OPTIONS.BACKGROUND]: Cumple,
   [OPTIONS.ENABLED_FERIADOS]: true,
   [OPTIONS.ENABLED_BIRTHDAYS]: true,
   [OPTIONS.ENABLED_ESPECIAL_DAYS]: false,

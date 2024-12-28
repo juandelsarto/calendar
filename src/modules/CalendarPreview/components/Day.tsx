@@ -71,7 +71,7 @@ const Day = ({
       ? !love
         ? {
             color: secondaryColor,
-            backgroundImage: `url(./src/assets/${background})`,
+            backgroundImage: `url(${background})`,
           }
         : { color: getContrastedFontColor(secondaryColor) }
       : {}),
