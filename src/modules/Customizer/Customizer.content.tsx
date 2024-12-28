@@ -76,7 +76,9 @@ const Content = () => {
                 name={OPTIONS.LANGUAGE}
                 defaultValue={language}
                 options={LANGUAGE_OPTIONS}
-                onChange={(value:string) => dispatch({ [OPTIONS.LANGUAGE]: value })}
+                onChange={(value: string) =>
+                  dispatch({ [OPTIONS.LANGUAGE]: value })
+                }
               />
             </FormControl>
           </Box>
@@ -87,7 +89,7 @@ const Content = () => {
                 name={OPTIONS.STARTING_DAY}
                 defaultValue={startingDay}
                 options={STARTING_DAY_OPTIONS}
-                onChange={(value:string) =>
+                onChange={(value: string) =>
                   dispatch({ [OPTIONS.STARTING_DAY]: value })
                 }
               />
@@ -101,7 +103,9 @@ const Content = () => {
                 name={OPTIONS.SIZE}
                 defaultValue={size}
                 options={SIZE_OPTIONS}
-                onChange={(value:string) => dispatch({ [OPTIONS.SIZE]: value })}
+                onChange={(value: string) =>
+                  dispatch({ [OPTIONS.SIZE]: value })
+                }
               />
             </FormControl>
           </Box>
@@ -112,7 +116,9 @@ const Content = () => {
                 name={OPTIONS.BACKGROUND}
                 defaultValue={background}
                 options={BACKGROUND_OPTIONS}
-                onChange={(value:string) => dispatch({ [OPTIONS.BACKGROUND]: value })}
+                onChange={(value: string) =>
+                  dispatch({ [OPTIONS.BACKGROUND]: value })
+                }
               />
             </FormControl>
           </Box>

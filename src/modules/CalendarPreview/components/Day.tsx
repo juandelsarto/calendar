@@ -14,7 +14,19 @@ const Day = ({
   defaultInit,
   overflow = false,
   disabled = false,
-}:{feriado?: boolean, cumple?: string | null, love?: string | null, clase?: boolean, number: number,  index: number, defaultInit: boolean, overflow?: boolean, disabled?: boolean; firstDay?: number, positionInGrid: number}) => {
+}: {
+  feriado?: boolean;
+  cumple?: string | null;
+  love?: string | null;
+  clase?: boolean;
+  number: number;
+  index: number;
+  defaultInit: boolean;
+  overflow?: boolean;
+  disabled?: boolean;
+  firstDay?: number;
+  positionInGrid: number;
+}) => {
   const {
     state: {
       enabledEspecialDays,
@@ -51,9 +63,7 @@ const Day = ({
     ...(overflow
       ? { left: `calc(100% / 7 * ${positionInGrid - overflowLimit})` }
       : {}),
-    ...(showFeriado
-      ? { color: getContrastedFontColor(secondaryColor) }
-      : {}),
+    ...(showFeriado ? { color: getContrastedFontColor(secondaryColor) } : {}),
     ...(showEspecialDays
       ? { color: getContrastedFontColor(primaryColor) }
       : {}),
@@ -77,9 +87,7 @@ const Day = ({
 
   return (
     <div className={classNames} style={dayStyles}>
-      {showBirthdays && (
-        <span className="day__cumple">{cumple}</span>
-      )}
+      {showBirthdays && <span className="day__cumple">{cumple}</span>}
       <span className="day__number" style={dayStyles}>
         {showEspecialDays && '* '}
         {number}

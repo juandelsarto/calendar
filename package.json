@@ -10,8 +10,8 @@
     "preview": "vite preview",
     "check:lint": "echo \"\\033[33mRunning eslint check\" &&  eslint \"**/*.{ts,tsx}\" --quiet --color",
     "check:tsc": "echo \"\\033[33mRunning typescript check\" && tsc",
-    "fix:prettier": "prettier --config .prettierrc.js --write '**/*.{ts,tsx,js,jsx}'",
-    "check:prettier": "prettier --config .prettierrc.js --check '**/*.{ts,tsx,js,jsx}'"
+    "fix:prettier": "prettier --config .prettierrc.cjs --write '**/*.{ts,tsx,js,jsx}'",
+    "check:prettier": "prettier --config .prettierrc.cjs --check '**/*.{ts,tsx,js,jsx}'"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",

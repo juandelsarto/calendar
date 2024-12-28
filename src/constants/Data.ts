@@ -1,7 +1,6 @@
 import { LANGUAGES, MONTHS, OWNERS } from './Enums';
 
-export const YEAR:number = 2025;
-
+export const YEAR: number = 2025;
 
 export interface IEvent {
   number: number | number[];
@@ -15,20 +14,20 @@ export interface IMonthData {
 }
 
 export interface ICalendar {
-  [owner:string]: {
+  [owner: string]: {
     [key in MONTHS]?: IMonthData;
   };
 }
 
 interface MonthName {
-  [name: string]: string
+  [name: string]: string;
 }
 
 export interface IMonth {
   key: MONTHS;
   name: MonthName;
   feriados: number[];
-};
+}
 
 export interface IParsedMonth extends IMonth {
   firstDay: number;
@@ -37,7 +36,7 @@ export interface IParsedMonth extends IMonth {
   dates?: IEvent[];
 }
 
-export const MONTHS_LIST:IMonth[] = [
+export const MONTHS_LIST: IMonth[] = [
   {
     key: MONTHS.JANUARY,
     name: {
@@ -49,7 +48,7 @@ export const MONTHS_LIST:IMonth[] = [
   {
     key: MONTHS.FEBRUARY,
     name: { [LANGUAGES.SPANISH]: 'Febrero', [LANGUAGES.ENGLISH]: 'February' },
-    feriados: []
+    feriados: [],
   },
   {
     key: MONTHS.MARCH,
@@ -82,7 +81,7 @@ export const MONTHS_LIST:IMonth[] = [
   {
     key: MONTHS.AUGUST,
     name: { [LANGUAGES.SPANISH]: 'Agosto', [LANGUAGES.ENGLISH]: 'August' },
-    feriados: [15,17],
+    feriados: [15, 17],
   },
   {
     key: MONTHS.SEPTEMBER,
@@ -109,8 +108,7 @@ export const MONTHS_LIST:IMonth[] = [
   },
 ];
 
-
-export const CALENDAR:ICalendar = {
+export const CALENDAR: ICalendar = {
   [OWNERS.FAMILIA]: {
     [MONTHS.JANUARY]: {
       cumples: [
@@ -716,9 +714,7 @@ export const CALENDAR:ICalendar = {
       ],
     },
     [MONTHS.NOVEMBER]: {
-      cumples: [
-        { number: 2, name: 'Se casan Flor y Juan!!!', love: true },
-      ],
+      cumples: [{ number: 2, name: 'Se casan Flor y Juan!!!', love: true }],
     },
   },
 };

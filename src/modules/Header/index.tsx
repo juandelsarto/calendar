@@ -31,9 +31,7 @@ const Header = () => {
         >
           Vista previa:
         </Heading>
-        <Button onClick={printer.handlePrint}>
-          Imprimir
-        </Button>
+        <Button onClick={printer.handlePrint}>Imprimir</Button>
         <Button
           ref={drawer.drawerBtnRef}
           color={getContrastedFontColor(secondaryColor)}

@@ -2,11 +2,11 @@ import { getDayList } from '../CalendarPreview.hooks';
 import Day from './Day';
 import { DAYS, IMonthData, IParsedMonth } from '../../../constants';
 
-const Month:React.FC<{month: IParsedMonth, optionsFromMonth?:IMonthData, startingDay: DAYS}> = ({
-  month,
-  optionsFromMonth = {},
-  startingDay = DAYS.SUNDAY,
-}) => {
+const Month: React.FC<{
+  month: IParsedMonth;
+  optionsFromMonth?: IMonthData;
+  startingDay: DAYS;
+}> = ({ month, optionsFromMonth = {}, startingDay = DAYS.SUNDAY }) => {
   const defaultInit = startingDay === DAYS.SUNDAY;
 
   const dayList = getDayList({ ...month, ...optionsFromMonth, defaultInit });

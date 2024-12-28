@@ -1,10 +1,11 @@
 import { Box, Image, useRadio, UseRadioProps } from '@chakra-ui/react';
 
 interface IProps extends UseRadioProps {
-  img?: string | undefined, children: React.ReactNode
+  img?: string | undefined;
+  children: React.ReactNode;
 }
 
-function RadioCard(props:IProps) {
+function RadioCard(props: IProps) {
   const { getInputProps, getRadioProps } = useRadio(props);
 
   const input = getInputProps();

@@ -1,4 +1,10 @@
-export const getStyles = ({ primaryColor, secondaryColor}:{primaryColor: string, secondaryColor: string}) => ({
+export const getStyles = ({
+  primaryColor,
+  secondaryColor,
+}: {
+  primaryColor: string;
+  secondaryColor: string;
+}) => ({
   monthName: {
     color: secondaryColor,
   },

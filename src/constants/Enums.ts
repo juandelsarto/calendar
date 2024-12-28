@@ -19,7 +19,7 @@ export enum OWNERS {
   GABY = 'gaby',
   FLOR = 'flor',
   CASA = 'casa',
-  VIVI = 'vivi'
+  VIVI = 'vivi',
 }
 
 export enum MONTHS {

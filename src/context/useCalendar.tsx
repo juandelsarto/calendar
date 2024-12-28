@@ -7,37 +7,38 @@ import {
   OWNERS,
   SIZES,
 } from '../constants';
-import {  useDisclosure } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/react';
 import { useReactToPrint } from 'react-to-print';
 
 interface IState {
-  [OPTIONS.LANGUAGE]: LANGUAGES,
-  [OPTIONS.STARTING_DAY]: DAYS,
-  [OPTIONS.SIZE]: SIZES,
-  [OPTIONS.BACKGROUND]: BACKGROUND,
-  [OPTIONS.ENABLED_FERIADOS]: boolean,
-  [OPTIONS.ENABLED_BIRTHDAYS]: boolean,
-  [OPTIONS.ENABLED_ESPECIAL_DAYS]: boolean,
-  [OPTIONS.PRIMARY_COLOR]: string,
-  [OPTIONS.SECONDARY_COLOR]: string,
-  [OPTIONS.THIRD_COLOR]: string,
-  [OPTIONS.OWNER]: OWNERS,
+  [OPTIONS.LANGUAGE]: LANGUAGES;
+  [OPTIONS.STARTING_DAY]: DAYS;
+  [OPTIONS.SIZE]: SIZES;
+  [OPTIONS.BACKGROUND]: BACKGROUND;
+  [OPTIONS.ENABLED_FERIADOS]: boolean;
+  [OPTIONS.ENABLED_BIRTHDAYS]: boolean;
+  [OPTIONS.ENABLED_ESPECIAL_DAYS]: boolean;
+  [OPTIONS.PRIMARY_COLOR]: string;
+  [OPTIONS.SECONDARY_COLOR]: string;
+  [OPTIONS.THIRD_COLOR]: string;
+  [OPTIONS.OWNER]: OWNERS;
 }
 
 interface ICalendarContext {
-  state: IState,
-  dispatch: React.Dispatch<any>,
+  state: IState;
+  dispatch: React.Dispatch<any>;
   drawer: {
-    isOpen: boolean,
-    onOpen: () => void,
-    onClose: () => void,
-    drawerBtnRef: React.MutableRefObject<HTMLButtonElement | null> | null,
-  }, printer:{
-    componentRef: React.MutableRefObject<HTMLDivElement | null> | null,
-    handlePrint: () => void,
-  }
+    isOpen: boolean;
+    onOpen: () => void;
+    onClose: () => void;
+    drawerBtnRef: React.MutableRefObject<HTMLButtonElement | null> | null;
+  };
+  printer: {
+    componentRef: React.MutableRefObject<HTMLDivElement | null> | null;
+    handlePrint: () => void;
+  };
 }
-const initialState:IState = {
+const initialState: IState = {
   [OPTIONS.LANGUAGE]: LANGUAGES.SPANISH,
   [OPTIONS.STARTING_DAY]: DAYS.MONDAY,
   [OPTIONS.SIZE]: SIZES.A4,
@@ -51,7 +52,7 @@ const initialState:IState = {
   [OPTIONS.OWNER]: OWNERS.FAMILIA,
 };
 
-const initialCalendarContext:ICalendarContext = {
+const initialCalendarContext: ICalendarContext = {
   state: initialState,
   dispatch: () => {},
   drawer: {
@@ -63,13 +64,17 @@ const initialCalendarContext:ICalendarContext = {
   printer: {
     componentRef: null,
     handlePrint: () => null,
-  }}
+  },
+};
 
 export const CalendarContext = createContext(initialCalendarContext);
 
-export const initializer = (initialValue = initialState) =>
-  JSON.parse(localStorage.getItem('calendarSettings') ?? '') || initialValue;
+export const initializer = (initialValue = initialState) => {
+  const settingsFromStorage = localStorage.getItem('calendarSettings');
+  if (!settingsFromStorage) return initialValue;
 
+  return JSON.parse(settingsFromStorage) || initialValue;
+};
 
 function reducer(state: any, action: () => void) {
   return { ...state, ...action };

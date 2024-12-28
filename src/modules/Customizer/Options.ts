@@ -38,7 +38,7 @@ export const OWNER_OPTIONS = [
   {
     value: OWNERS.VIVI,
     label: 'Abu Vivi',
-  }
+  },
 ];
 
 export const LANGUAGE_OPTIONS = [
