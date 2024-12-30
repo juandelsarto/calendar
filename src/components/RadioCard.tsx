@@ -12,7 +12,7 @@ function RadioCard(props: IProps) {
   const checkbox = getRadioProps();
 
   return (
-    <Box as="label">
+    <Box as="label" flex={1}>
       <input {...input} />
       <Box
         {...checkbox}

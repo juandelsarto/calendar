@@ -1,4 +1,11 @@
-import { createContext, useEffect, useMemo, useReducer, useRef } from 'react';
+import {
+  createContext,
+  useEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import {
   BACKGROUND,
   DAYS,
@@ -9,7 +16,7 @@ import {
 } from '../constants';
 import { useDisclosure } from '@chakra-ui/react';
 import { useReactToPrint } from 'react-to-print';
-import Cumple from '../assets/bgCumple.jpg';
+import Cumple from '../assets/bgConfetti.png';
 
 interface IState {
   [OPTIONS.LANGUAGE]: LANGUAGES;
@@ -22,10 +29,11 @@ interface IState {
   [OPTIONS.PRIMARY_COLOR]: string;
   [OPTIONS.SECONDARY_COLOR]: string;
   [OPTIONS.THIRD_COLOR]: string;
-  [OPTIONS.OWNER]: OWNERS;
 }
 
 interface ICalendarContext {
+  owner: string;
+  handleOwnerChange: (newOwner: string) => void;
   state: IState;
   dispatch: React.Dispatch<any>;
   drawer: {
@@ -50,10 +58,11 @@ const initialState: IState = {
   [OPTIONS.PRIMARY_COLOR]: '#6dd2b0',
   [OPTIONS.SECONDARY_COLOR]: '#e15f82',
   [OPTIONS.THIRD_COLOR]: '#88d7cd',
-  [OPTIONS.OWNER]: OWNERS.FAMILIA,
 };
 
 const initialCalendarContext: ICalendarContext = {
+  owner: OWNERS.FAMILIA,
+  handleOwnerChange: () => {},
   state: initialState,
   dispatch: () => {},
   drawer: {
@@ -72,9 +81,12 @@ export const CalendarContext = createContext(initialCalendarContext);
 
 export const initializer = (initialValue = initialState) => {
   const settingsFromStorage = localStorage.getItem('calendarSettings');
+
   if (!settingsFromStorage) return initialValue;
 
-  return JSON.parse(settingsFromStorage) || initialValue;
+  const objSettings = JSON.parse(settingsFromStorage);
+
+  return objSettings[OWNERS.FAMILIA] || initialValue;
 };
 
 function reducer(state: any, action: () => void) {
@@ -87,9 +99,18 @@ export const CalendarProvider = ({
   children: React.ReactNode;
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState, initializer);
+  const [owner, setOwner] = useState<string>(OWNERS.FAMILIA);
 
   useEffect(() => {
-    localStorage.setItem('calendarSettings', JSON.stringify(state));
+    const settingsFromStorage = localStorage.getItem('calendarSettings');
+    const initSettings = settingsFromStorage
+      ? JSON.parse(settingsFromStorage)
+      : {};
+
+    localStorage.setItem(
+      'calendarSettings',
+      JSON.stringify({ ...initSettings, [owner]: state }),
+    );
   }, [state]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -100,8 +121,23 @@ export const CalendarProvider = ({
     content: () => componentRef.current ?? null,
   });
 
+  const handleOwnerChange = (newOwner: string) => {
+    setOwner(newOwner);
+
+    const settingsFromStorage = localStorage.getItem('calendarSettings');
+    if (settingsFromStorage) {
+      const objSettings = JSON.parse(settingsFromStorage);
+
+      const settingsByOwner = objSettings[newOwner] ?? initialState;
+
+      dispatch(settingsByOwner);
+    }
+  };
+
   const memoizedValue = useMemo(
     () => ({
+      owner,
+      handleOwnerChange,
       state,
       dispatch,
       drawer: {
@@ -116,6 +152,8 @@ export const CalendarProvider = ({
       },
     }),
     [
+      owner,
+      handleOwnerChange,
       state,
       dispatch,
       isOpen,

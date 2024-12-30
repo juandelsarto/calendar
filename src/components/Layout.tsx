@@ -16,7 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       h="100vh"
       p={4}
       overflow="hidden"
-      backgroundColor={primaryColor}
+      bgColor={primaryColor}
     >
       <Header />
       {children}

@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint",
     "preview": "vite preview",
     "check:lint": "echo \"\\033[33mRunning eslint check\" &&  eslint \"**/*.{ts,tsx}\" --quiet --color",
     "check:tsc": "echo \"\\033[33mRunning typescript check\" && tsc",

@@ -36,8 +36,9 @@ const Content = () => {
       primaryColor,
       secondaryColor,
       thirdColor,
-      owner,
     },
+    owner,
+    handleOwnerChange,
     dispatch,
   } = useContext(CalendarContext);
 
@@ -57,9 +58,7 @@ const Content = () => {
               <Select
                 placeholder="Seleccioná una opción"
                 value={owner}
-                onChange={(event) =>
-                  dispatch({ [OPTIONS.OWNER]: event.target.value })
-                }
+                onChange={(event) => handleOwnerChange(event.target.value)}
               >
                 {OWNER_OPTIONS.map((option) => (
                   <option key={option.value} value={option.value}>

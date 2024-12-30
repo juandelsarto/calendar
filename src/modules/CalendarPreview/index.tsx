@@ -18,9 +18,9 @@ const renderLines = () => {
 
 const CalendarPreview = () => {
   const {
+    owner,
     state: {
       size,
-      owner,
       language,
       startingDay,
       enabledEspecialDays,
