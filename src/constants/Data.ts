@@ -104,7 +104,7 @@ export const MONTHS_LIST: IMonth[] = [
   {
     key: MONTHS.DECEMBER,
     name: { [LANGUAGES.SPANISH]: 'Diciembre', [LANGUAGES.ENGLISH]: 'December' },
-    feriados: [8, 25],
+    feriados: [8, 24, 25, 31],
   },
 ];
 
@@ -148,6 +148,7 @@ export const CALENDAR: ICalendar = {
           number: 8,
           name: 'Mamá',
         },
+        { number: 27, name: '33º aniversrio - Gri y Gabi', love: true },
       ],
     },
     [MONTHS.JULY]: {
@@ -167,7 +168,7 @@ export const CALENDAR: ICalendar = {
       ],
     },
     [MONTHS.NOVEMBER]: {
-      cumples: [{ number: 2, name: 'Se casan Flor y Juan!!', love: true }],
+      cumples: [{ number: 2, name: '1º aniversrio - Flor y Juan', love: true }],
     },
     [MONTHS.DECEMBER]: {
       cumples: [
@@ -202,6 +203,12 @@ export const CALENDAR: ICalendar = {
           name: 'Donatella',
         },
       ],
+      dates: [
+        {
+          number: 11,
+          name: 'Retorno a la actividad',
+        },
+      ],
     },
     [MONTHS.MARCH]: {
       cumples: [
@@ -212,8 +219,20 @@ export const CALENDAR: ICalendar = {
       ],
       dates: [
         {
-          number: 1,
-          name: 'Comienzo del Ciclo Lectivo',
+          number: 5,
+          name: 'Inicio de clases',
+        },
+      ],
+    },
+    [MONTHS.APRIL]: {
+      dates: [
+        {
+          number: 2,
+          name: 'Dia Internacional del Autismo',
+        },
+        {
+          number: [7, 11],
+          name: 'Semana de la Educación Física',
         },
       ],
     },
@@ -258,7 +277,7 @@ export const CALENDAR: ICalendar = {
           name: 'Día del asistente social',
         },
         {
-          number: [15, 26],
+          number: [21, 31],
           name: 'Receso escolar de invierno',
         },
       ],
@@ -266,11 +285,15 @@ export const CALENDAR: ICalendar = {
     [MONTHS.AUGUST]: {
       dates: [
         {
+          number: 1,
+          name: 'Receso escolar de invierno',
+        },
+        {
           number: 2,
           name: 'Día la escuela pública digna',
         },
         {
-          number: 18,
+          number: 17,
           name: 'Día del niño',
         },
         {
@@ -320,6 +343,10 @@ export const CALENDAR: ICalendar = {
           name: 'Día del EOE',
         },
         {
+          number: [22, 30],
+          name: 'Semana de las Artes',
+        },
+        {
           number: 28,
           name: 'Día del director/vicedirector',
         },
@@ -328,11 +355,15 @@ export const CALENDAR: ICalendar = {
     [MONTHS.OCTOBER]: {
       dates: [
         {
+          number: [1, 3],
+          name: 'Semana de las Artes',
+        },
+        {
           number: 8,
           name: 'Día del Profesor de Educación Física',
         },
         {
-          number: 20,
+          number: 19,
           name: 'Día de la familia y de las cooperadoras escolares',
         },
       ],
@@ -362,8 +393,8 @@ export const CALENDAR: ICalendar = {
       ],
       dates: [
         {
-          number: 26,
-          name: 'Fin del Ciclo Lectivo',
+          number: 22,
+          name: 'Cierre de ciclo',
         },
       ],
     },
@@ -401,14 +432,6 @@ export const CALENDAR: ICalendar = {
         },
       ],
     },
-    // [MONTHS.APRIL]: {
-    //   cumples: [
-    //     {
-    //       number: 29,
-    //       name: "Veroh",
-    //     },
-    //   ],
-    // },
     [MONTHS.JUNE]: {
       cumples: [
         {
@@ -431,15 +454,6 @@ export const CALENDAR: ICalendar = {
           number: 6,
           name: 'Noah',
         },
-      ],
-    },
-    [MONTHS.NOVEMBER]: {
-      cumples: [
-        { number: 2, name: 'Se casan Flor y Juan!!', love: true },
-        // {
-        //   number: 25,
-        //   name: "Marta",
-        // },
       ],
     },
     [MONTHS.DECEMBER]: {
@@ -481,8 +495,7 @@ export const CALENDAR: ICalendar = {
         },
         {
           number: 7,
-          name: 'Aniversario - Donatella',
-          love: true,
+          name: 'Donatella',
         },
         {
           number: 14,
@@ -546,7 +559,7 @@ export const CALENDAR: ICalendar = {
         },
         {
           number: 23,
-          name: 'Silvia de Hugo - Rochi',
+          name: 'Silvia (Hugo) - Rochi',
         },
       ],
     },
@@ -628,10 +641,11 @@ export const CALENDAR: ICalendar = {
     },
     [MONTHS.NOVEMBER]: {
       cumples: [
-        { number: 2, name: 'Nos casamos!!!', love: true },
+        { number: 1, name: 'Aniversario', love: true },
+        { number: 2, name: 'Aniversario - Armando', love: true },
         {
-          number: 3,
-          name: 'Armando',
+          number: 9,
+          name: 'Santino',
         },
         {
           number: 19,
@@ -654,12 +668,12 @@ export const CALENDAR: ICalendar = {
           name: 'Papá Gabi',
         },
         {
-          number: 23,
-          name: 'Tío',
+          number: 19,
+          name: 'Agus',
         },
         {
-          number: 26,
-          name: 'Eli',
+          number: 23,
+          name: 'Tío Martín',
         },
       ],
     },
