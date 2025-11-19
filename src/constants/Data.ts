@@ -1,6 +1,6 @@
 import { LANGUAGES, MONTHS, OWNERS } from './Enums';
 
-export const YEAR: number = 2025;
+export const YEAR: number = 2026;
 
 export interface IEvent {
   number: number | number[];
@@ -48,7 +48,7 @@ export const MONTHS_LIST: IMonth[] = [
   {
     key: MONTHS.FEBRUARY,
     name: { [LANGUAGES.SPANISH]: 'Febrero', [LANGUAGES.ENGLISH]: 'February' },
-    feriados: [],
+    feriados: [16, 17],
   },
   {
     key: MONTHS.MARCH,
@@ -56,22 +56,22 @@ export const MONTHS_LIST: IMonth[] = [
       [LANGUAGES.SPANISH]: 'Marzo',
       [LANGUAGES.ENGLISH]: 'March',
     },
-    feriados: [3, 4, 24],
+    feriados: [24],
   },
   {
     key: MONTHS.APRIL,
     name: { [LANGUAGES.SPANISH]: 'Abril', [LANGUAGES.ENGLISH]: 'April' },
-    feriados: [2, 18],
+    feriados: [2, 3],
   },
   {
     key: MONTHS.MAY,
     name: { [LANGUAGES.SPANISH]: 'Mayo', [LANGUAGES.ENGLISH]: 'May' },
-    feriados: [1, 2, 25],
+    feriados: [1, 25],
   },
   {
     key: MONTHS.JUNE,
     name: { [LANGUAGES.SPANISH]: 'Junio', [LANGUAGES.ENGLISH]: 'June' },
-    feriados: [16, 20],
+    feriados: [17, 20],
   },
   {
     key: MONTHS.JULY,
@@ -81,7 +81,7 @@ export const MONTHS_LIST: IMonth[] = [
   {
     key: MONTHS.AUGUST,
     name: { [LANGUAGES.SPANISH]: 'Agosto', [LANGUAGES.ENGLISH]: 'August' },
-    feriados: [15, 17],
+    feriados: [17],
   },
   {
     key: MONTHS.SEPTEMBER,
@@ -99,7 +99,7 @@ export const MONTHS_LIST: IMonth[] = [
   {
     key: MONTHS.NOVEMBER,
     name: { [LANGUAGES.SPANISH]: 'Noviembre', [LANGUAGES.ENGLISH]: 'November' },
-    feriados: [21, 24],
+    feriados: [20],
   },
   {
     key: MONTHS.DECEMBER,
@@ -146,9 +146,9 @@ export const CALENDAR: ICalendar = {
       cumples: [
         {
           number: 8,
-          name: 'Mamá',
+          name: 'Gri',
         },
-        { number: 27, name: '33º aniversrio - Gri y Gabi', love: true },
+        { number: 27, name: '34º aniversrio - Gri y Gabi', love: true },
       ],
     },
     [MONTHS.JULY]: {
@@ -168,13 +168,13 @@ export const CALENDAR: ICalendar = {
       ],
     },
     [MONTHS.NOVEMBER]: {
-      cumples: [{ number: 2, name: '1º aniversrio - Flor y Juan', love: true }],
+      cumples: [{ number: 2, name: '2º aniversrio - Flor y Juan', love: true }],
     },
     [MONTHS.DECEMBER]: {
       cumples: [
         {
           number: 7,
-          name: 'Papá',
+          name: 'Gabi',
         },
       ],
     },
@@ -490,7 +490,7 @@ export const CALENDAR: ICalendar = {
     [MONTHS.FEBRUARY]: {
       cumples: [
         {
-          number: 6,
+          number: 4,
           name: 'Abu Vivi',
         },
         {
@@ -607,6 +607,14 @@ export const CALENDAR: ICalendar = {
         },
       ],
     },
+    [MONTHS.AUGUST]: {
+      cumples: [
+        {
+          number: 30,
+          name: 'Hugo',
+        },
+      ],
+    },
     [MONTHS.SEPTEMBER]: {
       cumples: [
         {
@@ -636,6 +644,14 @@ export const CALENDAR: ICalendar = {
         {
           number: 26,
           name: 'Carla',
+        },
+      ],
+    },
+    [MONTHS.OCTOBER]: {
+      cumples: [
+        {
+          number: 2,
+          name: 'Moni',
         },
       ],
     },
@@ -726,9 +742,6 @@ export const CALENDAR: ICalendar = {
           name: 'Juli',
         },
       ],
-    },
-    [MONTHS.NOVEMBER]: {
-      cumples: [{ number: 2, name: 'Se casan Flor y Juan!!!', love: true }],
     },
   },
 };
