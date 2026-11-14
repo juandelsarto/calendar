@@ -4,6 +4,7 @@ import { DAYS, MONDAY_FIRST, SUNDAY_FIRST } from '../../constants/Enums';
 import { TRANSLATIONS } from '../../constants/Translations';
 import { MONTHS_LIST, CALENDAR, YEAR } from '../../constants';
 import { CalendarContext } from '../../context/useCalendar';
+import { useFeriados } from '../../hooks/useFeriados';
 import Month from './components/Month';
 import { getStyles } from './CalendarPreview.styles';
 import classNames from 'classnames';
@@ -32,6 +33,8 @@ const CalendarPreview = () => {
 
   const parsedDays = startingDay === DAYS.MONDAY ? MONDAY_FIRST : SUNDAY_FIRST;
 
+  const { feriadosByMonth } = useFeriados(YEAR);
+
   const parsedMonths = useMemo(
     () =>
       MONTHS_LIST.map((month, index) => {
@@ -39,13 +42,14 @@ const CalendarPreview = () => {
 
         return {
           ...month,
+          feriados: feriadosByMonth[month.key] ?? [],
           firstDay: new Date(YEAR, index, 1).getDay(),
           days: new Date(YEAR, index + 1, 0).getDate(),
           prevMonth: new Date(YEAR, index, 0).getDate(),
           ...(especialDates ? { dates: especialDates } : {}),
         };
       }),
-    [MONTHS_LIST],
+    [owner, feriadosByMonth],
   );
 
   const styles = getStyles({ primaryColor, secondaryColor });

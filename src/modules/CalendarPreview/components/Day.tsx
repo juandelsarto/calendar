@@ -3,9 +3,10 @@ import { useContext } from 'react';
 import { CalendarContext } from '../../../context/useCalendar';
 import { getStyles } from '../CalendarPreview.styles';
 import { getContrastedFontColor } from '../CalendarPreview.hooks';
+import { FeriadoType } from '../../../hooks/useFeriados';
 
 const Day = ({
-  feriado = false,
+  feriadoTipo = null,
   cumple = null,
   love = null,
   clase = false,
@@ -15,7 +16,7 @@ const Day = ({
   overflow = false,
   disabled = false,
 }: {
-  feriado?: boolean;
+  feriadoTipo?: FeriadoType | null;
   cumple?: string | null;
   love?: string | null;
   clase?: boolean;
@@ -45,12 +46,13 @@ const Day = ({
   const overflowLimit = defaultInit ? 34 : 35;
   const positionInGrid = index - fixPosition;
 
-  const showFeriado = enabledFeriados && feriado;
+  const showFeriado = enabledFeriados && !!feriadoTipo;
   const showBirthdays = enabledBirthdays && cumple;
   const showEspecialDays = enabledEspecialDays && clase;
 
   const classNames = cn('day', {
     feriado: showFeriado,
+    [`feriado--${feriadoTipo}`]: showFeriado,
     cumple: showBirthdays,
     clase: showEspecialDays,
     love: love,

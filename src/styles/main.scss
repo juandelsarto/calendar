@@ -127,6 +127,23 @@
             color: rgba(black, 0.3) !important;
           }
         }
+        &.feriado {
+          &--inamovible {
+            .day__bg {
+              background-color: $red !important;
+            }
+          }
+          &--trasladable {
+            .day__bg {
+              background-color: $yellow !important;
+            }
+          }
+          &--puente {
+            .day__bg {
+              background-color: $vintage-green !important;
+            }
+          }
+        }
         &.overflow-day {
           border-top-width: 3px;
           width: calc(100% / 7);

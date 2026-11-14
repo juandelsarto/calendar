@@ -1,4 +1,5 @@
 import { IEvent } from '@/constants/Data';
+import { FeriadoType, IFeriado } from '../../hooks/useFeriados';
 
 export const getParsedSpecialDates = (
   dates: { number: number[] | number }[] = [],
@@ -28,7 +29,7 @@ export const getDayList = ({
   dates?: IEvent[] | undefined;
   days?: number;
   firstDay?: number;
-  feriados?: number[];
+  feriados?: IFeriado[];
   cumples?: IEvent[];
   defaultInit?: boolean;
   prevMonth?: number;
@@ -39,7 +40,15 @@ export const getDayList = ({
   const minPositions = days + fixedFirstDay - defaultStart;
   const positionsLength = minPositions < 35 ? 35 : minPositions;
 
-  const dayList = [];
+  const dayList: Array<{
+    number: number;
+    feriadoTipo?: FeriadoType | null;
+    cumple?: string | null;
+    love?: string | null;
+    clase?: boolean;
+    overflow?: boolean;
+    disabled?: boolean;
+  }> = [];
   const parsedDates =
     dates && dates.length > 0 ? getParsedSpecialDates(dates) : [];
 
@@ -49,11 +58,12 @@ export const getDayList = ({
     index < positionsLength + defaultStart;
     index++
   ) {
-    const newDay = {
-      ...(index >= fixedFirstDay && index < minPositions + defaultStart
+    const newDay =
+      index >= fixedFirstDay && index < minPositions + defaultStart
         ? {
             number: day,
-            feriado: feriados.includes(day),
+            feriadoTipo:
+              feriados.find((f) => f.dia === day)?.tipo ?? null,
             cumple:
               cumples?.length > 0
                 ? cumples.find((cumple) => cumple.number === day)?.name || null
@@ -72,8 +82,7 @@ export const getDayList = ({
               index < fixedFirstDay
                 ? prevMonth - fixedFirstDay + index + 1
                 : index - days - firstDay + 1,
-          }),
-    };
+          };
 
     if (index >= fixedFirstDay) day++;
 
