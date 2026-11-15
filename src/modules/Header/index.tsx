@@ -1,40 +1,30 @@
 import { Button, Center, Flex, Heading } from '@chakra-ui/react';
-import { CalendarContext } from '../../context/useCalendar';
-import React from 'react';
-import { getContrastedFontColor } from '../CalendarPreview/CalendarPreview.hooks';
+
+import { useCalendar, useCalendarUI } from '@/context/useCalendar';
 
 const Header = () => {
   const {
-    printer,
-    drawer,
-    state: { primaryColor, secondaryColor },
-  } = React.useContext(CalendarContext);
+    state: { secondaryColor },
+    contrastPrimary,
+    contrastSecondary,
+  } = useCalendar();
+  const { printer, drawer } = useCalendarUI();
 
   return (
     <>
       <Center>
-        <Heading
-          as="h3"
-          size="lg"
-          mb={4}
-          color={getContrastedFontColor(primaryColor)}
-        >
+        <Heading as="h3" size="lg" mb={4} color={contrastPrimary}>
           Calendario
         </Heading>
       </Center>
       <Flex justifyContent="space-between" flexDir="row" w="100%" gap={4}>
-        <Heading
-          as="h5"
-          size="sm"
-          marginRight="auto"
-          color={getContrastedFontColor(primaryColor)}
-        >
+        <Heading as="h5" size="sm" marginRight="auto" color={contrastPrimary}>
           Vista previa:
         </Heading>
         <Button onClick={printer.handlePrint}>Imprimir</Button>
         <Button
           ref={drawer.drawerBtnRef}
-          color={getContrastedFontColor(secondaryColor)}
+          color={contrastSecondary}
           backgroundColor={secondaryColor}
           onClick={drawer.onOpen}
         >

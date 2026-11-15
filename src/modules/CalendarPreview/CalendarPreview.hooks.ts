@@ -1,8 +1,8 @@
 import { IEvent } from '@/constants/Data';
-import { FeriadoType, IFeriado } from '../../hooks/useFeriados';
+import { IFeriado } from '@/hooks/useFeriados';
 
 export const getParsedSpecialDates = (
-  dates: { number: number[] | number }[] = [],
+  dates: { number: number | [number, number] }[] = [],
 ) => {
   const parsedDates = [];
   for (const date of dates) {
@@ -40,16 +40,15 @@ export const getDayList = ({
   const minPositions = days + fixedFirstDay - defaultStart;
   const positionsLength = minPositions < 35 ? 35 : minPositions;
 
-  const dayList: Array<{
+  const dayList: {
     number: number;
-    feriadoTipo?: FeriadoType | null;
-    feriadoNombre?: string | null;
+    feriado?: IFeriado;
     cumple?: string | null;
     love?: string | null;
     clase?: boolean;
     overflow?: boolean;
     disabled?: boolean;
-  }> = [];
+  }[] = [];
   const parsedDates =
     dates && dates.length > 0 ? getParsedSpecialDates(dates) : [];
 
@@ -69,7 +68,6 @@ export const getDayList = ({
         ? {
             number: day,
             feriado,
-            feriadoNombre: feriado?.nombre ?? null,
             cumple:
               cumples?.length > 0
                 ? cumples.find((cumple) => cumple.number === day)?.name || null
@@ -96,20 +94,4 @@ export const getDayList = ({
   }
 
   return dayList;
-};
-
-export const getContrastedFontColor = (color: string) => {
-  const arrColor = color.replace('#', '').match(/.{1,2}/g);
-
-  if (!arrColor) return '#ffffff';
-
-  const redCode = parseInt(arrColor[0], 16) * 0.299;
-  const greenCode = parseInt(arrColor[1], 16) * 0.587;
-  const blueCode = parseInt(arrColor[2], 16) * 0.114;
-
-  if (redCode + greenCode + blueCode > 186) {
-    return '#1b1b1b';
-  } else {
-    return '#ffffff';
-  }
 };

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { MONTHS } from '../constants/Enums';
+
+import { MONTHS_LIST } from '@/constants/Data';
+import { MONTHS } from '@/constants/Enums';
 
 export enum FeriadoType {
   INAMOVIBLE = 'inamovible',
@@ -21,33 +23,10 @@ interface FeriadoAPI {
 
 export type FeriadosByMonth = Partial<Record<MONTHS, IFeriado[]>>;
 
-const MONTH_BY_NUMBER: MONTHS[] = [
-  MONTHS.JANUARY,
-  MONTHS.FEBRUARY,
-  MONTHS.MARCH,
-  MONTHS.APRIL,
-  MONTHS.MAY,
-  MONTHS.JUNE,
-  MONTHS.JULY,
-  MONTHS.AUGUST,
-  MONTHS.SEPTEMBER,
-  MONTHS.OCTOBER,
-  MONTHS.NOVEMBER,
-  MONTHS.DECEMBER,
-];
+const VALID_TIPOS = Object.values(FeriadoType) as string[];
 
-const parseTipo = (tipo: string): FeriadoType => {
-  switch (tipo) {
-    case 'inamovible':
-      return FeriadoType.INAMOVIBLE;
-    case 'trasladable':
-      return FeriadoType.TRASLADABLE;
-    case 'puente':
-      return FeriadoType.PUENTE;
-    default:
-      return FeriadoType.INAMOVIBLE;
-  }
-};
+const parseTipo = (tipo: string): FeriadoType =>
+  VALID_TIPOS.includes(tipo) ? (tipo as FeriadoType) : FeriadoType.INAMOVIBLE;
 
 const API_BASE = 'https://api.argentinadatos.com/v1/feriados';
 
@@ -68,7 +47,7 @@ const fetchFeriados = (year: number): Promise<FeriadosByMonth> => {
         const [, mesStr, diaStr] = fecha.split('-');
         const mes = parseInt(mesStr, 10);
         const dia = parseInt(diaStr, 10);
-        const key = MONTH_BY_NUMBER[mes - 1];
+        const key = MONTHS_LIST[mes - 1]?.key;
         if (!key) return;
         if (!byMonth[key]) byMonth[key] = [];
         byMonth[key]!.push({ dia, tipo: parseTipo(tipo), nombre });
