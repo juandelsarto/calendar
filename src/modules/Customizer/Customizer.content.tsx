@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import {
   Accordion,
   AccordionButton,
@@ -11,8 +10,12 @@ import {
   FormLabel,
   Select,
 } from '@chakra-ui/react';
+import { useContext } from 'react';
 import { HexColorPicker } from 'react-colorful';
+import { getYearOptions } from '../../constants/Data';
 import { OPTIONS } from '../../constants/Enums';
+import { CalendarContext } from '../../context/useCalendar';
+import Selector from '../Selector';
 import {
   BACKGROUND_OPTIONS,
   LANGUAGE_OPTIONS,
@@ -20,8 +23,6 @@ import {
   SIZE_OPTIONS,
   STARTING_DAY_OPTIONS,
 } from './Options';
-import { CalendarContext } from '../../context/useCalendar';
-import Selector from '../Selector';
 
 const Content = () => {
   const {
@@ -36,11 +37,14 @@ const Content = () => {
       primaryColor,
       secondaryColor,
       thirdColor,
+      year,
     },
     owner,
     handleOwnerChange,
     dispatch,
   } = useContext(CalendarContext);
+
+  const yearOptions = getYearOptions();
 
   return (
     <Accordion allowMultiple>
@@ -66,6 +70,19 @@ const Content = () => {
                   </option>
                 ))}
               </Select>
+            </FormControl>
+          </Box>
+          <Box my={4}>
+            <FormControl>
+              <FormLabel>Elegí el año:</FormLabel>
+              <Selector
+                name={OPTIONS.YEAR}
+                defaultValue={String(year)}
+                options={yearOptions}
+                onChange={(value: string) =>
+                  dispatch({ [OPTIONS.YEAR]: Number(value) })
+                }
+              />
             </FormControl>
           </Box>
           <Box my={4}>

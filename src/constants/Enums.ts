@@ -10,6 +10,7 @@ export enum OPTIONS {
   ENABLED_FERIADOS = 'enabledFeriados',
   ENABLED_BIRTHDAYS = 'enabledBirthdays',
   ENABLED_ESPECIAL_DAYS = 'enabledEspecialDays',
+  YEAR = 'year',
 }
 
 export enum OWNERS {

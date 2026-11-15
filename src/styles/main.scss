@@ -1,10 +1,10 @@
-@use "./variables" as *;
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+@use './variables' as *;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 .calendar {
   background: #fff;
-  overflow: "scroll";
-  font-family: "Open Sans", sans-serif;
+  overflow: 'scroll';
+  font-family: 'Open Sans', sans-serif;
 
   .month {
     &__top {
@@ -86,7 +86,9 @@
         display: flex;
         justify-content: flex-end;
         position: relative;
+        gap: 4px;
         z-index: 1;
+
         &__bg {
           opacity: 0.6;
           position: absolute;
@@ -96,12 +98,18 @@
           left: 0;
           z-index: -1;
         }
-        &.cumple {
+        &.cumple,
+        &.feriado {
           justify-content: space-between;
           background-position: bottom right;
           background-repeat: no-repeat;
           background-size: cover;
           .day {
+            &__note {
+              display: flex;
+              flex-direction: column;
+              gap: 4px;
+            }
             &__number,
             &__cumple {
               font-weight: 700;
@@ -109,10 +117,13 @@
             &__cumple {
               font-size: 16px;
             }
+            &__feriado {
+              font-size: 13px;
+            }
           }
         }
         &.love {
-          background-image: url("./src/assets/bgHearts.png") !important;
+          background-image: url('./src/assets/bgHearts.png') !important;
           background-color: rgba($red, 0.4);
           .day {
             &__number,
@@ -125,6 +136,23 @@
           background-color: $grey;
           .day__number {
             color: rgba(black, 0.3) !important;
+          }
+        }
+        &.feriado {
+          &--inamovible {
+            .day__bg {
+              background-color: $red !important;
+            }
+          }
+          &--trasladable {
+            .day__bg {
+              background-color: $yellow !important;
+            }
+          }
+          &--puente {
+            .day__bg {
+              background-color: $vintage-green !important;
+            }
           }
         }
         &.overflow-day {

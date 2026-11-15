@@ -1,11 +1,12 @@
 import cn from 'classnames';
 import { useContext } from 'react';
 import { CalendarContext } from '../../../context/useCalendar';
-import { getStyles } from '../CalendarPreview.styles';
 import { getContrastedFontColor } from '../CalendarPreview.hooks';
+import { getStyles } from '../CalendarPreview.styles';
 
 const Day = ({
   feriado = false,
+  feriadoNombre = null,
   cumple = null,
   love = null,
   clase = false,
@@ -16,6 +17,7 @@ const Day = ({
   disabled = false,
 }: {
   feriado?: boolean;
+  feriadoNombre?: string | null;
   cumple?: string | null;
   love?: string | null;
   clase?: boolean;
@@ -63,10 +65,6 @@ const Day = ({
     ...(overflow
       ? { left: `calc(100% / 7 * ${positionInGrid - overflowLimit})` }
       : {}),
-    ...(showFeriado ? { color: getContrastedFontColor(secondaryColor) } : {}),
-    ...(showEspecialDays
-      ? { color: getContrastedFontColor(primaryColor) }
-      : {}),
     ...(showBirthdays
       ? !love
         ? {
@@ -74,6 +72,10 @@ const Day = ({
             backgroundImage: `url(${background})`,
           }
         : { color: getContrastedFontColor(secondaryColor) }
+      : {}),
+    ...(showFeriado ? { color: getContrastedFontColor(secondaryColor) } : {}),
+    ...(showEspecialDays
+      ? { color: getContrastedFontColor(primaryColor) }
       : {}),
   };
 
@@ -87,7 +89,12 @@ const Day = ({
 
   return (
     <div className={classNames} style={dayStyles}>
-      {showBirthdays && <span className="day__cumple">{cumple}</span>}
+      <div className="day__note">
+        {showBirthdays && <span className="day__cumple">{cumple}</span>}
+        {showFeriado && feriadoNombre && (
+          <span className="day__feriado">{feriadoNombre}</span>
+        )}
+      </div>
       <span className="day__number" style={dayStyles}>
         {showEspecialDays && '* '}
         {number}
