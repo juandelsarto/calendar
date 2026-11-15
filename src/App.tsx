@@ -1,9 +1,10 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import CalendarPreview from './modules/CalendarPreview';
-import Customizer from './modules/Customizer';
-import Layout from './components/Layout';
-import { CalendarProvider } from './context/useCalendar';
-import './styles/main.scss';
+
+import Layout from '@/components/Layout';
+import { CalendarProvider } from '@/context/useCalendar';
+import CalendarPreview from '@/modules/CalendarPreview';
+import Customizer from '@/modules/Customizer';
+import '@/styles/main.scss';
 
 function App() {
   return (

@@ -8,9 +8,12 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "check:lint": "echo \"\\033[33mRunning eslint check\" &&  eslint \"**/*.{ts,tsx}\" --quiet --color",
+    "fix:lint": "eslint \"**/*.{ts,tsx}\" --fix",
     "check:tsc": "echo \"\\033[33mRunning typescript check\" && tsc",
     "fix:prettier": "prettier --config .prettierrc.cjs --write '**/*.{ts,tsx,js,jsx}'",
-    "check:prettier": "prettier --config .prettierrc.cjs --check '**/*.{ts,tsx,js,jsx}'"
+    "check:prettier": "prettier --config .prettierrc.cjs --check '**/*.{ts,tsx,js,jsx}'",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
@@ -29,12 +32,13 @@
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8",
     "eslint-config-universe": "^12.0.0",
-    "sass": "^1.69.5",
     "husky": "8.0.3",
     "lint-staged": "14.0.1",
     "prettier": "3.0.3",
+    "sass": "^1.69.5",
     "typescript": "^5.3.3",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vitest": "^1.6.1"
   },
   "husky": {
     "hooks": {

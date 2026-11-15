@@ -1,8 +1,8 @@
-import Cumple from '../../assets/bgConfetti.png';
-import Ballons from '../../assets/bgBallons.png';
-import Unicorn from '../../assets/bgUnicorn.png';
-import Cats from '../../assets/bgCats.png';
-import { DAYS, LANGUAGES, OWNERS, SIZES } from '../../constants/Enums';
+import Ballons from '@/assets/bgBallons.png';
+import Cats from '@/assets/bgCats.png';
+import Cumple from '@/assets/bgConfetti.png';
+import Unicorn from '@/assets/bgUnicorn.png';
+import { DAYS, LANGUAGES, OWNERS, SIZES } from '@/constants/Enums';
 
 export const OWNER_OPTIONS = [
   {

@@ -1,18 +1,19 @@
-import { useContext, useMemo } from 'react';
 import { Box } from '@chakra-ui/react';
-import { DAYS, MONDAY_FIRST, SUNDAY_FIRST } from '../../constants/Enums';
-import { TRANSLATIONS } from '../../constants/Translations';
-import { MONTHS_LIST, CALENDAR } from '../../constants';
-import { CalendarContext } from '../../context/useCalendar';
-import { useFeriados } from '../../hooks/useFeriados';
-import Month from './components/Month';
-import { getStyles } from './CalendarPreview.styles';
 import classNames from 'classnames';
+import { useMemo } from 'react';
+
+import { MONTHS_LIST, CALENDAR } from '@/constants';
+import { DAYS, MONDAY_FIRST, SUNDAY_FIRST } from '@/constants/Enums';
+import { TRANSLATIONS } from '@/constants/Translations';
+import { useCalendar, useCalendarUI } from '@/context/useCalendar';
+import { useFeriados } from '@/hooks/useFeriados';
+
+import Month from './components/Month';
 
 const renderLines = () => {
   const lines = [];
   for (let i = 0; i <= 19; i++) {
-    lines.push(<span className="notes__line"></span>);
+    lines.push(<span key={`notes-line-${i}`} className="notes__line" />);
   }
   return lines;
 };
@@ -27,10 +28,14 @@ const CalendarPreview = () => {
       enabledEspecialDays,
       primaryColor,
       secondaryColor,
+      thirdColor,
+      background,
       year,
     },
-    printer,
-  } = useContext(CalendarContext);
+    contrastPrimary,
+    contrastSecondary,
+  } = useCalendar();
+  const { printer } = useCalendarUI();
 
   const parsedDays = startingDay === DAYS.MONDAY ? MONDAY_FIRST : SUNDAY_FIRST;
 
@@ -53,7 +58,14 @@ const CalendarPreview = () => {
     [owner, feriadosByMonth, year],
   );
 
-  const styles = getStyles({ primaryColor, secondaryColor });
+  const calendarStyle = {
+    '--primary-color': primaryColor,
+    '--secondary-color': secondaryColor,
+    '--third-color': thirdColor,
+    '--contrast-primary': contrastPrimary,
+    '--contrast-secondary': contrastSecondary,
+    '--cumple-bg': `url(${background})`,
+  } as React.CSSProperties;
 
   return (
     <Box
@@ -66,56 +78,53 @@ const CalendarPreview = () => {
       <div
         ref={printer.componentRef}
         className={classNames('calendar', { [size]: size })}
+        style={calendarStyle}
       >
         {parsedMonths.map((month) => {
           return (
             <div className="month" key={month.key}>
               <div className="month__top">
-                <div className="month__name" style={styles.monthName}>
+                <div className="month__name">
                   {month.name[language]} {year}
                 </div>
                 {enabledEspecialDays ? (
                   <div className="month__notes">
-                    {month.dates?.map((date, index) => (
-                      <div className="month__notes__day" key={`date_${index}`}>
-                        <span style={{ color: primaryColor }}>
-                          {typeof date.number === 'number'
-                            ? date.number
-                            : `${date.number[0]} al ${date.number[1]}`}
-                          :{' '}
-                        </span>
-                        {date.name}
-                      </div>
-                    ))}
+                    {month.dates?.map((date) => {
+                      const dateKey =
+                        typeof date.number === 'number'
+                          ? `date_${date.number}`
+                          : `date_${date.number[0]}_${date.number[1]}`;
+                      return (
+                        <div className="month__notes__day" key={dateKey}>
+                          <span>
+                            {typeof date.number === 'number'
+                              ? date.number
+                              : `${date.number[0]} al ${date.number[1]}`}
+                            :{' '}
+                          </span>
+                          {date.name}
+                        </div>
+                      );
+                    })}
                   </div>
                 ) : (
                   <div className="month__notes">
-                    <span className="label" style={styles.monthNotes.label}>
+                    <span className="label">
                       {TRANSLATIONS[language].notes}:
                     </span>
-                    <span
-                      className="line line-1"
-                      style={styles.monthNotes.line}
-                    ></span>
-                    <span
-                      className="line"
-                      style={styles.monthNotes.line}
-                    ></span>
+                    <span className="line line-1" />
+                    <span className="line" />
                   </div>
                 )}
               </div>
               <div className="month__week">
-                {parsedDays.map((day, index) => (
-                  <div
-                    className="month__week__day"
-                    key={index}
-                    style={styles.monthWeek.day}
-                  >
+                {parsedDays.map((day) => (
+                  <div className="month__week__day" key={day.id}>
                     {day[language]}
                   </div>
                 ))}
               </div>
-              <div className="month__grid" style={styles.monthGrid}>
+              <div className="month__grid">
                 <Month
                   month={month}
                   optionsFromMonth={CALENDAR[owner]?.[month.key]}

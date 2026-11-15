@@ -1,9 +1,8 @@
 @use './variables' as *;
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 .calendar {
   background: #fff;
-  overflow: 'scroll';
+  overflow: scroll;
   font-family: 'Open Sans', sans-serif;
 
   .month {
@@ -17,6 +16,7 @@
       font-size: 38px;
       line-height: 40px;
       font-weight: 600;
+      color: var(--secondary-color);
     }
     &__notes {
       align-items: flex-end;
@@ -32,6 +32,7 @@
         font-size: 8.5pt;
         span {
           font-weight: 600;
+          color: var(--primary-color);
         }
       }
       span {
@@ -40,10 +41,12 @@
           font-weight: 600;
           display: inline-block;
           line-height: 18px;
+          color: var(--secondary-color);
         }
         &.line {
           border-bottom-width: 2px;
           border-bottom-style: solid;
+          border-color: var(--primary-color);
           width: 100%;
           display: block;
           margin-top: 20px;
@@ -65,6 +68,7 @@
         text-transform: capitalize;
         font-weight: 600;
         font-size: 16px;
+        color: var(--secondary-color);
       }
     }
     &__grid {
@@ -74,12 +78,15 @@
       height: 80vh;
       border-width: 3px 0 0 3px;
       border-style: dashed;
+      border-color: var(--primary-color);
       position: relative;
 
       .day {
         box-sizing: border-box;
         border-width: 0 3px 3px 0;
         border-style: dashed;
+        border-color: var(--primary-color);
+        color: var(--secondary-color);
         height: 100%;
         background-color: white;
         padding: 5px;
@@ -97,6 +104,7 @@
           top: 0;
           left: 0;
           z-index: -1;
+          background-color: var(--third-color);
         }
         &.cumple,
         &.feriado {
@@ -122,9 +130,25 @@
             }
           }
         }
+        &.cumple:not(.love) {
+          background-image: var(--cumple-bg);
+        }
+        &.feriado {
+          color: var(--contrast-secondary);
+          .day__bg {
+            background-color: var(--secondary-color);
+          }
+        }
+        &.clase {
+          color: var(--contrast-primary);
+          .day__bg {
+            background-color: var(--primary-color);
+          }
+        }
         &.love {
-          background-image: url('./src/assets/bgHearts.png') !important;
+          background-image: url('../assets/bgHearts.png') !important;
           background-color: rgba($red, 0.4);
+          color: var(--contrast-secondary);
           .day {
             &__number,
             &__cumple {

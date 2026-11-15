@@ -1,5 +1,5 @@
-import { IFeriado } from '../hooks/useFeriados';
 import { LANGUAGES, MONTHS, OWNERS } from './Enums';
+import { IFeriado } from '../hooks/useFeriados';
 
 export const getCurrentYear = (): number => new Date().getFullYear();
 
@@ -12,7 +12,7 @@ export const getYearOptions = (): { value: string; label: string }[] => {
 };
 
 export interface IEvent {
-  number: number | number[];
+  number: number | [number, number];
   name: string;
   love?: boolean;
 }
@@ -105,140 +105,65 @@ export const MONTHS_LIST: IMonth[] = [
   },
 ];
 
+type OwnerCalendar = { [key in MONTHS]?: IMonthData };
+
+const SHARED_CUMPLES: Partial<Record<MONTHS, IEvent[]>> = {
+  [MONTHS.JANUARY]: [
+    { number: 11, name: 'Simón' },
+    { number: 13, name: 'Flor' },
+    { number: 23, name: 'Nala' },
+  ],
+  [MONTHS.FEBRUARY]: [{ number: 7, name: 'Donatella' }],
+  [MONTHS.JULY]: [{ number: 10, name: 'Juan' }],
+  [MONTHS.SEPTEMBER]: [{ number: 6, name: 'Noah' }],
+};
+
+const mergeOwnerData = (extras: OwnerCalendar = {}): OwnerCalendar => {
+  const result: OwnerCalendar = {};
+  const months = new Set<MONTHS>([
+    ...(Object.keys(SHARED_CUMPLES) as MONTHS[]),
+    ...(Object.keys(extras) as MONTHS[]),
+  ]);
+
+  for (const month of months) {
+    const shared = SHARED_CUMPLES[month] ?? [];
+    const extra = extras[month] ?? {};
+    const cumples = [...shared, ...(extra.cumples ?? [])];
+    const entry: IMonthData = {};
+    if (cumples.length > 0) entry.cumples = cumples;
+    if (extra.dates) entry.dates = extra.dates;
+    result[month] = entry;
+  }
+  return result;
+};
+
 export const CALENDAR: ICalendar = {
-  [OWNERS.FAMILIA]: {
-    [MONTHS.JANUARY]: {
-      cumples: [
-        {
-          number: 11,
-          name: 'Simón',
-        },
-        {
-          number: 13,
-          name: 'Flor',
-        },
-        {
-          number: 23,
-          name: 'Nala',
-        },
-      ],
-    },
-    [MONTHS.FEBRUARY]: {
-      cumples: [
-        {
-          number: 7,
-          name: 'Donatella',
-        },
-      ],
-    },
-    [MONTHS.MARCH]: {
-      cumples: [
-        {
-          number: 21,
-          name: 'Fita',
-        },
-      ],
-    },
+  [OWNERS.FAMILIA]: mergeOwnerData({
+    [MONTHS.MARCH]: { cumples: [{ number: 21, name: 'Fita' }] },
     [MONTHS.JUNE]: {
       cumples: [
-        {
-          number: 8,
-          name: 'Gri',
-        },
-        { number: 27, name: 'Aniversrio - Gri y Gabi', love: true },
+        { number: 8, name: 'Gri' },
+        { number: 27, name: 'Aniversario - Gri y Gabi', love: true },
       ],
     },
-    [MONTHS.JULY]: {
-      cumples: [
-        {
-          number: 10,
-          name: 'Juan',
-        },
-      ],
-    },
-    [MONTHS.SEPTEMBER]: {
-      cumples: [
-        {
-          number: 6,
-          name: 'Noah',
-        },
-      ],
-    },
-    [MONTHS.OCTOBER]: {
-      cumples: [
-        {
-          number: 1,
-          name: 'Molly',
-        },
-      ],
-    },
+    [MONTHS.OCTOBER]: { cumples: [{ number: 1, name: 'Molly' }] },
     [MONTHS.NOVEMBER]: {
-      cumples: [{ number: 2, name: 'Aniversrio - Flor y Juan', love: true }],
+      cumples: [{ number: 2, name: 'Aniversario - Flor y Juan', love: true }],
     },
-    [MONTHS.DECEMBER]: {
-      cumples: [
-        {
-          number: 7,
-          name: 'Gabi',
-        },
-      ],
-    },
-  },
-  [OWNERS.GRISEL]: {
-    [MONTHS.JANUARY]: {
-      cumples: [
-        {
-          number: 11,
-          name: 'Simón',
-        },
-        {
-          number: 13,
-          name: 'Flor',
-        },
-        {
-          number: 23,
-          name: 'Nala',
-        },
-      ],
-    },
+    [MONTHS.DECEMBER]: { cumples: [{ number: 7, name: 'Gabi' }] },
+  }),
+  [OWNERS.GRISEL]: mergeOwnerData({
     [MONTHS.FEBRUARY]: {
-      cumples: [
-        {
-          number: 7,
-          name: 'Donatella',
-        },
-      ],
-      dates: [
-        {
-          number: 11,
-          name: 'Retorno a la actividad',
-        },
-      ],
+      dates: [{ number: 11, name: 'Retorno a la actividad' }],
     },
     [MONTHS.MARCH]: {
-      cumples: [
-        {
-          number: 21,
-          name: 'Fita',
-        },
-      ],
-      dates: [
-        {
-          number: 5,
-          name: 'Inicio de clases',
-        },
-      ],
+      cumples: [{ number: 21, name: 'Fita' }],
+      dates: [{ number: 5, name: 'Inicio de clases' }],
     },
     [MONTHS.APRIL]: {
       dates: [
-        {
-          number: 2,
-          name: 'Dia Internacional del Autismo',
-        },
-        {
-          number: [7, 11],
-          name: 'Semana de la Educación Física',
-        },
+        { number: 2, name: 'Día Internacional del Autismo' },
+        { number: [7, 11], name: 'Semana de la Educación Física' },
       ],
     },
     [MONTHS.MAY]: {
@@ -251,122 +176,43 @@ export const CALENDAR: ICalendar = {
           number: 28,
           name: 'Día de los jardines de infantes y de la maestra jardinera',
         },
-        {
-          number: 30,
-          name: 'Día Internacional del desaparecido',
-        },
-        {
-          number: 31,
-          name: 'Fin del primer trimestre',
-        },
+        { number: 30, name: 'Día Internacional del desaparecido' },
+        { number: 31, name: 'Fin del primer trimestre' },
       ],
     },
-    [MONTHS.JUNE]: {
-      cumples: [
-        {
-          number: 8,
-          name: 'Mi cumple!',
-        },
-      ],
-    },
+    [MONTHS.JUNE]: { cumples: [{ number: 8, name: 'Mi cumple!' }] },
     [MONTHS.JULY]: {
-      cumples: [
-        {
-          number: 10,
-          name: 'Juan',
-        },
-      ],
       dates: [
-        {
-          number: 2,
-          name: 'Día del asistente social',
-        },
-        {
-          number: [21, 31],
-          name: 'Receso escolar de invierno',
-        },
+        { number: 2, name: 'Día del asistente social' },
+        { number: [21, 31], name: 'Receso escolar de invierno' },
       ],
     },
     [MONTHS.AUGUST]: {
       dates: [
-        {
-          number: 1,
-          name: 'Receso escolar de invierno',
-        },
-        {
-          number: 2,
-          name: 'Día la escuela pública digna',
-        },
-        {
-          number: 17,
-          name: 'Día del niño',
-        },
-        {
-          number: 23,
-          name: 'Día del auxiliar',
-        },
-        {
-          number: 31,
-          name: 'Fin del segundo trimestre',
-        },
+        { number: 1, name: 'Receso escolar de invierno' },
+        { number: 2, name: 'Día de la escuela pública digna' },
+        { number: 17, name: 'Día del niño' },
+        { number: 23, name: 'Día del auxiliar' },
+        { number: 31, name: 'Fin del segundo trimestre' },
       ],
     },
     [MONTHS.SEPTEMBER]: {
-      cumples: [
-        {
-          number: 6,
-          name: 'Noah',
-        },
-      ],
       dates: [
-        {
-          number: 2,
-          name: 'Día del profe de inglés',
-        },
-        {
-          number: 4,
-          name: 'Día del secretario/prosecretario',
-        },
-        {
-          number: 11,
-          name: 'Día del maestro',
-        },
-        {
-          number: 13,
-          name: 'Día del bibliotecario/a',
-        },
-        {
-          number: 17,
-          name: 'Día del profesor y de la psicopedagoga',
-        },
-        {
-          number: 19,
-          name: 'Día del preceptor',
-        },
-        {
-          number: 20,
-          name: 'Día del EOE',
-        },
-        {
-          number: [22, 30],
-          name: 'Semana de las Artes',
-        },
-        {
-          number: 28,
-          name: 'Día del director/vicedirector',
-        },
+        { number: 2, name: 'Día del profe de inglés' },
+        { number: 4, name: 'Día del secretario/prosecretario' },
+        { number: 11, name: 'Día del maestro' },
+        { number: 13, name: 'Día del bibliotecario/a' },
+        { number: 17, name: 'Día del profesor y de la psicopedagoga' },
+        { number: 19, name: 'Día del preceptor' },
+        { number: 20, name: 'Día del EOE' },
+        { number: [22, 30], name: 'Semana de las Artes' },
+        { number: 28, name: 'Día del director/vicedirector' },
       ],
     },
     [MONTHS.OCTOBER]: {
       dates: [
-        {
-          number: [1, 3],
-          name: 'Semana de las Artes',
-        },
-        {
-          number: 8,
-          name: 'Día del Profesor de Educación Física',
-        },
+        { number: [1, 3], name: 'Semana de las Artes' },
+        { number: 8, name: 'Día del Profesor de Educación Física' },
         {
           number: 19,
           name: 'Día de la familia y de las cooperadoras escolares',
@@ -375,374 +221,89 @@ export const CALENDAR: ICalendar = {
     },
     [MONTHS.NOVEMBER]: {
       dates: [
-        {
-          number: 11,
-          name: 'Día del Escultor y las Artes Plásticas',
-        },
-        {
-          number: 22,
-          name: 'Día de la música',
-        },
-        {
-          number: 30,
-          name: 'Fin del tercer trimestre',
-        },
+        { number: 11, name: 'Día del Escultor y las Artes Plásticas' },
+        { number: 22, name: 'Día de la música' },
+        { number: 30, name: 'Fin del tercer trimestre' },
       ],
     },
     [MONTHS.DECEMBER]: {
-      cumples: [
-        {
-          number: 7,
-          name: 'Gaby',
-        },
-      ],
-      dates: [
-        {
-          number: 22,
-          name: 'Cierre de ciclo',
-        },
-      ],
+      cumples: [{ number: 7, name: 'Gaby' }],
+      dates: [{ number: 22, name: 'Cierre de ciclo' }],
     },
-  },
-  [OWNERS.FITA]: {
-    [MONTHS.JANUARY]: {
-      cumples: [
-        {
-          number: 11,
-          name: 'Simón',
-        },
-        {
-          number: 13,
-          name: 'Flor',
-        },
-        {
-          number: 23,
-          name: 'Nala',
-        },
-      ],
-    },
-    [MONTHS.FEBRUARY]: {
-      cumples: [
-        {
-          number: 7,
-          name: 'Donatella',
-        },
-      ],
-    },
-    [MONTHS.MARCH]: {
-      cumples: [
-        {
-          number: 21,
-          name: 'My b-day!',
-        },
-      ],
-    },
-    [MONTHS.JUNE]: {
-      cumples: [
-        {
-          number: 8,
-          name: 'Mamá',
-        },
-      ],
-    },
-    [MONTHS.JULY]: {
-      cumples: [
-        {
-          number: 10,
-          name: 'Juan',
-        },
-      ],
-    },
-    [MONTHS.SEPTEMBER]: {
-      cumples: [
-        {
-          number: 6,
-          name: 'Noah',
-        },
-      ],
-    },
-    [MONTHS.DECEMBER]: {
-      cumples: [
-        {
-          number: 7,
-          name: 'Papá',
-        },
-      ],
-    },
-  },
+  }),
+  [OWNERS.FITA]: mergeOwnerData({
+    [MONTHS.MARCH]: { cumples: [{ number: 21, name: 'My b-day!' }] },
+    [MONTHS.JUNE]: { cumples: [{ number: 8, name: 'Mamá' }] },
+    [MONTHS.DECEMBER]: { cumples: [{ number: 7, name: 'Papá' }] },
+  }),
   [OWNERS.FLOR]: {},
-  [OWNERS.CASA]: {
-    [MONTHS.JANUARY]: {
-      cumples: [
-        {
-          number: 3,
-          name: 'Milo',
-        },
-        {
-          number: 11,
-          name: 'Simón',
-        },
-        {
-          number: 13,
-          name: 'Flor',
-        },
-        {
-          number: 23,
-          name: 'Nala',
-        },
-      ],
-    },
-    [MONTHS.FEBRUARY]: {
-      cumples: [
-        {
-          number: 7,
-          name: 'Donatella',
-        },
-        {
-          number: 14,
-          name: 'Pamela',
-        },
-      ],
-    },
+  [OWNERS.CASA]: mergeOwnerData({
+    [MONTHS.JANUARY]: { cumples: [{ number: 3, name: 'Milo' }] },
+    [MONTHS.FEBRUARY]: { cumples: [{ number: 14, name: 'Pamela' }] },
     [MONTHS.MARCH]: {
       cumples: [
-        {
-          number: 7,
-          name: 'Mauro',
-        },
-        {
-          number: 13,
-          name: 'Mica',
-        },
-        {
-          number: 15,
-          name: 'Fabi',
-        },
-        {
-          number: 20,
-          name: 'Lucía',
-        },
-        {
-          number: 21,
-          name: 'Fita',
-        },
-        {
-          number: 23,
-          name: 'Agustín',
-        },
-        {
-          number: 28,
-          name: 'Facu',
-        },
+        { number: 7, name: 'Mauro' },
+        { number: 13, name: 'Mica' },
+        { number: 15, name: 'Fabi' },
+        { number: 20, name: 'Lucía' },
+        { number: 21, name: 'Fita' },
+        { number: 23, name: 'Agustín' },
+        { number: 28, name: 'Facu' },
       ],
     },
-    [MONTHS.APRIL]: {
-      cumples: [
-        {
-          number: 12,
-          name: 'Romi',
-        },
-      ],
-    },
+    [MONTHS.APRIL]: { cumples: [{ number: 12, name: 'Romi' }] },
     [MONTHS.MAY]: {
       cumples: [
-        {
-          number: 2,
-          name: 'Cuba',
-        },
-        {
-          number: 12,
-          name: 'Daiana',
-        },
-        {
-          number: 13,
-          name: 'Karina',
-        },
-        {
-          number: 23,
-          name: 'Silvia (Hugo) - Rochi',
-        },
+        { number: 2, name: 'Cuba' },
+        { number: 12, name: 'Daiana' },
+        { number: 13, name: 'Karina' },
+        { number: 23, name: 'Silvia (Hugo) - Rochi' },
       ],
     },
     [MONTHS.JUNE]: {
       cumples: [
-        {
-          number: 8,
-          name: 'Mamá Gri',
-        },
-        {
-          number: 14,
-          name: 'Rocco',
-        },
-        {
-          number: 17,
-          name: 'Sofi F.',
-        },
-        {
-          number: 28,
-          name: 'Natu',
-        },
+        { number: 8, name: 'Mamá Gri' },
+        { number: 14, name: 'Rocco' },
+        { number: 17, name: 'Sofi F.' },
+        { number: 28, name: 'Natu' },
       ],
     },
     [MONTHS.JULY]: {
       cumples: [
-        {
-          number: 3,
-          name: 'Silvia M.',
-        },
-        {
-          number: 10,
-          name: 'Juan',
-        },
-        {
-          number: 16,
-          name: 'Papá Leo',
-        },
-        {
-          number: 18,
-          name: 'Pipe',
-        },
-        {
-          number: 26,
-          name: 'Cami (Natu)',
-        },
+        { number: 3, name: 'Silvia M.' },
+        { number: 16, name: 'Papá Leo' },
+        { number: 18, name: 'Pipe' },
+        { number: 26, name: 'Cami (Natu)' },
       ],
     },
-    [MONTHS.AUGUST]: {
-      cumples: [
-        {
-          number: 30,
-          name: 'Hugo',
-        },
-      ],
-    },
+    [MONTHS.AUGUST]: { cumples: [{ number: 30, name: 'Hugo' }] },
     [MONTHS.SEPTEMBER]: {
       cumples: [
-        {
-          number: 1,
-          name: 'Dante',
-        },
-        {
-          number: 3,
-          name: 'Mamá Luci',
-        },
-        {
-          number: 6,
-          name: 'Noah',
-        },
-        {
-          number: 13,
-          name: 'Nahuel',
-        },
-        {
-          number: 14,
-          name: 'Lautaro - Patri',
-        },
-        {
-          number: 20,
-          name: 'Juli',
-        },
-        {
-          number: 26,
-          name: 'Carla',
-        },
+        { number: 1, name: 'Dante' },
+        { number: 3, name: 'Mamá Luci' },
+        { number: 13, name: 'Nahuel' },
+        { number: 14, name: 'Lautaro - Patri' },
+        { number: 20, name: 'Juli' },
+        { number: 26, name: 'Carla' },
       ],
     },
-    [MONTHS.OCTOBER]: {
-      cumples: [
-        {
-          number: 2,
-          name: 'Moni',
-        },
-      ],
-    },
+    [MONTHS.OCTOBER]: { cumples: [{ number: 2, name: 'Moni' }] },
     [MONTHS.NOVEMBER]: {
       cumples: [
         { number: 1, name: 'Aniversario', love: true },
         { number: 2, name: 'Aniversario - Armando', love: true },
-        {
-          number: 9,
-          name: 'Santino',
-        },
-        {
-          number: 19,
-          name: 'Tina',
-        },
-        {
-          number: 26,
-          name: 'Mel',
-        },
-        {
-          number: 29,
-          name: 'Mariana',
-        },
+        { number: 9, name: 'Santino' },
+        { number: 19, name: 'Tina' },
+        { number: 26, name: 'Mel' },
+        { number: 29, name: 'Mariana' },
       ],
     },
     [MONTHS.DECEMBER]: {
       cumples: [
-        {
-          number: 7,
-          name: 'Papá Gabi',
-        },
-        {
-          number: 19,
-          name: 'Agus',
-        },
-        {
-          number: 23,
-          name: 'Tío Martín',
-        },
+        { number: 7, name: 'Papá Gabi' },
+        { number: 19, name: 'Agus' },
+        { number: 23, name: 'Tío Martín' },
       ],
     },
-  },
-  [OWNERS.VIVI]: {
-    [MONTHS.JANUARY]: {
-      cumples: [
-        {
-          number: 13,
-          name: 'Flor',
-        },
-      ],
-    },
-    [MONTHS.FEBRUARY]: {
-      cumples: [
-        {
-          number: 6,
-          name: 'Mi cumple!',
-        },
-      ],
-    },
-    [MONTHS.MARCH]: {
-      cumples: [
-        {
-          number: 21,
-          name: 'Fabio',
-        },
-      ],
-    },
-    [MONTHS.JULY]: {
-      cumples: [
-        {
-          number: 10,
-          name: 'Juan',
-        },
-        {
-          number: 16,
-          name: 'Leo',
-        },
-      ],
-    },
-    [MONTHS.SEPTEMBER]: {
-      cumples: [
-        {
-          number: 3,
-          name: 'Lucia',
-        },
-        {
-          number: 20,
-          name: 'Juli',
-        },
-      ],
-    },
-  },
+  }),
 };

@@ -10,11 +10,12 @@ import {
   FormLabel,
   Select,
 } from '@chakra-ui/react';
-import { useContext } from 'react';
 import { HexColorPicker } from 'react-colorful';
-import { getYearOptions } from '../../constants/Data';
-import { OPTIONS } from '../../constants/Enums';
-import { CalendarContext } from '../../context/useCalendar';
+
+import { getYearOptions } from '@/constants/Data';
+import { DAYS, LANGUAGES, OPTIONS, SIZES } from '@/constants/Enums';
+import { useCalendar } from '@/context/useCalendar';
+
 import Selector from '../Selector';
 import {
   BACKGROUND_OPTIONS,
@@ -42,7 +43,7 @@ const Content = () => {
     owner,
     handleOwnerChange,
     dispatch,
-  } = useContext(CalendarContext);
+  } = useCalendar();
 
   const yearOptions = getYearOptions();
 
@@ -77,7 +78,7 @@ const Content = () => {
               <FormLabel>Elegí el año:</FormLabel>
               <Selector
                 name={OPTIONS.YEAR}
-                defaultValue={String(year)}
+                value={String(year)}
                 options={yearOptions}
                 onChange={(value: string) =>
                   dispatch({ [OPTIONS.YEAR]: Number(value) })
@@ -90,10 +91,10 @@ const Content = () => {
               <FormLabel>Elegí el idioma:</FormLabel>
               <Selector
                 name={OPTIONS.LANGUAGE}
-                defaultValue={language}
+                value={language}
                 options={LANGUAGE_OPTIONS}
                 onChange={(value: string) =>
-                  dispatch({ [OPTIONS.LANGUAGE]: value })
+                  dispatch({ [OPTIONS.LANGUAGE]: value as LANGUAGES })
                 }
               />
             </FormControl>
@@ -103,10 +104,10 @@ const Content = () => {
               <FormLabel>Elegí el día de inicio:</FormLabel>
               <Selector
                 name={OPTIONS.STARTING_DAY}
-                defaultValue={startingDay}
+                value={startingDay}
                 options={STARTING_DAY_OPTIONS}
                 onChange={(value: string) =>
-                  dispatch({ [OPTIONS.STARTING_DAY]: value })
+                  dispatch({ [OPTIONS.STARTING_DAY]: value as DAYS })
                 }
               />
             </FormControl>
@@ -117,10 +118,10 @@ const Content = () => {
               <FormLabel>Elegir el tamaño de hoja:</FormLabel>
               <Selector
                 name={OPTIONS.SIZE}
-                defaultValue={size}
+                value={size}
                 options={SIZE_OPTIONS}
                 onChange={(value: string) =>
-                  dispatch({ [OPTIONS.SIZE]: value })
+                  dispatch({ [OPTIONS.SIZE]: value as SIZES })
                 }
               />
             </FormControl>
@@ -130,7 +131,7 @@ const Content = () => {
               <FormLabel>Elegir el fondo para los cumpleaños:</FormLabel>
               <Selector
                 name={OPTIONS.BACKGROUND}
-                defaultValue={background}
+                value={background}
                 options={BACKGROUND_OPTIONS}
                 onChange={(value: string) =>
                   dispatch({ [OPTIONS.BACKGROUND]: value })
@@ -151,7 +152,7 @@ const Content = () => {
           <Box my={4}>
             <Checkbox
               size="lg"
-              defaultChecked={enabledFeriados}
+              isChecked={enabledFeriados}
               onChange={(event) =>
                 dispatch({
                   [OPTIONS.ENABLED_FERIADOS]: event.target.checked,
@@ -165,7 +166,7 @@ const Content = () => {
           <Box my={4}>
             <Checkbox
               size="lg"
-              defaultChecked={enabledBirthdays}
+              isChecked={enabledBirthdays}
               onChange={(event) =>
                 dispatch({
                   [OPTIONS.ENABLED_BIRTHDAYS]: event.target.checked,
@@ -179,7 +180,7 @@ const Content = () => {
           <Box my={4}>
             <Checkbox
               size="lg"
-              defaultChecked={enabledEspecialDays}
+              isChecked={enabledEspecialDays}
               onChange={(event) =>
                 dispatch({
                   [OPTIONS.ENABLED_ESPECIAL_DAYS]: event.target.checked,

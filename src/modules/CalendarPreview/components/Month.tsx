@@ -1,6 +1,7 @@
+import { DAYS, IMonthData, IParsedMonth } from '@/constants';
+
 import { getDayList } from '../CalendarPreview.hooks';
 import Day from './Day';
-import { DAYS, IMonthData, IParsedMonth } from '../../../constants';
 
 const Month: React.FC<{
   month: IParsedMonth;
@@ -16,11 +17,9 @@ const Month: React.FC<{
       {dayList.map((day, index) => (
         <Day
           {...day}
-          key={index}
+          key={`day_${index}_${day.number}${day.disabled ? '_d' : ''}`}
           index={index}
-          firstDay={month.firstDay}
           defaultInit={defaultInit}
-          positionInGrid={index + month.firstDay}
         />
       ))}
     </>
