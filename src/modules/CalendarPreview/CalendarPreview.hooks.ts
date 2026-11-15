@@ -43,6 +43,7 @@ export const getDayList = ({
   const dayList: Array<{
     number: number;
     feriadoTipo?: FeriadoType | null;
+    feriadoNombre?: string | null;
     cumple?: string | null;
     love?: string | null;
     clase?: boolean;
@@ -58,12 +59,17 @@ export const getDayList = ({
     index < positionsLength + defaultStart;
     index++
   ) {
+    const feriado =
+      index >= fixedFirstDay && index < minPositions + defaultStart
+        ? feriados.find((f) => f.dia === day)
+        : undefined;
+
     const newDay =
       index >= fixedFirstDay && index < minPositions + defaultStart
         ? {
             number: day,
-            feriadoTipo:
-              feriados.find((f) => f.dia === day)?.tipo ?? null,
+            feriado,
+            feriadoNombre: feriado?.nombre ?? null,
             cumple:
               cumples?.length > 0
                 ? cumples.find((cumple) => cumple.number === day)?.name || null

@@ -13,6 +13,7 @@ import {
   OPTIONS,
   OWNERS,
   SIZES,
+  getCurrentYear,
 } from '../constants';
 import { useDisclosure } from '@chakra-ui/react';
 import { useReactToPrint } from 'react-to-print';
@@ -29,6 +30,7 @@ interface IState {
   [OPTIONS.PRIMARY_COLOR]: string;
   [OPTIONS.SECONDARY_COLOR]: string;
   [OPTIONS.THIRD_COLOR]: string;
+  [OPTIONS.YEAR]: number;
 }
 
 interface ICalendarContext {
@@ -58,6 +60,16 @@ const initialState: IState = {
   [OPTIONS.PRIMARY_COLOR]: '#6dd2b0',
   [OPTIONS.SECONDARY_COLOR]: '#e15f82',
   [OPTIONS.THIRD_COLOR]: '#88d7cd',
+  [OPTIONS.YEAR]: getCurrentYear(),
+};
+
+const normalizeYear = (state: IState): IState => {
+  const current = getCurrentYear();
+  const year = state[OPTIONS.YEAR];
+  if (year !== current && year !== current + 1) {
+    return { ...state, [OPTIONS.YEAR]: current };
+  }
+  return state;
 };
 
 const initialCalendarContext: ICalendarContext = {
@@ -85,11 +97,12 @@ export const initializer = (initialValue = initialState) => {
   if (!settingsFromStorage) return initialValue;
 
   const objSettings = JSON.parse(settingsFromStorage);
+  const stored = objSettings[OWNERS.FAMILIA];
 
-  return objSettings[OWNERS.FAMILIA] || initialValue;
+  return stored ? normalizeYear({ ...initialValue, ...stored }) : initialValue;
 };
 
-function reducer(state: any, action: () => void) {
+function reducer(state: IState, action: Partial<IState>): IState {
   return { ...state, ...action };
 }
 
@@ -128,7 +141,9 @@ export const CalendarProvider = ({
     if (settingsFromStorage) {
       const objSettings = JSON.parse(settingsFromStorage);
 
-      const settingsByOwner = objSettings[newOwner] ?? initialState;
+      const settingsByOwner = objSettings[newOwner]
+        ? normalizeYear({ ...initialState, ...objSettings[newOwner] })
+        : initialState;
 
       dispatch(settingsByOwner);
     }

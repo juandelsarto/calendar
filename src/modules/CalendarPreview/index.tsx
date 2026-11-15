@@ -2,7 +2,7 @@ import { useContext, useMemo } from 'react';
 import { Box } from '@chakra-ui/react';
 import { DAYS, MONDAY_FIRST, SUNDAY_FIRST } from '../../constants/Enums';
 import { TRANSLATIONS } from '../../constants/Translations';
-import { MONTHS_LIST, CALENDAR, YEAR } from '../../constants';
+import { MONTHS_LIST, CALENDAR } from '../../constants';
 import { CalendarContext } from '../../context/useCalendar';
 import { useFeriados } from '../../hooks/useFeriados';
 import Month from './components/Month';
@@ -27,13 +27,14 @@ const CalendarPreview = () => {
       enabledEspecialDays,
       primaryColor,
       secondaryColor,
+      year,
     },
     printer,
   } = useContext(CalendarContext);
 
   const parsedDays = startingDay === DAYS.MONDAY ? MONDAY_FIRST : SUNDAY_FIRST;
 
-  const { feriadosByMonth } = useFeriados(YEAR);
+  const { feriadosByMonth } = useFeriados(year);
 
   const parsedMonths = useMemo(
     () =>
@@ -43,13 +44,13 @@ const CalendarPreview = () => {
         return {
           ...month,
           feriados: feriadosByMonth[month.key] ?? [],
-          firstDay: new Date(YEAR, index, 1).getDay(),
-          days: new Date(YEAR, index + 1, 0).getDate(),
-          prevMonth: new Date(YEAR, index, 0).getDate(),
+          firstDay: new Date(year, index, 1).getDay(),
+          days: new Date(year, index + 1, 0).getDate(),
+          prevMonth: new Date(year, index, 0).getDate(),
           ...(especialDates ? { dates: especialDates } : {}),
         };
       }),
-    [owner, feriadosByMonth],
+    [owner, feriadosByMonth, year],
   );
 
   const styles = getStyles({ primaryColor, secondaryColor });
@@ -71,7 +72,7 @@ const CalendarPreview = () => {
             <div className="month" key={month.key}>
               <div className="month__top">
                 <div className="month__name" style={styles.monthName}>
-                  {month.name[language]} {YEAR}
+                  {month.name[language]} {year}
                 </div>
                 {enabledEspecialDays ? (
                   <div className="month__notes">

@@ -1,7 +1,15 @@
-import { LANGUAGES, MONTHS, OWNERS } from './Enums';
 import { IFeriado } from '../hooks/useFeriados';
+import { LANGUAGES, MONTHS, OWNERS } from './Enums';
 
-export const YEAR: number = 2026;
+export const getCurrentYear = (): number => new Date().getFullYear();
+
+export const getYearOptions = (): { value: string; label: string }[] => {
+  const current = getCurrentYear();
+  return [
+    { value: String(current), label: String(current) },
+    { value: String(current + 1), label: String(current + 1) },
+  ];
+};
 
 export interface IEvent {
   number: number | number[];
@@ -137,7 +145,7 @@ export const CALENDAR: ICalendar = {
           number: 8,
           name: 'Gri',
         },
-        { number: 27, name: '34º aniversrio - Gri y Gabi', love: true },
+        { number: 27, name: 'Aniversrio - Gri y Gabi', love: true },
       ],
     },
     [MONTHS.JULY]: {
@@ -165,7 +173,7 @@ export const CALENDAR: ICalendar = {
       ],
     },
     [MONTHS.NOVEMBER]: {
-      cumples: [{ number: 2, name: '2º aniversrio - Flor y Juan', love: true }],
+      cumples: [{ number: 2, name: 'Aniversrio - Flor y Juan', love: true }],
     },
     [MONTHS.DECEMBER]: {
       cumples: [
@@ -486,10 +494,6 @@ export const CALENDAR: ICalendar = {
     },
     [MONTHS.FEBRUARY]: {
       cumples: [
-        {
-          number: 4,
-          name: 'Abu Vivi',
-        },
         {
           number: 7,
           name: 'Donatella',
